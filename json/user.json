@@ -1,0 +1,42 @@
+[
+    {
+        "firstName": "first name",
+        "lastName": "last name",
+        "username": "username",
+        "email": "email@gmail.com",
+        "favoriteSongs": [
+            {
+                "songId": 1,
+                "title": "Song A"
+            },
+            {
+                "songId": 2,
+                "title": "Song B"
+            }
+        ],
+        "favUsers": [
+            {
+                "userId": 2,
+                "username": "username"
+            }
+        ]
+    },
+    {
+        "firstName": "first name",
+        "lastName": "last name",
+        "username": "username",
+        "email": "email@gmail.com",
+        "favoriteSongs": [
+            {
+                "songId": 3,
+                "title": "Song C"
+            }
+        ],
+        "favUsers": [
+            {
+                "userId": 1,
+                "username": "username"
+            }
+        ]
+    }
+]

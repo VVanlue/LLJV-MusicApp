@@ -1,11 +1,36 @@
 [
     {
-        "title":"banana bread",
-        "reviews":[
-            {
-                "rating":5,
-                "comment":"Wow!"
-            }
-        ]
+        "songId": 1,
+        "title": "Song A",
+        "notes": [
+            "C",
+            "D",
+            "E"
+        ],
+        "scales": [
+            "Major"
+        ],
+        "chords": [
+            "Cmaj",
+            "Dmin"
+        ],
+        "tempo": 120
+    },
+    {
+        "songId": 2,
+        "title": "Song B",
+        "notes": [
+            "G",
+            "A",
+            "B"
+        ],
+        "scales": [
+            "Minor"
+        ],
+        "chords": [
+            "Gmaj",
+            "Amin"
+        ],
+        "tempo": 100
     }
 ]

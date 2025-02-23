@@ -1,0 +1,24 @@
+[
+    {
+        "lessonId": 1,
+        "title": "Beginner X",
+        "songs": [
+            1
+        ],
+        "difficulty": "Easy",
+        "instruments": [
+            "X"
+        ]
+    },
+    {
+        "lessonId": 2,
+        "title": "Advanced X",
+        "songs": [
+            2
+        ],
+        "difficulty": "Hard",
+        "instruments": [
+            "X"
+        ]
+    }
+]
