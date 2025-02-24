@@ -1,42 +1,44 @@
 [
     {
-        "firstName": "first name",
-        "lastName": "last name",
-        "username": "username",
-        "email": "email@gmail.com",
-        "favoriteSongs": [
+        "uuid":"6d4be344-67f3-4dbf-98c7-6addb0ec9d0a",
+        "firstName":"Chris",
+        "lastName":"Clemons",
+        "username":"2Litty",
+        "email":"goclemons@hotmail.com",
+        "favSong":[
             {
-                "songId": 1,
-                "title": "Song A"
-            },
-            {
-                "songId": 2,
-                "title": "Song B"
+                "id":"8bd6ce57-10e6-484c-a3f2-329356a60309",
+                "title":"Love Ballad"
             }
         ],
-        "favUsers": [
-            {
-                "userId": 2,
-                "username": "username"
-            }
-        ]
+        "publishedSongs":"None"
     },
     {
-        "firstName": "first name",
-        "lastName": "last name",
-        "username": "username",
-        "email": "email@gmail.com",
-        "favoriteSongs": [
+        "uuid":"69caaa8e-a179-4a08-9a80-8c82f19d8bba",
+        "firstName":"Vicki",
+        "lastName":"Van",
+        "username":"CodeSong",
+        "email":"yesbro@gmail.com",
+        "favSong":[
             {
-                "songId": 3,
-                "title": "Song C"
+                "id":"c0318c62-f807-47cf-98c8-8ab26335b714",
+                "title":"Clara de Lune"
             }
         ],
-        "favUsers": [
+        "publishedSongs":"Lovefool"
+    },
+    {
+        "uuid":"4731ba77-8d68-4a85-a24f-fa355b6252a6",
+        "firstName":"James",
+        "lastName":"Bard",
+        "username":"gourdtee",
+        "email":"jamesb@hotmail.com",
+        "favSong":[
             {
-                "userId": 1,
-                "username": "username"
+                "id":"f9f25818-efc1-4597-9fd1-c160237b0b25",
+                "title":"What a Wonderful World"
             }
-        ]
+        ],
+        "publishedSongs":"None"
     }
 ]

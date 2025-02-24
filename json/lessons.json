@@ -1,24 +1,34 @@
 [
     {
-        "lessonId": 1,
-        "title": "Beginner X",
-        "songs": [
-            1
-        ],
-        "difficulty": "Easy",
-        "instruments": [
-            "X"
-        ]
+        "uuid":"e1d70ba9-a1b7-443f-8453-5cb35136328b",
+        "title":"Slow Rhythms~",
+        "Difficulty":"Medium",
+        "genre":"Soul",
+        "Instrument":"Piano",
+        "Song":"Love Ballad"
     },
     {
-        "lessonId": 2,
-        "title": "Advanced X",
-        "songs": [
-            2
-        ],
-        "difficulty": "Hard",
-        "instruments": [
-            "X"
-        ]
+        "uuid":"e10cd78d-c081-4e76-a4cd-45f81de24f64",
+        "title":"Chord Progressions~",
+        "Difficulty":"Hard",
+        "genre":"Classical",
+        "Instrument":"Piano",
+        "Song":"Clara de Lune"
+    },
+    {
+        "uuid":"cbdf14d5-6979-413c-aad0-f04f261af2e3",
+        "title":"E-Major Scale~",
+        "Difficulty":"Easy",
+        "genre":"Classical",
+        "Instrument":"Piano",
+        "Song":"E-Major Scale"
+    },
+    {
+        "uuid":"a2957de3-5a38-4c64-928f-91dffdc8daa6",
+        "title":"Minor Chords~",
+        "Difficulty":"Easy",
+        "genre":"Classical",
+        "Instrument":"Piano",
+        "Song":"Minor Chords"
     }
 ]
