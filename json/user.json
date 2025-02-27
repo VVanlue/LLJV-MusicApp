@@ -5,12 +5,12 @@
         "lastName":"Clemons",
         "username":"2Litty",
         "email":"goclemons@hotmail.com",
-        "favSong":[
+        "favSongs":[
             {
-                "id":"8bd6ce57-10e6-484c-a3f2-329356a60309",
+                "id":"8bd6ce57-10e6-484c-a3f2-329356a60309"
             }
         ],
-        "publishedSongs":"None"
+        "publishedSongs":""
     },
     {
         "uuid":"69caaa8e-a179-4a08-9a80-8c82f19d8bba",
@@ -18,12 +18,12 @@
         "lastName":"Van",
         "username":"CodeSong",
         "email":"yesbro@gmail.com",
-        "favSong":[
+        "favSongs":[
             {
                 "id":"c0318c62-f807-47cf-98c8-8ab26335b714"
             }
         ],
-        "publishedSongs":"Lovefool"
+        "publishedSongs":"0923293a-a119-4823-8c24-ef9d26ccbcdc"
     },
     {
         "uuid":"4731ba77-8d68-4a85-a24f-fa355b6252a6",
@@ -31,11 +31,11 @@
         "lastName":"Bard",
         "username":"gourdtee",
         "email":"jamesb@hotmail.com",
-        "favSong":[
+        "favSongs":[
             {
                 "id":"f9f25818-efc1-4597-9fd1-c160237b0b25"
             }
         ],
-        "publishedSongs":"None"
+        "publishedSongs":""
     }
 ]
