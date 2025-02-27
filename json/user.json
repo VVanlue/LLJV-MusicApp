@@ -8,7 +8,6 @@
         "favSong":[
             {
                 "id":"8bd6ce57-10e6-484c-a3f2-329356a60309",
-                "title":"Love Ballad"
             }
         ],
         "publishedSongs":"None"
@@ -21,8 +20,7 @@
         "email":"yesbro@gmail.com",
         "favSong":[
             {
-                "id":"c0318c62-f807-47cf-98c8-8ab26335b714",
-                "title":"Clara de Lune"
+                "id":"c0318c62-f807-47cf-98c8-8ab26335b714"
             }
         ],
         "publishedSongs":"Lovefool"
@@ -35,8 +33,7 @@
         "email":"jamesb@hotmail.com",
         "favSong":[
             {
-                "id":"f9f25818-efc1-4597-9fd1-c160237b0b25",
-                "title":"What a Wonderful World"
+                "id":"f9f25818-efc1-4597-9fd1-c160237b0b25"
             }
         ],
         "publishedSongs":"None"
