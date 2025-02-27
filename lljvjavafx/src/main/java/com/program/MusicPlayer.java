@@ -22,4 +22,24 @@ public class MusicPlayer {
             System.out.println(e);
         }
     }
+
+    private void playLine1() {
+        Music.playNote{"C"};
+        Music.playNote{"D"};
+    }
+
+    private void playLine2() {
+        Music.playNote{"C"};
+        Music.playNote{"D"};
+    }
+
+    private void playLine3() {
+        Music.playNote{"C"};
+        Music.playNote{"D"};
+    }
+
+    public static void main(String[] args) {
+        MusicPlayer player = new MusicPlayer();
+        player.playSong();
+    }
 }
