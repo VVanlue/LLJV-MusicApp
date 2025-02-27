@@ -24,18 +24,18 @@ public class MusicPlayer {
     }
 
     private void playLine1() {
-        Music.playNote{"C"};
-        Music.playNote{"D"};
+        Music.playNote("C");
+        Music.playNote("D");
     }
 
     private void playLine2() {
-        Music.playNote{"C"};
-        Music.playNote{"D"};
+        Music.playNote("C");
+        Music.playNote("D");
     }
 
     private void playLine3() {
-        Music.playNote{"C"};
-        Music.playNote{"D"};
+        Music.playNote("C");
+        Music.playNote("D");
     }
 
     public static void main(String[] args) {
