@@ -5,4 +5,5 @@ module com.lljvmusicapp {
     requires jfugue;
 
     opens com.model to javafx.fxml;
+    exports com.model;
 }
