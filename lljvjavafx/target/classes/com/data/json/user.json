@@ -5,11 +5,7 @@
         "lastName":"Clemons",
         "username":"2Litty",
         "email":"goclemons@hotmail.com",
-        "favSongs":[
-            {
-                "id":"8bd6ce57-10e6-484c-a3f2-329356a60309"
-            }
-        ],
+        "favSongs":"8bd6ce57-10e6-484c-a3f2-329356a60309",
         "publishedSongs":""
     },
     {
@@ -18,11 +14,7 @@
         "lastName":"Van",
         "username":"CodeSong",
         "email":"yesbro@gmail.com",
-        "favSongs":[
-            {
-                "id":"c0318c62-f807-47cf-98c8-8ab26335b714"
-            }
-        ],
+        "favSongs":"c0318c62-f807-47cf-98c8-8ab26335b714",
         "publishedSongs":"0923293a-a119-4823-8c24-ef9d26ccbcdc"
     },
     {
@@ -31,11 +23,7 @@
         "lastName":"Bard",
         "username":"gourdtee",
         "email":"jamesb@hotmail.com",
-        "favSongs":[
-            {
-                "id":"f9f25818-efc1-4597-9fd1-c160237b0b25"
-            }
-        ],
+        "favSongs":"f9f25818-efc1-4597-9fd1-c160237b0b25",
         "publishedSongs":""
     }
 ]
