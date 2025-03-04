@@ -28,6 +28,11 @@ public class Tempo {
         this.BPM = BPM - amount;
     }
 
+    public void noBPM ()
+    {
+        this.BPM = 0;
+    }
+
     
 
 
