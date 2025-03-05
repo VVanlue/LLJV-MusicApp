@@ -20,17 +20,22 @@ public class Tempo {
 
     public void increaseBPM (int amount)
     {
-        this.BPM = BPM + amount;
+        this.BPM += amount;
     }
 
     public void decreaseBPM (int amount)
     {
-        this.BPM = BPM - amount;
+        this.BPM -= amount;
     }
 
     public void noBPM ()
     {
         this.BPM = 0;
+    }
+
+    public int getBPM()
+    {
+        return bpm;
     }
 
     
