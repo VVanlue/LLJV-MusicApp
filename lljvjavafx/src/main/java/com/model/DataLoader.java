@@ -22,7 +22,9 @@ public class DataLoader extends DataConstants {
                 JSONObject personJSON = (JSONObject)peopleJSON.get(i);
                 UUID id = UUID.fromString((String)personJSON.get(USER_ID));
                 String userName = (String)personJSON.get(USER_USER_NAME);
-                String firstName = (String)personJSON.get(USER_LAST_NAME);
+                String firstName = (String)personJSON.get(USER_FIRST_NAME);
+                String lastName = (String)personJSON.get(USER_LAST_NAME);
+                String email = (String)personJSON.get(USER_EMAIL);
                 String favSongs = (String)personJSON.get(USER_FAVORITE_SONGS);
                 String publishedSongs = (String)personJSON.get(USER_PUBLISHED_SONGS);
 
