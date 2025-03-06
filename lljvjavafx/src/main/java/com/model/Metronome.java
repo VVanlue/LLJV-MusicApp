@@ -18,9 +18,18 @@ public class Metronome extends Tempo {
 
     }
 
+    @Override
     public void setBPM (int BPM)
     {
         this.BPM = BPM;
     }
 
+    public ArrayList<Tempos> getTempo() {
+        return Tempo;
+    }
+
+    public void setTempo(ArrayList<Tempos> tempo) {
+        Tempo = tempo;
+    }
+}
 }

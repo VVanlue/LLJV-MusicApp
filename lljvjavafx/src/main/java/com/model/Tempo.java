@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Tempo {
 
     //attributes
-    private int BPM;
+    protected int BPM;
 
     //constants
     public Tempo (int BPM)
