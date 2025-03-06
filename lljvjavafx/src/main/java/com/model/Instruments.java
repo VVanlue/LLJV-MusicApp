@@ -9,8 +9,8 @@ private String stringName;
 private String keyName;
 private boolean isPlaying;
 
-//methods
 
+//constructors
 public Instruments(String name, String stringName, String keyName, boolean isPlaying)
 {
     this.name - name;
@@ -19,14 +19,17 @@ public Instruments(String name, String stringName, String keyName, boolean isPla
     this.isPlaying = false;
 }
 
+
+//methods
 public String getName()
 {
     return name;
 }
 
-public void playNote(String note)
-{
-    return 0;
-}
+//confused about this part
+//public void playNote(String note)
+//{
+ 
+//}
 
 }
