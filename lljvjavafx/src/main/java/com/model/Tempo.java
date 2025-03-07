@@ -13,11 +13,10 @@ public class Tempo {
     }
 
     //methods
-    public void setBPM(int BPM)
+    public void setBPM (int BPM)
     {
-        this.BPM = BPM
+        this.BPM = BPM;
     }
-
     public void increaseBPM (int amount)
     {
         this.BPM += amount;
@@ -35,7 +34,7 @@ public class Tempo {
 
     public int getBPM()
     {
-        return bpm;
+        return BPM;
     }
 
     
