@@ -6,7 +6,8 @@
         "publisher":"LLJV original",
         "difficulty":"EASY",
         "genre":"KIDS",
-        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
+        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "sheetMusic":"64d865dd-782d-404e-8131-8eb4142f2f0d"
     },
     {
         "uuid":"8bd6ce57-10e6-484c-a3f2-329356a60309",
@@ -51,6 +52,7 @@
         "Publisher":"69caaa8e-a179-4a08-9a80-8c82f19d8bba",
         "level":"HARD",
         "genre":"CLASSICAL",
-        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
+        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "sheetMusic":"d4d6c399-9e70-48f1-9c81-cafb8a385ff3"
     }
 ]
