@@ -25,15 +25,15 @@ public class Difficulty {
         this.complexScore = complexScore;
     }
 
-    //public void getLevel() 
-   // {
+    public void getLevel() 
+   {
 
-   // }
+   }
 
-   /// public void getComplexLevel()
-   // {
+   public void getComplexLevel()
+   {
 
-    //}
+   }
 
     
 }
