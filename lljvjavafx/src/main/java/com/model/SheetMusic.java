@@ -2,8 +2,6 @@ package com.model;
 import java.util.List;
 import java.util.UUID;
 
-import org.jfugue.theory.Note;
-
 public class SheetMusic {
     private UUID sheetId;
     private UUID songId;
