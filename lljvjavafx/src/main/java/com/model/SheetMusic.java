@@ -9,7 +9,7 @@ public class SheetMusic {
     private UUID songId;
     private int measures;
     private int tempo;
-    private UUID instrumentId;
+    private UUID instrumentId; //actual instrument
     private List<Note> notes;
 
     public SheetMusic(UUID sheetId, UUID songId, int measures, int tempo, UUID instrumentId, List<Note> notes) {
