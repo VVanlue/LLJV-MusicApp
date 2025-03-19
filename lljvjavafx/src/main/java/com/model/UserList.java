@@ -37,7 +37,6 @@ public class UserList {
         return users.containsKey(username);
     }
 
-    // Validates a user using username and password
     public boolean validUser(String username, String password) {
         if (users.containsKey(username) && users.get(username).equals(password)) {
             return true;
