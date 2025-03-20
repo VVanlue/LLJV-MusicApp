@@ -9,17 +9,18 @@ public class SheetMusic {
     private UUID songId;
     private int measures;
     private int tempo;
-    private UUID instrumentId; //actual instrument
+    private Piano piano; 
     private List<Note> notes;
 
-    public SheetMusic(UUID sheetId, UUID songId, int measures, int tempo, UUID instrumentId, List<Note> notes) {
+    public SheetMusic(UUID sheetId, UUID songId, int measures, int tempo, Piano piano, List<Note> notes) {
         this.sheetId = sheetId;
         this.songId = songId;
         this.measures = measures;
         this.tempo = tempo;
-        this.instrumentId = instrumentId;
+        this.piano = piano;
         this.notes = notes;
     }
+    
     // Get Methods
     public UUID getSheetId() {
         return sheetId;
@@ -37,36 +38,43 @@ public class SheetMusic {
         return tempo;
     }
 
-    public UUID getInstrumentId() {
-        return instrumentId;
+    public Piano getPiano() {
+        return piano;
     }
 
-    public List<String> getNotes() {
+    public List<Note> getNotes() {
         return notes;
     }
 
-    // Set Methods
-    public void setSheetId(UUID sheetId) {
+    // Set Methods - Either use void or return this, not both
+    // Option 1: Return this for method chaining
+    public SheetMusic setSheetId(UUID sheetId) {
         this.sheetId = sheetId;
+        return this;
     }
 
-    public void setSongId(UUID songId) {
+    public SheetMusic setSongId(UUID songId) {
         this.songId = songId;
+        return this;
     }
 
-    public void setMeasures(int measures) {
+    public SheetMusic setMeasures(int measures) {
         this.measures = measures;
+        return this;
     }
 
-    public void setTempo(int tempo) {
+    public SheetMusic setTempo(int tempo) {
         this.tempo = tempo;
+        return this;
     }
 
-    public void setInstrumentId(UUID instrumentId) {
-        this.instrumentId = instrumentId;
+    public SheetMusic setPiano(Piano piano) {
+        this.piano = piano;
+        return this;
     }
 
-    public void setNotes(List<String> notes) {
+    public SheetMusic setNotes(List<Note> notes) {
         this.notes = notes;
+        return this;
     }
 }
