@@ -1,40 +1,49 @@
 package com.model;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserList {
     
-    private ArrayList<String, String> user;
-    private static SongList instance;
+    private HashMap<String, String> users;
+    private static UserList instance;
 
-    private UserList(){
-        System.out.println("");
+    private UserList() {
+        users = new HashMap<>();
     }
 
-    public static SongList getInstance() {
-        System.out.println("");
-        return null;
+    // Ensure only one instance of UserList exists
+    public static UserList getInstance() {
+        if (instance == null) {
+            instance = new UserList();
+        }
+        return instance;
     }
 
-    public void addUser(userLogin user) {
-        System.out.println("");
+    // Adds a user with a username and password
+    public void addUser(String username, String password) {
+        users.put(username, password);
     }
 
+    // Removes a user by username
     public boolean removeUser(String username) {
-        System.out.println("");
+        if (users.containsKey(username)) {
+            users.remove(username);
+            return true;
+        }
         return false;
     }
 
-    public UserLogin findUser(String username) {
-        System.out.println("");
-        return null;
+    // Finds if a user exists by username
+    public boolean findUser(String username) {
+        return users.containsKey(username);
     }
 
     public boolean validUser(String username, String password) {
-        System.out.println("");
+        if (users.containsKey(username) && users.get(username).equals(password)) {
+            return true;
+        }
         return false;
     }
 
-    public void saveUser() {
-        System.out.println("");
+    public void saveUsers() {
     }
 }
