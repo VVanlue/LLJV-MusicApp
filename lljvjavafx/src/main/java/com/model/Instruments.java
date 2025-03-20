@@ -2,18 +2,18 @@ package com.model;
 import java.util.Scanner;
 
 public class Instruments{
-
-//attributes 
+    //Attributes 
 private String name;
-private String stringName;
-private String keyName;
+private String type;
 private boolean isPlaying;
+private AudioPlayer audioPlayer;
 
     //Constructs an Instrument with the specified details.
     public Instruments(String name, String type) {
         this.name = name;
         this.type = type;
         this.isPlaying = false;
+        this.audioPlayer = AudioPlayer.getInstance();
     }
 
     public String getName() {
@@ -26,9 +26,6 @@ private boolean isPlaying;
         return true;
     }
 
-    /**
-     * Gets the instrument's type.
-     */
     public String getType() {
         return type;
     }
@@ -56,10 +53,12 @@ private boolean isPlaying;
 
     public String stop() {
         isPlaying = false;
+        audioPlayer.stop();
         return name + " has stopped playing.";
     }
 
-    public String playNote(String note) {
+    public String playNote(String note)  {
+        audioPlayer.playNote(note);
         return name + " is playing note: " + note;
     }
 
