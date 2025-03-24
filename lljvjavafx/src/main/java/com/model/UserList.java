@@ -31,6 +31,22 @@ public class UserList {
      * Returns the singleton instance of UserList.
      * @return Singleton instance of UserList.
      */
+    
+    private ArrayList<String, String> user;
+    private static SongList instance;
+
+    /**
+     * Private constructor to load users from JSON.
+     */
+    private UserList() {
+        users = new ArrayList<>();
+        loadUsers();
+    }
+
+    /**
+     * Returns the singleton instance of UserList.
+     * @return Singleton instance of UserList.
+     */
     public static UserList getInstance() {
         if (instance == null) {
             instance = new UserList();
@@ -45,6 +61,25 @@ public class UserList {
     public void addUser(User user) {
         users.add(user);
         saveUsers();
+    }
+
+    /**
+     * Removes a user by username.
+     * @param username The username to remove.
+     * @return true if user was removed, false otherwise.
+     */
+    public boolean removeUser(String username) {
+        Iterator<User> iterator = users.iterator();
+        while (iterator.hasNext()) {
+            User user = iterator.next();
+            if (user.getUsername().equals(username)) {
+                iterator.remove();
+                saveUsers();
+                return true;
+            }
+    // Adds a user with a username and password
+    public void addUser(String username, String password) {
+        users.put(username, password);
     }
 
     /**
@@ -77,6 +112,9 @@ public class UserList {
             }
         }
         return null;
+    // Finds if a user exists by username
+    public boolean findUser(String username) {
+        return users.containsKey(username);
     }
 
     /**
@@ -90,6 +128,8 @@ public class UserList {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return true;
             }
+        if (users.containsKey(username) && users.get(username).equals(password)) {
+            return true;
         }
         return false;
     }
@@ -116,6 +156,7 @@ public class UserList {
         } catch (Exception e) {
             System.out.println("Error loading users: " + e.getMessage());
         }
+    public void saveUsers() {
     }
 
     /**
