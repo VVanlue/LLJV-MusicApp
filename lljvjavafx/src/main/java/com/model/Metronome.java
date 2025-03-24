@@ -1,10 +1,17 @@
 package com.model;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Metronome extends Tempo {
+    private int tempo;
 
+    public Metronome(int tempo) {
+        super(tempo);
+        this.tempo = tempo;
+    }
+    
     //variables
-    private ArrayList<Tempos> Tempo;
+    private ArrayList<Tempo> Tempo;
 
 
     //methods
