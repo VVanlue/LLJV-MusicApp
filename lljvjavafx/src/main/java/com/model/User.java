@@ -8,7 +8,7 @@ import java.util.UUID;
  * @author Victoria
  */
 public class User {
-    private String id;
+    private UUID id;
     private String firstName;
     private String lastName;
     private String username;
@@ -16,6 +16,7 @@ public class User {
     private String password;
     private ArrayList<Song> publishedSongs;
     private ArrayList<Song> favSongs;
+
 
     /**
      * Default constructor for User.
@@ -41,6 +42,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        
     }
 
     /**
