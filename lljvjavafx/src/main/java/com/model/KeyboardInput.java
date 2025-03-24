@@ -18,7 +18,7 @@ public class KeyboardInput {
         keyToNoteMap.put('g', "G");
         keyToNoteMap.put('h', "A");
         keyToNoteMap.put('j', "B");
-        // Add more mappings as needed just like the above ones
+        // Add more mappings as needed just like the above ones. ex. keyToNoteMap.put('w', "C#")
         
         scanner = new Scanner(System.in);
     }
