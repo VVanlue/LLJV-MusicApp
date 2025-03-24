@@ -22,7 +22,7 @@ public class User {
      * Default constructor for User.
      */
     public User() {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.publishedSongs = new ArrayList<>();
         this.favSongs = new ArrayList<>();
     }
@@ -64,7 +64,7 @@ public class User {
      * Starts a lesson.
      * @param lesson The MiniLesson object
      */
-    public void startLesson(MiniLesson lesson) {
+    public void startLesson(Lesson lesson) {
         System.out.println(username + " started lesson: " + lesson.getTitle());
     }
 
