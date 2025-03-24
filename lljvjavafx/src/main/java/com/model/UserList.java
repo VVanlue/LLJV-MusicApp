@@ -1,49 +1,46 @@
 package com.model;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class UserList {
     
-    private HashMap<String, String> users;
-    private static UserList instance;
+    private ArrayList<String, String> user;
+    private static SongList instance;
 
-    private UserList() {
-        users = new HashMap<>();
+    private UserList(){
+        System.out.println("");
     }
 
-    // Ensure only one instance of UserList exists
-    public static UserList getInstance() {
-        if (instance == null) {
-            instance = new UserList();
-        }
-        return instance;
+    public static SongList getInstance() {
+        System.out.println("");
+        return null;
     }
 
-    // Adds a user with a username and password
-    public void addUser(String username, String password) {
-        users.put(username, password);
+    public void addUser(userLogin user) {
+        System.out.println("");
     }
 
-    // Removes a user by username
     public boolean removeUser(String username) {
-        if (users.containsKey(username)) {
-            users.remove(username);
-            return true;
-        }
+        System.out.println("");
         return false;
     }
 
-    // Finds if a user exists by username
-    public boolean findUser(String username) {
-        return users.containsKey(username);
+    public UserLogin findUser(String username) {
+        System.out.println("");
+        return null;
     }
 
+    /**
+     * Validates a username and password.
+     * @param username The username to check.
+     * @param password The password to verify.
+     * @return true if credentials match, false otherwise.
+     */
     public boolean validUser(String username, String password) {
-        if (users.containsKey(username) && users.get(username).equals(password)) {
-            return true;
-        }
+        System.out.println("");
         return false;
     }
 
-    public void saveUsers() {
+    public void saveUser() {
+        System.out.println("");
     }
 }
