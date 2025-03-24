@@ -1,69 +1,95 @@
 package com.model;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Facade {
-
     private User user;
+    private List<User> users;
+    private List<Song> songs;
+    private List<Lesson> lessons;
 
     public Facade() {
-        System.out.println("");
+        this.users = new ArrayList<>();
+        this.songs = new ArrayList<>();
+        this.lessons = new ArrayList<>();
     }
 
     public List<User> UserList() {
-        return null;
+        return users; 
     }
 
-    public List<User> LessonList() {
-        return null;
+    public List<Lesson> LessonList() {
+        return lessons;
     }
 
-    public List<User> SongList() {
-        return null;
+    public List<Song> SongList() {
+        return songs;
     }
 
     public void UserLogin(String username, String password) {
-        return;
+        for (User u : users) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                System.out.println("Login successful!");
+                this.user = u;
+                return;
+            }
+        }
+        System.out.println("Invalid username or password.");
     }
-    
+
     public void signUp() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("");
+        System.out.print("Enter your first name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter your last name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter a username: ");
         String username = scanner.nextLine();
+        System.out.print("Enter your email: ");
+        String email = scanner.nextLine();
+        System.out.print("Enter a password: ");
+        String password = scanner.nextLine();
+
+        User newUser = new User(firstName, lastName, username, email, password);
+        users.add(newUser);
+        System.out.println("Signup successful!");
     }
 
     public void instrumentSelection() {
-        return;
+        System.out.println("Instrument selection feature coming soon.");
     }
-    
+
     public void lessonSelection() {
-        return;
+        System.out.println("Lesson selection feature coming soon.");
     }
 
     public void chooseSong() {
-        return;
+        System.out.println("Song selection feature coming soon.");
     }
 
     public void chooseDifficulty() {
-        return;
+        System.out.println("Difficulty selection feature coming soon.");
     }
 
     public void createSong() {
-        return;
+        System.out.println("Create song feature coming soon.");
     }
 
     public void postSong() {
-        return;
+        System.out.println("Post song feature coming soon.");
     }
 
     public void deleteSong() {
-        return;
+        System.out.println("Delete song feature coming soon.");
     }
 
     public void setSongPrivacy() {
-        return;
+        System.out.println("Song privacy settings feature coming soon.");
     }
 
     public void createSheetMusic() {
-        return;
+        System.out.println("Create sheet music feature coming soon.");
     }
 }
