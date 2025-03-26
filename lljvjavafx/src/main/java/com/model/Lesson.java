@@ -19,7 +19,7 @@ public class Lesson {
     /**
      * Constructs a Lesson object with a unique ID.
      */
-    public Lessons() {
+    public Lesson() {
         this.id = UUID.randomUUID();
     }
 
