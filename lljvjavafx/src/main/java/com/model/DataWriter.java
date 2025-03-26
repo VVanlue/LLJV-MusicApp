@@ -6,8 +6,19 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * class is responsible for saving user data
+ * to a JSON file using the values defined in DataConstants.
+ */
 public class DataWriter extends DataConstants {
     
+     /**
+     * Writes all user data to the file defined by USER_FILE_NAME.
+     * 
+     * It retrieves the list of users from the User singleton instance,
+     * converts each User to a JSONObject, and stores them
+     * in a JSON array.
+     */
     public static void saveUsers() {
         User users = User.getInstance();
     ArrayList<User> userList = users.getUsers();
@@ -26,6 +37,13 @@ public class DataWriter extends DataConstants {
         e.printStackTrace();
     }
 
+     /**
+     * Converts a User object into a JSONObject
+     * containing all of its attributes.
+     *
+     * @param user the User.java to convert
+     * @return a JSONObject representing the user's data
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_ID, user.getId().toString());
