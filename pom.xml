@@ -40,20 +40,23 @@
     </dependency>
 
     <dependency>
-        <groupId>com.googlecode.json-simple</groupId>
-        <artifactId>json-simple</artifactId>
-        <version>1.1.1</version>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20210307</version>
     </dependency>
 
 </dependencies>
     <build>
+        <sourceDirectory>src/main/java/com/model</sourceDirectory>
+        <outputDirectory>target/classes</outputDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>21</release>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
