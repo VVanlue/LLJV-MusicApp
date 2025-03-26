@@ -4,6 +4,11 @@ import java.util.UUID;
 
 import org.jfugue.theory.Note;
 
+/**
+ * Represents a sheet of music, which includes a set of notes, tempo, measures, and a piano.
+ * 
+ * @author Victoria
+ */
 public class SheetMusic {
     private UUID sheetId;
     private UUID songId;
@@ -12,6 +17,16 @@ public class SheetMusic {
     private Piano piano; 
     private List<Note> notes;
 
+    /**
+     * Constructs a new SheetMusic object.
+     * 
+     * @param sheetId Unique identifier for the sheet
+     * @param songId Unique identifier for the song
+     * @param measures The number of measures in the sheet
+     * @param tempo The tempo (beats per minute)
+     * @param piano The piano object that plays the sheet
+     * @param notes The list of notes in the sheet
+     */
     public SheetMusic(UUID sheetId, UUID songId, int measures, int tempo, Piano piano, List<Note> notes) {
         this.sheetId = sheetId;
         this.songId = songId;
@@ -77,4 +92,30 @@ public class SheetMusic {
         this.notes = notes;
         return this;
     }
+    /**
+     * Adds a note to the sheet music.
+     * 
+     * @param note The note to be added.
+     */
+    public void addNote(Note note) {
+        notes.add(note);
+    }
+
+    /**
+     * Removes a note from the sheet music.
+     * 
+     * @param note The note to be removed.
+     */
+    public void removeNote(Note note) {
+        notes.remove(note);
+    }
+
+    /**
+     * Plays the sheet music
+     */
+    public void play() {
+        System.out.println("Playing sheet music...");
+        piano.playNotes(notes);
+    }
 }
+
