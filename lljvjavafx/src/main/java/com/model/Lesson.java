@@ -19,7 +19,7 @@ public class Lesson {
     /**
      * Constructs a Lesson object with a unique ID.
      */
-    public Lessons() {
+    public Lesson() {
         this.id = UUID.randomUUID();
     }
 
@@ -56,5 +56,15 @@ public class Lesson {
      */
     public void save() {
         // Method stub
+    }
+
+    /**
+    * Retrieves the title of the lesson.
+    * 
+    * @return The title of the lesson as a String.
+    */
+    public String getTitle() {
+    // TODO: Implement method to return the title of the lesson
+    return title;  // Replace 'title' with the actual field that holds the title value
     }
 }
