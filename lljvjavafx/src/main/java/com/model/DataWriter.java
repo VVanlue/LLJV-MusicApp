@@ -6,8 +6,18 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Handles writing user data to a JSON file.
+ * Extends {@link DataConstants} for constant values used in JSON storage.
+ * 
+ * @author Victoria
+ */
 public class DataWriter extends DataConstants {
     
+    /**
+     * Saves all users to a JSON file.
+     * Converts the list of users into a JSON array and writes it to the file.
+     */
     public static void saveUsers() {
         User users = User.getInstance();
     ArrayList<User> userList = users.getUsers();
@@ -26,6 +36,12 @@ public class DataWriter extends DataConstants {
         e.printStackTrace();
     }
 
+    /**
+     * Converts a User object into a JSONObject.
+     * 
+     * @param user The user to convert.
+     * @return A JSONObject representing the user.
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_ID, user.getId().toString());
