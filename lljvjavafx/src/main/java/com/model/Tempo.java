@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Tempo {
 
     //attributes
-    private int BPM;
+    public int BPM;
 
     //constants
     public Tempo (int BPM)
@@ -15,7 +15,7 @@ public class Tempo {
     //methods
     public void setBPM(int BPM)
     {
-        this.BPM = BPM
+        this.BPM = BPM;
     }
 
     public void increaseBPM (int amount)
@@ -35,7 +35,7 @@ public class Tempo {
 
     public int getBPM()
     {
-        return bpm;
+        return BPM;
     }
 
     

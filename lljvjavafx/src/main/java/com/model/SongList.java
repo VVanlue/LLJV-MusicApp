@@ -1,9 +1,18 @@
 package com.model;
 
+import java.util.ArrayList;
+
 public class SongList {
     private ArrayList<Song> songs;
     private static SongList instance;
 
+    public enum Genres {
+        CLASSICAL, POP, ROCK, JAZZ, SOUL, KIDS
+    }
+
+    public enum Difficulties {
+        EASY, MEDIUM, HARD
+    }
     private SongList() {
         System.out.println("");
     }
@@ -18,7 +27,7 @@ public class SongList {
     }
 
     public void removeSong(Song song) {
-        System.out.println()
+        System.out.println();
     }
 
     public ArrayList<Song> getAllSongs() {
