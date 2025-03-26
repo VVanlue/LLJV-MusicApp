@@ -36,68 +36,64 @@ public class Facade {
         return lessonList;
     }
 
-    public void UserLogin(String username, String password) {
+    public boolean UserLogin(String username, String password) {
         for (User u : users) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                System.out.println("Login successful!");
                 this.user = u;
-                return;
+                return true; // Successful login
             }
         }
-        System.out.println("Invalid username or password.");
+        return false; // Login failed
     }
 
-    public void signUp() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your first name: ");
-        String firstName = scanner.nextLine();
-        System.out.print("Enter your last name: ");
-        String lastName = scanner.nextLine();
-        System.out.print("Enter a username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter your email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter a password: ");
-        String password = scanner.nextLine();
-
+    public User signUp(String firstName, String lastName, String username, String email, String password) {
         User newUser = new User(firstName, lastName, username, email, password);
         users.add(newUser);
-        System.out.println("Signup successful!");
+        return newUser; // Return the newly created User
     }
 
-    public void instrumentSelection() {
-        System.out.println("Instrument selection feature coming soon.");
+    public boolean instrumentSelection() {
+        return false;
     }
 
-    public void lessonSelection() {
-        System.out.println("Lesson selection feature coming soon.");
+    public boolean lessonSelection() {
+        return false;   
     }
 
-    public void chooseSong() {
-        System.out.println("Song selection feature coming soon.");
+    public Song chooseSong() {
+        return null;    
     }
 
-    public void chooseDifficulty() {
-        System.out.println("Difficulty selection feature coming soon.");
+    public String chooseDifficulty() {
+        return "Medium";
     }
 
-    public void createSong() {
-        System.out.println("Create song feature coming soon.");
+    public Song createSong(String title, String artist, String genre) {
+        Song newSong = new Song(title, artist, genre);
+        songs.add(newSong);
+        return newSong;
     }
 
-    public void postSong() {
-        System.out.println("Post song feature coming soon.");
+    public boolean postSong(Song song) {
+        return song != null;
     }
 
-    public void deleteSong() {
-        System.out.println("Delete song feature coming soon.");
+    public boolean deleteSong(Song song) {
+        return songs.remove(song);
     }
 
-    public void setSongPrivacy() {
-        System.out.println("Song privacy settings feature coming soon.");
+    public boolean setSongPrivacy(Song song, boolean isPrivate) {
+        if (songs.contains(song)) {
+            song.setPrivate(isPrivate); 
+            return true; 
+        }
+        return false; 
     }
 
-    public void createSheetMusic() {
-        System.out.println("Create sheet music feature coming soon.");
+    public SheetMusic createSheetMusic(Song song) {
+        if (song != null) {
+            return new SheetMusic(song); 
+        }
+        return null;
     }
 }
