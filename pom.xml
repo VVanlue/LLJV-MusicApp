@@ -42,7 +42,9 @@
     <dependency>
         <groupId>org.json</groupId>
         <artifactId>json</artifactId>
-        <version>20210307</version>
+        <version>20250107</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/json-20250107.jar</systemPath>
     </dependency>
 
 </dependencies>

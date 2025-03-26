@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 public class DataLoader extends DataConstants {
 
     public static ArrayList<User> getUsers() {
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> user = new ArrayList<User>();
 
         try { 
             FileReader reader = new FileReader(USER_FILE_NAME);
