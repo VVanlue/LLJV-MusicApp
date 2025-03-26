@@ -1,5 +1,4 @@
 package com.model;
-
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -7,6 +6,7 @@ import java.util.UUID;
  * Represents a user in the system.
  * @author Victoria
  */
+
 public class User {
     private UUID id;
     private String firstName;

@@ -26,7 +26,7 @@ public class DataLoader extends DataConstants {
      *         if an error occurs, an empty list is returned
      */
     public static ArrayList<User> getUsers() {
-        ArrayList<User> users = new ArrayList<User>();
+        ArrayList<User> user = new ArrayList<User>();
 
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
