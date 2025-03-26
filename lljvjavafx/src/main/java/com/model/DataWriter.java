@@ -11,8 +11,8 @@ import org.json.JSONObject;
  * to a JSON file using the values defined in DataConstants.
  */
 public class DataWriter extends DataConstants {
-    
-     /**
+
+    /**
      * Writes all user data to the file defined by USER_FILE_NAME.
      * 
      * It retrieves the list of users from the User singleton instance,
@@ -21,23 +21,24 @@ public class DataWriter extends DataConstants {
      */
     public static void saveUsers() {
         User users = User.getInstance();
-    ArrayList<User> userList = users.getUsers();
-    JSONArray jsonUsers = new JSONArray();
+        ArrayList<User> userList = users.getUsers();
+        JSONArray jsonUsers = new JSONArray();
 
-    //creating all the json objects
-    for(int i=0; i< userList.size(); i++) {
-        jsonUsers.add(getUserJSON(userList.get(i)));
-    }
-    
-    //Write JSON file
-    try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
-        file.write(jsonUsers.toJSONString());
-        file.flush();
-    } catch (IOException e) {
-        e.printStackTrace();
+        // creating all the json objects
+        for (int i = 0; i < userList.size(); i++) {
+            jsonUsers.add(getUserJSON(userList.get(i)));
+        }
+
+        // Write JSON file
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+            file.write(jsonUsers.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-     /**
+    /**
      * Converts a User object into a JSONObject
      * containing all of its attributes.
      *
@@ -53,9 +54,8 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_EMAIL, user.getEmail());
         userDetails.put(USER_FAVORITE_SONGS, user.getFavSong());
         userDetails.put(USER_PUBLISHED_SONGS, user.getPubSong());
-        
+
         return userDetails;
     }
-    
-    
+
 }
