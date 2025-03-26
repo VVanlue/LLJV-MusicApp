@@ -21,16 +21,34 @@ public class Song {
     /**
      * Constructs a Song and initializes attributes.
      */
-    public Song() {
+    public Song(String title, String genre, String instrument, String difficulty, String publisher) {
         this.id = UUID.randomUUID();
         this.notes = new ArrayList<>();
+        this.title = title;
+        this.genre = genre;
+        this.instrument = instrument;
+        this.difficulty = difficulty;
+        this.publisher = publisher;
+        this.tempo = new Tempo(120); // Default tempo to 120 BPM
     }
 
     /**
      * Sets the tempo of the song.
-     * @param speed the new tempo
+     * 
+     * @param tempo the new Tempo object to set
      */
-    public void setSpeed(int speed) {}
+    public void setTempo(Tempo tempo) {
+        this.tempo = tempo;
+    }
+
+    /**
+     * Gets the current tempo of the song.
+     * 
+     * @return the Tempo object of the song
+     */
+    public Tempo getTempo() {
+        return tempo;
+    }
 
     /**
      * Jumps forward in the song.
@@ -76,35 +94,54 @@ public class Song {
 
     /**
      * Adds a note to the song.
+     * 
      * @param note the note to add
      */
-    public void addNote(Note note) {}
+    public void addNote(Note note) {
+        this.notes.add(note);
+    }
 
     /**
      * Removes the last note from the song.
      */
-    public void removeNote() {}
+    public void removeNote() {
+        Note removedNote = notes.remove(notes.size() - 1);
+    }
 
     /**
      * Displays song details.
      */
-    public void viewSong() {}
+    public void viewSong() {
+        System.out.println("Song Title: " + title);
+        System.out.println("Genre: " + genre);
+        System.out.println("Instrument: " + instrument);
+        System.out.println("Difficulty: " + difficulty);
+        System.out.println("Publisher: " + publisher);
+        System.out.println("Tempo: " + tempo.getBPM() + " BPM");
+        System.out.println("Number of notes: " + notes.size());
+    }
 
     /**
      * Gets the title of the song.
      * @return the title
      */
-    public String getTitle() { return title; }
+    public String getTitle() { 
+        return title; 
+    }
 
     /**
      * Gets the instrument used in the song.
      * @return the instrument
      */
-    public String getInstrument() { return instrument; }
+    public String getInstrument() { 
+        return instrument; 
+    }
 
     /**
      * Gets the publisher of the song.
      * @return the publisher
      */
-    public String getPublisher() { return publisher; }
+    public String getPublisher() { 
+        return publisher; 
+    }
 }

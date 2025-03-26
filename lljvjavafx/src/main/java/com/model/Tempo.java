@@ -1,45 +1,65 @@
 package com.model;
-import java.util.Scanner;
 
+/**
+ * Represents a musical tempo in beats per minute (BPM).
+ * Provides methods to modify and retrieve the tempo.
+ * 
+ * @author Victoria
+ */
 public class Tempo {
 
-    //attributes
-    public int BPM;
+    // Attributes
+    private int BPM; // Beats per minute (tempo)
 
-    //constants
-    public Tempo (int BPM)
-    {
+    /**
+     * Constructor to create a Tempo object with a specified BPM.
+     * 
+     * @param BPM The beats per minute for the tempo.
+     */
+    public Tempo(int BPM) {
         this.BPM = BPM;
     }
 
-    //methods
-    public void setBPM(int BPM)
-    {
+    /**
+     * Sets the beats per minute (BPM) for the tempo.
+     * 
+     * @param BPM The new beats per minute for the tempo.
+     */
+    public void setBPM(int BPM) {
         this.BPM = BPM;
     }
 
-    public void increaseBPM (int amount)
-    {
+    /**
+     * Increases the current BPM by a specified amount.
+     * 
+     * @param amount The number of BPM to increase.
+     */
+    public void increaseBPM(int amount) {
         this.BPM += amount;
     }
 
-    public void decreaseBPM (int amount)
-    {
+    /**
+     * Decreases the current BPM by a specified amount.
+     * 
+     * @param amount The number of BPM to decrease.
+     */
+    public void decreaseBPM(int amount) {
         this.BPM -= amount;
     }
 
-    public void noBPM ()
-    {
+    /**
+     * Sets the BPM to 0, effectively stopping the tempo.
+     */
+    public void noBPM() {
         this.BPM = 0;
     }
 
-    public int getBPM()
-    {
+    /**
+     * Gets the current BPM (beats per minute) for this tempo.
+     * 
+     * @return The current BPM.
+     */
+    public int getBPM() {
         return BPM;
     }
-
-    
-
-
-
 }
