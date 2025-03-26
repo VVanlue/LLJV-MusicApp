@@ -8,24 +8,32 @@ public class Facade {
     private User user;
     private List<User> users;
     private List<Song> songs;
-    private List<Lesson> lessons;
+    private LessonList lessonList; // Store the lesson list
 
+    // Constructor to initialize Facade with a new or existing LessonList
+    public Facade(LessonList lessonList) {
+        this.users = new ArrayList<>();
+        this.songs = new ArrayList<>();
+        this.lessonList = lessonList; // Assign the passed LessonList
+    }
+
+    // Default constructor, creates a new LessonList instance
     public Facade() {
         this.users = new ArrayList<>();
         this.songs = new ArrayList<>();
-        this.lessons = new ArrayList<>();
+        this.lessonList = LessonList.getInstance(); // Use singleton instance of LessonList
     }
 
     public List<User> UserList() {
         return users; 
     }
 
-    public List<Lesson> LessonList() {
-        return lessons;
-    }
-
     public List<Song> SongList() {
         return songs;
+    }
+
+    public LessonList getLessonList() {
+        return lessonList;
     }
 
     public void UserLogin(String username, String password) {
