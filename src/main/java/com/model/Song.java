@@ -1,30 +1,5 @@
 package com.model;
 
-<<<<<<< HEAD
-import java.util.*;
-
-/**
- * Represents a song with title, artist, lyrics, musical notes, and sheet music.
- */
-public class Song {
-    private UUID id;
-    private String title;
-    private String artist;
-    private String lyrics;
-    private List<MusicalNote> notes;
-    private Map<String, String> sheetMusic;
-
-    /**
-     * Creates a new Song with the specified title and artist.
-     * 
-     * @param title the song title
-     * @param artist the song artist
-     */
-    public Song(String title, String genre, String instrument, String difficulty, String publisher) {
-        this.id = UUID.randomUUID();
-        this.title = title;
-        this.artist = artist;
-=======
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -35,7 +10,7 @@ import java.util.UUID;
  */
 public class Song {
     private ArrayList<Note> notes;
-    private int tempo;
+    private Tempo tempo;
     private UUID id;
     private String genre;
     private String instrument;
@@ -48,7 +23,6 @@ public class Song {
      */
     public Song(String title, String genre, String instrument, String difficulty, String publisher) {
         this.id = UUID.randomUUID();
->>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
         this.notes = new ArrayList<>();
         this.title = title;
         this.genre = genre;
@@ -110,13 +84,10 @@ public class Song {
      * Chooses a chord to play.
      * @param chord the chord to play
      */
-    public void chooseChord(Chord chord) {}
+    public void chooseChord(String chord) {
+        System.out.println("Selected chord: " + chord);
+    }
 
-    /**
-     * Plays a scale.
-     * @param scale the scale to play
-     */
-    public void playScale(Scale scale) {}
 
     /**
      * Adds a note to the song.
@@ -155,33 +126,17 @@ public class Song {
         return title; 
     }
 
-<<<<<<< HEAD
-    public void setLyrics(String lyrics) { this.lyrics = lyrics; }
-    
-    /**
-     * Adds a musical note to the song.
-     * 
-     * @param note the musical note to add
-=======
     /**
      * Gets the instrument used in the song.
      * @return the instrument
->>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
      */
     public String getInstrument() { 
         return instrument; 
     }
 
     /**
-<<<<<<< HEAD
-     * Adds sheet music for a specific part of the song.
-     * 
-     * @param part the part name (e.g., "verse1", "chorus")
-     * @param notation the musical notation for this part
-=======
      * Gets the publisher of the song.
      * @return the publisher
->>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
      */
     public String getPublisher() { 
         return publisher; 

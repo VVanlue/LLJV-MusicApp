@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class Note {
     public int noteLength;
-    public String noteName;
-    public String noteType;
+    public NoteName noteName;
+    public NoteType noteType;
 
     public enum NoteType {
         SHARP, FLAT, NATURAL
@@ -89,34 +89,31 @@ public class Note {
         } else if (noteName == NoteName.G) {
             scales.add("G Major Scale");
         }
-
-        public void getNoteName() {
-            return noteName;
-        }
-    
-        public void setNoteName(NoteName noteName) {
-            this.noteName = noteName;
-        }
-    
-        public int getNoteLength() {
-            return noteLength;
-        }
-    
-        public void setNoteLength(int noteLength) {
-            this.noteLength = noteLength;
-        }
-    
-        public NoteType getNoteType() {
-            return noteType;
-        }
-    
-        public void setNoteType(NoteType noteType) {
-            this.noteType = noteType;
-        }
-    
-        @Override
-        public String toString() {
-            return "Note{" + "noteName=" + noteName + ", noteLength=" + noteLength + ", noteType=" + noteType + '}';
-        }
+        return scales;
     }
+
+    public NoteName getNoteName() {
+        return noteName;
+    }
+
+    public void setNoteName(NoteName noteName) {
+        this.noteName = noteName;
+    }
+
+    public int getNoteLength() {
+        return noteLength;
+    }
+
+    public NoteType getNoteType() {
+        return noteType;
+    }
+
+    public void setNoteType(NoteType noteType) {
+        this.noteType = noteType;
+    }
+
+    @Override
+    public String toString() {
+        return "Note{" + "noteName=" + noteName + ", noteLength=" + noteLength + ", noteType=" + noteType + '}';
+    }   
 }
