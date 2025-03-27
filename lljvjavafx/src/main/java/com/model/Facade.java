@@ -25,7 +25,7 @@ public class Facade {
     }
 
     public List<User> UserList() {
-        return users; 
+        return users;
     }
 
     public List<Song> SongList() {
@@ -57,11 +57,11 @@ public class Facade {
     }
 
     public boolean lessonSelection() {
-        return false;   
+        return false;
     }
 
     public Song chooseSong() {
-        return null;    
+        return null;
     }
 
     public String chooseDifficulty() {
@@ -84,15 +84,15 @@ public class Facade {
 
     public boolean setSongPrivacy(Song song, boolean isPrivate) {
         if (songs.contains(song)) {
-            song.setPrivate(isPrivate); 
-            return true; 
+            song.setPrivate(isPrivate);
+            return true;
         }
-        return false; 
+        return false;
     }
 
     public SheetMusic createSheetMusic(Song song) {
         if (song != null) {
-            return new SheetMusic(song); 
+            return new SheetMusic(song);
         }
         return null;
     }
