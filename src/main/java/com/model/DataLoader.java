@@ -1,5 +1,7 @@
 package com.model;
 
+import com.model.User;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
