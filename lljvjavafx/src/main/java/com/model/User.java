@@ -20,8 +20,15 @@ public class User {
 
     /**
      * Default constructor for User.
+     * @param publishedSongs2 
+     * @param favSongs2 
+     * @param email2 
+     * @param lastName2 
+     * @param firstName2 
+     * @param userName2 
+     * @param id2 
      */
-    public User() {
+    public User(UUID id2, String userName2, String firstName2, String lastName2, String email2, String favSongs2, String publishedSongs2) {
         this.id = UUID.randomUUID();
         this.publishedSongs = new ArrayList<>();
         this.favSongs = new ArrayList<>();

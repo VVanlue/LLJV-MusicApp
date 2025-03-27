@@ -6,6 +6,50 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FredScenarioAutomated",
+            "request": "launch",
+            "mainClass": "com.lljvmusicapp/com.program.FredScenarioAutomated",
+            "projectName": "lljvjavafx"
+            "modulepaths": [
+                "${workspaceFolder}/lib",
+                "${workspaceFolder}/target/classes"
+            ],
+            "classpath": [
+                "${workspaceFolder}/lib/*",
+                "${workspaceFolder}/target/classes",
+                "${workspaceFolder}/lib/json-simple-1.1.1.jar"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "FredScenarioAutomated",
+            "request": "launch",
+            "mainClass": "com.lljvmusicapp/com.model.FredScenarioAutomated",
+            "projectName": "lljvjavafx"
+        },
+        {
+            "type": "java",
+            "name": "MusicAppDriver",
+            "request": "launch",
+            "mainClass": "com.lljvmusicapp/com.driver.MusicAppDriver",
+            "projectName": "lljvjavafx"
+        },
+        {
+            "type": "java",
+            "name": "MusicPlayerDemo",
+            "request": "launch",
+            "mainClass": "com.lljvmusicapp/com.program.MusicPlayerDemo",
+            "projectName": "lljvjavafx"
+        },
+        {
+            "type": "java",
+            "name": "MusicAppDriver",
+            "request": "launch",
+            "mainClass": "com.lljvmusicapp/com.model.MusicAppDriver",
+            "projectName": "lljvjavafx"
+        },
+        {
+            "type": "java",
             "name": "MusicPlayerDemo",
             "request": "launch",
             "mainClass": "com.lljvmusicapp/com.model.MusicPlayerDemo",
