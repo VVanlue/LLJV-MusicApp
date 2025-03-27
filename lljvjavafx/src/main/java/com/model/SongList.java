@@ -7,7 +7,7 @@ public class SongList {
     private static SongList instance;
 
     public enum Genres {
-        CLASSICAL, POP, ROCK, JAZZ, SOUL, KIDS
+        CLASSICAL, POP, ROCK, JAZZ, COUNTRY, HIP_HOP, SOUL, KIDS
     }
 
     public enum Difficulties {
