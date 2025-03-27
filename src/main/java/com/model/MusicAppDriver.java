@@ -1,6 +1,4 @@
-package com.driver;
-
-import com.model.*;
+package com.model;
 
 import java.util.Scanner;
 

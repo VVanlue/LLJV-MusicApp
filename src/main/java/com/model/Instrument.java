@@ -1,11 +1,11 @@
-package com.model;
+import com.model.MusicPlaying;
 
 public class Instrument {
     // Attributes 
     private String name;
     private String type;
     private boolean isPlaying;
-    private AudioPlayer audioPlayer;
+    private MusicPlaying musicPlaying;
 
     /**
      * Constructs an Instrument with the specified details.
@@ -17,7 +17,7 @@ public class Instrument {
         this.type = type;
         this.isPlaying = false;
         try {
-            this.audioPlayer = AudioPlayer.getInstance();
+            this.musicPlaying = MusicPlaying.getInstance();
         } catch (Exception e) {
             System.err.println("Warning: AudioPlayer could not be initialized: " + e.getMessage());
             // null if needed
@@ -86,9 +86,9 @@ public class Instrument {
      */
     public String play(String songName, int tempo) {
         isPlaying = true;
-        if (audioPlayer != null) {
+        if (musicPlaying != null) {
             try {
-                audioPlayer.play(songName, tempo);
+                musicPlaying.play(songName, tempo);
             } catch (Exception e) {
                 System.err.println("Error playing song: " + e.getMessage());
             }
@@ -102,9 +102,9 @@ public class Instrument {
      */
     public String stop() {
         isPlaying = false;
-        if (audioPlayer != null) {
+        if (musicPlaying != null) {
             try {
-                audioPlayer.stop();
+                musicPlaying.stop();
             } catch (Exception e) {
                 System.err.println("Error stopping playback: " + e.getMessage());
             }
@@ -118,9 +118,9 @@ public class Instrument {
      * @return A string describing the note being played
      */
     public String playNote(String note) {
-        if (audioPlayer != null) {
+        if (musicPlaying != null) {
             try {
-                audioPlayer.playNote(note);
+                musicPlaying.playNote(note);
             } catch (Exception e) {
                 System.err.println("Error playing note: " + e.getMessage());
             }

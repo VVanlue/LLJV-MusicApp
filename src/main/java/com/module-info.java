@@ -6,4 +6,7 @@ module com.lljvmusicapp {
 
     opens com.model to javafx.fxml;
     exports com.model;
+
+    requires json.simple;
+    requires com.google.gson;
 }
