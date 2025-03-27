@@ -1,110 +1,78 @@
 package com.model;
 
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.*;
 
 /**
- * Represents a song with notes, tempo, genre, and other attributes.
- * Allows users to modify and play the song.
- * @author Victoria
+ * Represents a song with title, artist, lyrics, musical notes, and sheet music.
  */
 public class Song {
-    private ArrayList<Note> notes;
-    private int tempo;
     private UUID id;
-    private String genre;
-    private String instrument;
-    private String difficulty;
     private String title;
-    private String publisher;
+    private String artist;
+    private String lyrics;
+    private List<MusicalNote> notes;
+    private Map<String, String> sheetMusic;
 
     /**
-     * Constructs a Song and initializes attributes.
+     * Creates a new Song with the specified title and artist.
+     * 
+     * @param title the song title
+     * @param artist the song artist
      */
-    public Song() {
+    public Song(String title, String artist) {
         this.id = UUID.randomUUID();
+        this.title = title;
+        this.artist = artist;
         this.notes = new ArrayList<>();
+        this.sheetMusic = new HashMap<>();
+    }
+    
+    /**
+     * Creates a new Song with the specified ID, title, and artist.
+     * 
+     * @param id the song's unique identifier
+     * @param title the song title
+     * @param artist the song artist
+     */
+    public Song(UUID id, String title, String artist) {
+        this.id = id;
+        this.title = title;
+        this.artist = artist;
+        this.notes = new ArrayList<>();
+        this.sheetMusic = new HashMap<>();
     }
 
-    /**
-     * Sets the tempo of the song.
-     * @param speed the new tempo
-     */
-    public void setSpeed(int speed) {}
-
-    /**
-     * Jumps forward in the song.
-     */
-    public void jumpForward() {}
-
-    /**
-     * Starts playing the song.
-     */
-    public void startSong() {}
-
-    /**
-     * Pauses the song.
-     */
-    public void pauseSong() {}
-
-    /**
-     * Ends the song.
-     */
-    public void endSong() {}
-
-    /**
-     * Plays the metronome.
-     */
-    public void playMetronome() {}
-
-    /**
-     * Pauses the metronome.
-     */
-    public void pauseMetronome() {}
-
-    /**
-     * Chooses a chord to play.
-     * @param chord the chord to play
-     */
-    public void chooseChord(Chord chord) {}
-
-    /**
-     * Plays a scale.
-     * @param scale the scale to play
-     */
-    public void playScale(Scale scale) {}
-
-    /**
-     * Adds a note to the song.
-     * @param note the note to add
-     */
-    public void addNote(Note note) {}
-
-    /**
-     * Removes the last note from the song.
-     */
-    public void removeNote() {}
-
-    /**
-     * Displays song details.
-     */
-    public void viewSong() {}
-
-    /**
-     * Gets the title of the song.
-     * @return the title
-     */
+    // Getters and setters
+    public UUID getId() { return id; }
     public String getTitle() { return title; }
+    public String getArtist() { return artist; }
+    public List<MusicalNote> getNotes() { return notes; }
+    public String getLyrics() { return lyrics; }
+    public Map<String, String> getSheetMusic() { return sheetMusic; }
 
+    public void setLyrics(String lyrics) { this.lyrics = lyrics; }
+    
     /**
-     * Gets the instrument used in the song.
-     * @return the instrument
+     * Adds a musical note to the song.
+     * 
+     * @param note the musical note to add
      */
-    public String getInstrument() { return instrument; }
-
+    public void addNote(MusicalNote note) {
+        notes.add(note);
+    }
+    
     /**
-     * Gets the publisher of the song.
-     * @return the publisher
+     * Adds sheet music for a specific part of the song.
+     * 
+     * @param part the part name (e.g., "verse1", "chorus")
+     * @param notation the musical notation for this part
      */
-    public String getPublisher() { return publisher; }
+    public void addSheetMusic(String part, String notation) {
+        sheetMusic.put(part, notation);
+    }
+    
+    @Override
+    public String toString() {
+        return title + " by " + artist;
+    }
 }

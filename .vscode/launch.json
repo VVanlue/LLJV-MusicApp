@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MusicPlayerDemo",
+            "request": "launch",
+            "mainClass": "com.lljvmusicapp/com.model.MusicPlayerDemo",
+            "projectName": "lljvjavafx"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
