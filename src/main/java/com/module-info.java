@@ -1,6 +1,7 @@
-module com.lljvmusicapp {
+module java.com {
     requires javafx.controls;
     requires javafx.fxml;
+    requires junit;
     requires json.simple;
     requires jfugue;
 

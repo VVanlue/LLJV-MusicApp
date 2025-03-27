@@ -2,11 +2,25 @@ package com.model;
 
 import java.util.Scanner;
 
+/**
+ * The driver class for the Music App. It provides a menu-driven interface for users
+ * to sign up, log in, create, delete, and manage songs.
+ * 
+ * This class interacts with the {@code Facade} class to perform operations related to users and songs.
+ * 
+ */
 public class MusicAppDriver {
 
+    /** The facade instance that handles user and song-related operations. */
     private static Facade facade;
+    /** The scanner instance for user input. */
     private static Scanner scanner;
 
+    /**
+     * The entry point of the Music App. It initializes the application and presents a menu for user interactions.
+     * 
+     * @param args Command-line arguments (not used)
+     */
     public static void main(String[] args) {
         scanner = new Scanner(System.in);
         facade = new Facade();  // Using default constructor which creates a LessonList instance
@@ -47,7 +61,9 @@ public class MusicAppDriver {
         }
     }
 
-    // Display the menu options
+    /**
+     * Displays the menu options for the user.
+     */
     private static void showMenu() {
         System.out.println("\nPlease choose an option:");
         System.out.println("1. Sign Up");
@@ -59,7 +75,9 @@ public class MusicAppDriver {
         System.out.println("7. Exit");
     }
 
-    // Handle user sign up
+    /**
+     * Handles user sign-up by collecting user details and creating a new account.
+     */
     private static void signUp() {
         System.out.print("Enter first name: ");
         String firstName = scanner.nextLine();
@@ -76,7 +94,9 @@ public class MusicAppDriver {
         System.out.println("Signup successful! Welcome, " + newUser.getUsername());
     }
 
-    // Handle user login
+    /**
+     * Handles user login by prompting for credentials and verifying them.
+     */
     private static void login() {
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
@@ -91,7 +111,9 @@ public class MusicAppDriver {
         }
     }
 
-    // Create a song
+    /**
+     * Allows the user to create a new song by entering its details.
+     */
     private static void createSong() {
         System.out.print("Enter song title: ");
         String title = scanner.nextLine();
@@ -104,7 +126,9 @@ public class MusicAppDriver {
         System.out.println("Song created: " + newSong.getTitle() + " by " + newSong.getArtist());
     }
 
-    // Delete a song
+    /**
+     * Allows the user to delete a song by searching for it by title.
+     */
     private static void deleteSong() {
         System.out.print("Enter song title to delete: ");
         String title = scanner.nextLine();
@@ -130,7 +154,9 @@ public class MusicAppDriver {
         }
     }
 
-    // Choose a song (This will be a placeholder for now)
+    /**
+     * Allows the user to choose a song.
+     */
     private static void chooseSong() {
         Song song = facade.chooseSong();
         if (song != null) {
@@ -140,7 +166,9 @@ public class MusicAppDriver {
         }
     }
 
-    // Set privacy for a song
+    /**
+     * Allows the user to set the privacy setting for a song.
+     */
     private static void setSongPrivacy() {
         System.out.print("Enter song title to change privacy: ");
         String title = scanner.nextLine();
@@ -168,7 +196,9 @@ public class MusicAppDriver {
         }
     }
 
-    // Exit the application
+    /**
+     * Exits the application.
+     */
     private static void exit() {
         System.out.println("Exiting the Music App. Goodbye!");
     }

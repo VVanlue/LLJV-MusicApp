@@ -1,5 +1,10 @@
 import com.model.MusicPlaying;
 
+/*
+ * Represents a music instrument that can play songs and notes.
+ * Manages the instrument's name, type, and playing state.
+ * Integrates with MusicPlaying class for playback functionality.
+ */
 public class Instrument {
     // Attributes 
     private String name;
@@ -128,6 +133,9 @@ public class Instrument {
         return name + " is playing note: " + note;
     }
 
+    /*
+     * Returns a string representation of the instrument, with it's name and type.
+     */
     @Override
     public String toString() {
         return name + " (" + type + ")";

@@ -4,11 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Handles keyboard input for playing musical notes.
+ * Maps specific keys to musical notes and allows an instrument to play them.
+ * 
+ */
 public class KeyboardInput {
     private Map<Character, String> keyToNoteMap;
     private Scanner scanner;
     private Instrument activeInstrument;
     
+    /**
+     * Constructs a KeyboardInput object with predefined key-to-note mappings.
+     */
     public KeyboardInput() {
         keyToNoteMap = new HashMap<>();
         keyToNoteMap.put('a', "C");
@@ -23,22 +31,39 @@ public class KeyboardInput {
         scanner = new Scanner(System.in);
     }
     
-    //Sets the instrument that will play notes when keys are pressed 
+    /**
+     * Sets the instrument that will play notes when keys are pressed.
+     * 
+     * @param instrument The instrument to be set as active
+     */ 
     public void setActiveInstrument(Instrument instrument) {
         this.activeInstrument = instrument;
     }
     
-    //gets the note associated with a keyboard key
+    /**
+     * Gets the note associated with a specific keyboard key.
+     * 
+     * @param key The keyboard key pressed
+     * @return The corresponding musical note, or null if no mapping exists
+     */
     public String getNoteForKey(char key) {
         return keyToNoteMap.getOrDefault(key, null);
     }
     
-    //sets a custom key mapping for a note
+    /**
+     * Sets a custom mapping of a key to a musical note.
+     * 
+     * @param key The keyboard key to map
+     * @param note The musical note assigned to the key
+     */
     public void setKeyMapping(char key, String note) {
         keyToNoteMap.put(key, note);
     }
     
-    //starts listening for keyboard input and plays notes
+    /**
+     * Starts listening for keyboard input and plays notes based on key mappings.
+     * Press 'q' to stop listening.
+     */
     public void startListening() {
         System.out.println("Keyboard input active. Press keys to play notes (q to quit):");
         

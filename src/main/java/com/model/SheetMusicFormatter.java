@@ -3,8 +3,21 @@ package com.model;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This class provides functionality for formatting and exporting sheet music for a given song.
+ * The sheet music includes the song's title, artist, lyrics, and various music parts (e.g., intro, verse, chorus).
+ * The formatted sheet music is written to a file at the specified file path.
+ */
 public class SheetMusicFormatter {
     
+    /**
+     * Exports the sheet music of a given song to a specified file path.
+     * The sheet music includes the title, artist, lyrics, and formatted music parts in the correct order.
+     *
+     * @param song The song to export the sheet music for.
+     * @param filePath The path to the file where the sheet music will be saved.
+     * @throws IOException If an I/O error occurs during the file writing process.
+     */
     public static void exportSheetMusic(Song song, String filePath) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
             // Write header
@@ -55,6 +68,12 @@ public class SheetMusicFormatter {
         }
     }
     
+    /**
+     * Formats the name of a song part (e.g., "verse1" to "VERSE 1").
+     * 
+     * @param part The part name to format.
+     * @return The formatted part name, where digits are separated by spaces and the first letter of each word is capitalized.
+     */
     private static String formatPartName(String part) {
         // Convert "verse1" to "VERSE 1"
         StringBuilder result = new StringBuilder();
@@ -74,6 +93,12 @@ public class SheetMusicFormatter {
         return result.toString();
     }
     
+    /**
+     * Formats the sheet music notation by adding proper spacing and distinguishing between chords and lyrics.
+     * 
+     * @param notation The raw sheet music notation (e.g., chords or lyrics).
+     * @return The formatted sheet music notation with proper labels ("Chords" or "Lyrics").
+     */
     private static String formatSheetMusic(String notation) {
         // Add proper spacing and formatting to the sheet music notation
         String[] lines = notation.split("\n");
