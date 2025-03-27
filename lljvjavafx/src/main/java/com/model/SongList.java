@@ -35,7 +35,7 @@ public class SongList {
         return null;
     }
 
-    public ArrayList<Song> getSngsByKeyword(String word) {
+    public ArrayList<Song> getSongsByKeyword(String word) {
         System.out.println("");
         return null;
     }
