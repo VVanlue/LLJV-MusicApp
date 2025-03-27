@@ -1,6 +1,9 @@
 package com.model;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Exports song sheet music to a text file.
@@ -59,8 +62,8 @@ public class SheetMusicExporter {
             }
             
             // Add footer
-            writer.println("=".repeat(60));
-            writer.println("Generated on: " + new Date());
+            writer.println("=".repeat(60));String
+            writer.println("Generated on: " + new String());
         }
     }
     
