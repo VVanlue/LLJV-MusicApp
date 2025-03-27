@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+<<<<<<< HEAD
 /**
  * class is responsible for reading user data
  * from a JSON file and converting it into User objects.
@@ -31,12 +32,21 @@ public class DataLoader extends DataConstants {
         ArrayList<User> user = new ArrayList<User>();
 
         try {
+=======
+public class DataLoader extends DataConstants {
+
+    public static ArrayList<User> getUsers() {
+        ArrayList<User> user = new ArrayList<User>();
+
+        try { 
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray peopleJSON = (JSONArray) parser.parse(reader);
 
             for (int i = 0; i < peopleJSON.size(); i++) {
                 JSONObject personJSON = (JSONObject) peopleJSON.get(i);
+<<<<<<< HEAD
                    UUID id = UUID.fromString((String) personJSON.get(USER_ID));
                    String userName = (String) personJSON.get(USER_USER_NAME);
                    String firstName = (String) personJSON.get(USER_FIRST_NAME);
@@ -45,6 +55,19 @@ public class DataLoader extends DataConstants {
                    String favSongs = (String) personJSON.get(USER_FAVORITE_SONGS);
                    String publishedSongs = (String) personJSON.get(USER_PUBLISHED_SONGS);
 
+=======
+                
+                // Get the data from the JSON
+                UUID id = UUID.fromString((String) personJSON.get(USER_ID));
+                String userName = (String) personJSON.get(USER_USER_NAME);
+                String firstName = (String) personJSON.get(USER_FIRST_NAME);
+                String lastName = (String) personJSON.get(USER_LAST_NAME);
+                String email = (String) personJSON.get(USER_EMAIL);
+                String favSongs = (String) personJSON.get(USER_FAVORITE_SONGS);
+                String publishedSongs = (String) personJSON.get(USER_PUBLISHED_SONGS);
+
+                // Add to the users list
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
                 users.add(new User(id, userName, firstName, lastName, email, favSongs, publishedSongs));
             }
 

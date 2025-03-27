@@ -1,5 +1,6 @@
 package com.model;
 
+<<<<<<< HEAD
 import java.util.*;
 
 /**
@@ -23,6 +24,31 @@ public class Song {
         this.id = UUID.randomUUID();
         this.title = title;
         this.artist = artist;
+=======
+import java.util.ArrayList;
+import java.util.UUID;
+
+/**
+ * Represents a song with notes, tempo, genre, and other attributes.
+ * Allows users to modify and play the song.
+ * @author Victoria
+ */
+public class Song {
+    private ArrayList<Note> notes;
+    private int tempo;
+    private UUID id;
+    private String genre;
+    private String instrument;
+    private String difficulty;
+    private String title;
+    private String publisher;
+
+    /**
+     * Constructs a Song and initializes attributes.
+     */
+    public Song(String title, String genre, String instrument, String difficulty, String publisher) {
+        this.id = UUID.randomUUID();
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
         this.notes = new ArrayList<>();
         this.title = title;
         this.genre = genre;
@@ -129,22 +155,33 @@ public class Song {
         return title; 
     }
 
+<<<<<<< HEAD
     public void setLyrics(String lyrics) { this.lyrics = lyrics; }
     
     /**
      * Adds a musical note to the song.
      * 
      * @param note the musical note to add
+=======
+    /**
+     * Gets the instrument used in the song.
+     * @return the instrument
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
      */
     public String getInstrument() { 
         return instrument; 
     }
 
     /**
+<<<<<<< HEAD
      * Adds sheet music for a specific part of the song.
      * 
      * @param part the part name (e.g., "verse1", "chorus")
      * @param notation the musical notation for this part
+=======
+     * Gets the publisher of the song.
+     * @return the publisher
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
      */
     public String getPublisher() { 
         return publisher; 

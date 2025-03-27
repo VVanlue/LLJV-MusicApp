@@ -1,6 +1,7 @@
 package com.model;
 
 public abstract class DataConstants {
+<<<<<<< HEAD
     // File paths
     protected static final String USER_FILE_NAME = "lljavafx/src/main/java/com/data/json/user.json";
     protected static final String SONG_FILE_NAME = "lljavafx/src/main/java/com/data/json/song.json";
@@ -8,6 +9,9 @@ public abstract class DataConstants {
     protected static final String INSTRUMENT_FILE_NAME = "lljavafx/src/main/java/com/data/json/instrument.json";
     
     // User constants
+=======
+    protected static final String USER_FILE_NAME = "lljavafx/src/main/java/com/data/json/user.json";
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
     protected static final String USER_ID = "uuid";
     protected static final String USER_USER_NAME = "username";
     protected static final String USER_FIRST_NAME = "firstName";
@@ -15,6 +19,7 @@ public abstract class DataConstants {
     protected static final String USER_EMAIL = "email";
     protected static final String USER_FAVORITE_SONGS = "favSongs";
     protected static final String USER_PUBLISHED_SONGS = "publishedSongs";
+<<<<<<< HEAD
 
     
     // Song constants
@@ -47,3 +52,6 @@ public abstract class DataConstants {
     // Instrument constants
     protected static final String INSTRUMENT_TYPE = "type";
 }
+=======
+}
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b

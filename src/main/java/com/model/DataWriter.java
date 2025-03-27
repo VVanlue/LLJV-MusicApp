@@ -20,6 +20,7 @@ public class DataWriter extends DataConstants {
      */
     public static void saveUsers() {
         User users = User.getInstance();
+<<<<<<< HEAD
         ArrayList<User> userList = users.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
@@ -35,6 +36,22 @@ public class DataWriter extends DataConstants {
         } catch (IOException e) {
             e.printStackTrace();
         }
+=======
+    ArrayList<User> userList = users.getUsers();
+    JSONArray jsonUsers = new JSONArray();
+
+    //creating all the json objects
+    for(int i=0; i< userList.size(); i++) {
+        jsonUsers.add(getUserJSON(userList.get(i)));
+    }
+    
+    //Write JSON file
+    try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        file.write(jsonUsers.toJSONString());
+        file.flush();
+    } catch (IOException e) {
+        e.printStackTrace();
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
     }
 
     /**
@@ -52,8 +69,16 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_EMAIL, user.getEmail());
         userDetails.put(USER_FAVORITE_SONGS, user.getFavSong());
         userDetails.put(USER_PUBLISHED_SONGS, user.getPubSong());
+<<<<<<< HEAD
 
         return userDetails;
     }
 
+=======
+        
+        return userDetails;
+    }
+    
+    
+>>>>>>> 477eec2dcf422def5ba26c910d625f0ff7299a5b
 }
