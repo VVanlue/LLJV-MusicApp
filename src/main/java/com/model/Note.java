@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * @author Victoria
  */
 public class Note {
-    public int NoteLength;
-    public String NoteName;
-    public String NoteType;
+    public int noteLength;
+    public String noteName;
+    public String noteType;
 
     public enum NoteType {
         SHARP, FLAT, NATURAL
@@ -90,7 +90,7 @@ public class Note {
             scales.add("G Major Scale");
         }
 
-        public NoteName getNoteName() {
+        public void getNoteName() {
             return noteName;
         }
     

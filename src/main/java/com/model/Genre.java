@@ -1,5 +1,8 @@
 package com.model;
 
+/*
+ * Represents various musical genres that a song can be
+ */
 public enum Genre {
         CLASSICAL,
         POP,

@@ -1,0 +1,34 @@
+[
+    {
+        "uuid":"e1d70ba9-a1b7-443f-8453-5cb35136328b",
+        "title":"Slow Rhythms~ Love Ballad",
+        "difficulty":"MEDIUM",
+        "genre":"SOUL",
+        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "Song":"8bd6ce57-10e6-484c-a3f2-329356a60309"
+    },
+    {
+        "uuid":"e10cd78d-c081-4e76-a4cd-45f81de24f64",
+        "title":"Chord Progressions~ Clara de Lune",
+        "difficulty":"HARD",
+        "genre":"CLASSICAL",
+        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "Song":"c0318c62-f807-47cf-98c8-8ab26335b714"
+    },
+    {
+        "uuid":"cbdf14d5-6979-413c-aad0-f04f261af2e3",
+        "title":"Swingin Sound~ We Will Rock You",
+        "difficulty":"EASY",
+        "genre":"CLASSICAL",
+        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "song":"ac0af3a0-b83d-4a52-9df4-86542eeac560"
+    },
+    {
+        "uuid":"a2957de3-5a38-4c64-928f-91dffdc8daa6",
+        "title":"Soulful & Easy~ What a Wonderful World",
+        "difficulty":"EASY",
+        "genre":"CLASSICAL",
+        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "song":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
+    }
+]

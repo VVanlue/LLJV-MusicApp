@@ -3,7 +3,7 @@ package com.model;
 import java.io.*;
 
 /**
- * Exports song sheet music to a text file.
+ * Exports song sheet music: notes, title, artist, and lyrics to a text file.
  */
 public class SheetMusicExporter {
     
@@ -64,6 +64,13 @@ public class SheetMusicExporter {
         }
     }
     
+    /**
+     * Formats the name of a song part (e.g., "verse1" to "VERSE 1").
+     * The part name is converted to uppercase, and any digits are separated by spaces.
+     *
+     * @param part The part name to format (e.g., "verse1").
+     * @return The formatted part name (e.g., "VERSE 1").
+     */
     private static String formatPartName(String part) {
         // Convert "verse1" to "VERSE 1"
         StringBuilder result = new StringBuilder();
@@ -83,6 +90,13 @@ public class SheetMusicExporter {
         return result.toString();
     }
     
+    /**
+     * Formats the sheet music notation by adding proper spacing and distinguishing between chords and lyrics.
+     * Chords are prefixed with "Chords: " and lyrics are prefixed with "Lyrics: ".
+     *
+     * @param notation The raw sheet music notation (e.g., chords or lyrics).
+     * @return The formatted sheet music notation with proper labels for chords and lyrics.
+     */
     private static String formatSheetMusic(String notation) {
         // Add proper spacing and formatting to the sheet music notation
         String[] lines = notation.split("\n");

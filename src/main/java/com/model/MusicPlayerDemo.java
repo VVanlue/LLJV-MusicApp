@@ -4,7 +4,20 @@ import com.model.*;
 import java.util.*;
 import java.io.IOException;
 
+/**
+ * A demo program that showcases the functionality of the MusicPlayer class.
+ * This program loads songs, filters for Tom Petty songs, selects "Free Fallin",
+ * plays it, and exports its sheet music.
+ *
+ */
+
 public class MusicPlayerDemo {
+
+    /**
+     * The main method executes the demonstration of the music player functionality.
+     *
+     * @param args Command-line arguments (not used)
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MusicPlayer player = null;
