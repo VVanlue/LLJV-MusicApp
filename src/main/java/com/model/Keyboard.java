@@ -3,6 +3,7 @@ package com.model;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import org.jfugue.player.Player;
 
 /**
  * Handles the virtual keyboard and triggers note playing based on key press.
@@ -40,11 +41,39 @@ public class Keyboard {
      * @param key The key pressed by the user.
      */
     public static void handleKeyPress(String key) {
+        if (key == null || key.isEmpty()) {
+            System.out.println("No key pressed.");
+            return;
+        }
+
         String note = keyNoteMapping.get(key.toUpperCase());
         if (note != null) {
             Music.playNote(note, 400); // Play the note with 400ms duration
         } else {
             System.out.println("Invalid key pressed. Please press a valid key.");
         }
+    }
+
+    /**
+     * Starts a simple interactive keyboard that listens for key presses.
+     * Users can type letters and press Enter to play corresponding notes.
+     */
+    public static void startKeyboardListener() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Virtual Keyboard Started. Press keys to play notes (type 'exit' to quit).");
+
+        while (true) {
+            System.out.print("Press a key: ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equalsIgnoreCase("exit")) {
+                System.out.println("Exiting Virtual Keyboard.");
+                break;
+            }
+
+            handleKeyPress(input);
+        }
+
+        scanner.close();
     }
 }
