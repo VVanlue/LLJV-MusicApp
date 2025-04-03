@@ -1,70 +1,84 @@
 package com.model;
 
-import java.util.UUID;
+import java.util.ArrayList;
 
 /**
- * Represents a music lesson with details such as song, difficulty, title, genre, and instrument.
- * Provides methods to learn notes, timing, scales, and chords.
+ * Represents a lesson with a list of students, assignments, and a lesson plan.
+ * Provides methods for managing and tracking the lesson.
  * 
  * @author Victoria
  */
 public class Lesson {
-    private String song;
-    private String difficulty;
-    private final UUID id;
     private String title;
-    private String genre;
-    private String instrument;
+    private String lessonPlan;
+    private ArrayList<Student> students;
 
     /**
-     * Constructs a Lesson object with a unique ID.
+     * Constructor to initialize the lesson with a title and lesson plan.
+     * 
+     * @param title The title of the lesson.
+     * @param lessonPlan The lesson plan for the lesson.
      */
-    public Lesson() {
-        this.id = UUID.randomUUID();
+    public Lesson(String title, String lessonPlan) {
+        this.title = title;
+        this.lessonPlan = lessonPlan;
+        this.students = new ArrayList<>();
     }
 
     /**
-     * Starts learning musical notes.
+     * Adds a student to the lesson.
+     * 
+     * @param student The student to be added to the lesson.
      */
-    public void learnNotes() {
-        // Method stub
+    public void addStudent(Student student) {
+        students.add(student);
     }
 
     /**
-     * Starts learning musical timing.
+     * Removes a student from the lesson.
+     * 
+     * @param student The student to be removed.
+     * @return True if the student was removed, false if the student was not found.
      */
-    public void learnTiming() {
-        // Method stub
+    public boolean removeStudent(Student student) {
+        return students.remove(student);
     }
 
     /**
-     * Starts learning musical scales.
+     * Assigns a song to all students in the lesson.
+     * 
+     * @param song The song to be assigned to students.
      */
-    public void learnScales() {
-        // Method stub
+    public void assignSongToAllStudents(Song song) {
+        for (Student student : students) {
+            student.publishSong();
+        }
     }
 
     /**
-     * Starts learning musical chords.
+     * Gets the list of students in the lesson.
+     * 
+     * @return The list of students in the lesson.
      */
-    public void learnChords() {
-        // Method stub
+    public ArrayList<Student> getStudents() {
+        return students;
     }
 
     /**
-     * Saves the lesson progress.
+     * Gets the title of the lesson.
+     * 
+     * @return The title of the lesson.
      */
-    public void save() {
-        // Method stub
-    }
-
-    /**
-    * Retrieves the title of the lesson.
-    * 
-    * @return The title of the lesson as a String.
-    */
     public String getTitle() {
-    // TODO: Implement method to return the title of the lesson
-    return title;  // Replace 'title' with the actual field that holds the title value
+        return title;
+    }
+
+    /**
+     * Gets the lesson plan of the lesson.
+     * 
+     * @return The lesson plan of the lesson.
+     */
+    public String getLessonPlan() {
+        return lessonPlan;
     }
 }
