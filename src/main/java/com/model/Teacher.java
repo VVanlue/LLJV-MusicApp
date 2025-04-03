@@ -12,12 +12,24 @@ public class Teacher {
     private ArrayList<Lesson> lessonAssignment;
 
     /**
+     * Constructs a Teacher object with an empty lesson assignment list.
+     */
+    public Teacher() {
+        lessonAssignment = new ArrayList<>();
+    }
+
+    /**
      * Creates a lesson for the teacher to assign.
      * 
      * @param lesson The Lesson to be created.
      */
     public void createLesson(Lesson lesson) {
-        // Method stub
+        if (lesson == null) {
+            System.out.println("Error: Cannot create a null lesson.");
+            return;
+        }
+        lessonAssignment.add(lesson);
+        System.out.println("Lesson created: " + lesson.getTitle());
     }
 
     /**
@@ -26,7 +38,12 @@ public class Teacher {
      * @param student The Student whose progress is to be checked.
      */
     public void seeStudentProgress(Student student) {
-        // Method stub
+        if (student == null) {
+            System.out.println("Error: No student provided.");
+            return;
+        }
+        System.out.println("Viewing progress for student: " + student.getName());
+        student.trackProgression();
     }
 
     /**
@@ -36,7 +53,12 @@ public class Teacher {
      * @param song The Song to be assigned.
      */
     public void assignSong(Student student, Song song) {
-        // Method stub
+        if (student == null || song == null) {
+            System.out.println("Error: Cannot assign a null song or student.");
+            return;
+        }
+        student.publishSong(song);
+        System.out.println("Song assigned: " + song.getTitle() + " to student: " + student.getName());
     }
 
     /**
@@ -46,6 +68,28 @@ public class Teacher {
      * @param lesson The Lesson for which feedback is being written.
      */
     public void writeFeedback(Student student, Lesson lesson) {
-        // Method stub
+        if (student == null || lesson == null) {
+            System.out.println("Error: Cannot write feedback without valid student and lesson.");
+            return;
+        }
+        System.out.println("Feedback for " + student.getName() + " on lesson: " + lesson.getTitle());
+    }
+
+    /**
+     * Gets the teacher's expertise level.
+     * 
+     * @return The expertise level.
+     */
+    public String getExpertise() {
+        return expertise;
+    }
+
+    /**
+     * Sets the teacher's expertise level.
+     * 
+     * @param expertise The new expertise level.
+     */
+    public void setExpertise(String expertise) {
+        this.expertise = expertise;
     }
 }
