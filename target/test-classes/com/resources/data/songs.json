@@ -3,11 +3,11 @@
         "uuid":"078e89b3-6db5-4b05-b5c9-9c8f1bf07812",
         "title":"Twinkle Twinkle Little Star",
         "tempo": 150,
-        "Publisher":"LLJV original",
-        "level":"EASY",
+        "publisher":"LLJV original",
+        "difficulty":"EASY",
         "genre":"KIDS",
-        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "sheetMusic": "0cefc61f-60e7-43b3-bb56-0d6a3c5a5ef4"
+        "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
+        "sheetMusic":"64d865dd-782d-404e-8131-8eb4142f2f0d"
     },
     {
         "uuid":"8bd6ce57-10e6-484c-a3f2-329356a60309",
@@ -16,8 +16,7 @@
         "Publisher":"LLJV original",
         "level":"MEDIUM",
         "genre":"SOUL",
-        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "sheetMusic": "15f2b9ef-b300-4ec3-91e4-63f00c13a0cf"
+        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
     },
     {
         "uuid":"ac0af3a0-b83d-4a52-9df4-86542eeac560",
@@ -26,8 +25,7 @@
         "Publisher":"LLJV original",
         "level":"MEDIUM",
         "genre":"ROCK",
-        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "sheetMusic": "64181455-1f7b-4b7c-8c70-7be3077d5f52"
+        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
     },
     {
         "uuid":"0923293a-a119-4823-8c24-ef9d26ccbcdc",
@@ -36,8 +34,7 @@
         "Publisher":"LLJV original",
         "level":"EASY",
         "genre":"POP",
-        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "sheetMusic": "c75e5ff4-f45f-4a4c-bb8c-f5ef3cb88f39"
+        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
     },
     {
         "uuid":"f9f25818-efc1-4597-9fd1-c160237b0b25",
@@ -46,8 +43,7 @@
         "Publisher":"LLJV original",
         "level":"MEDIUM",
         "genre":"JAZZ",
-        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "sheetMusic": "a0e25858-3186-4373-b0bc-8cc2b17591a5"
+        "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e"
     },
     {
         "uuid":"c0318c62-f807-47cf-98c8-8ab26335b714",
@@ -57,6 +53,6 @@
         "level":"HARD",
         "genre":"CLASSICAL",
         "Instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "sheetMusic": "3e9248c2-2e4d-462c-b81b-68cb95a6cb79"
+        "sheetMusic":"d4d6c399-9e70-48f1-9c81-cafb8a385ff3"
     }
 ]
