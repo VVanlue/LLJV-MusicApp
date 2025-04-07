@@ -42,13 +42,18 @@ public class User {
      * @param username User's chosen username
      * @param email User's email
      * @param password User's password
+     * @param favSongs User's favorite songs
+     * @param pubSongs User's published songs
      */
-    public User(UUID id, String userName, String firstName, String lastName, String email) {
-        this.id = UUID.randomUUID();
+    public User(UUID id, String userName, String firstName, String lastName, String email, ArrayList<String> favSongs, ArrayList<String> pubSongs)
+    {
+        this.id = id;
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.favSongs = favSongs != null ? favSongs : new ArrayList<>();
+        this.pubSongs = pubSongs != null ? pubSongs : new ArrayList<>();
     }
 
     /**
