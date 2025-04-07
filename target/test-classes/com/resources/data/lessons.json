@@ -5,7 +5,7 @@
         "difficulty":"MEDIUM",
         "genre":"SOUL",
         "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "song":"8bd6ce57-10e6-484c-a3f2-329356a60309"
+        "Song":"8bd6ce57-10e6-484c-a3f2-329356a60309"
     },
     {
         "uuid":"e10cd78d-c081-4e76-a4cd-45f81de24f64",
@@ -13,7 +13,7 @@
         "difficulty":"HARD",
         "genre":"CLASSICAL",
         "instrument":"10e41f43-9cee-4f6c-8b83-4a38e1007b6e",
-        "song":"c0318c62-f807-47cf-98c8-8ab26335b714"
+        "Song":"c0318c62-f807-47cf-98c8-8ab26335b714"
     },
     {
         "uuid":"cbdf14d5-6979-413c-aad0-f04f261af2e3",
