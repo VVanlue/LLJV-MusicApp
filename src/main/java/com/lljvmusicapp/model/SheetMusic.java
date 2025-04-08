@@ -10,7 +10,7 @@ import org.jfugue.theory.Note;
  * 
  * @author Victoria
  */
-public class SheetMusic {
+public class SheetMusic{
     private UUID sheetId;
     private UUID songId;
     private int measures;
@@ -28,12 +28,11 @@ public class SheetMusic {
      * @param piano The piano object that plays the sheet
      * @param notes The list of notes in the sheet
      */
-    public SheetMusic(UUID sheetId, UUID songId, int measures, int tempo, Piano piano, List<Note> notes) {
+    public SheetMusic(UUID sheetId, UUID songId, int measures, int tempo, List<Note> notes) {
         this.sheetId = sheetId;
         this.songId = songId;
         this.measures = measures;
         this.tempo = tempo;
-        this.piano = piano;
         this.notes = notes;
     }
     

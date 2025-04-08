@@ -7,10 +7,10 @@ package com.lljvmusicapp.model;
  */
 public abstract class DataConstants {
     // Paths to JSON files
-    protected static final String USER_FILE_NAME = "lljavafx/src/main/java/com/data/json/user.json";
-    protected static final String SONG_FILE_NAME = "lljavafx/src/main/java/com/data/json/song.json";
-    protected static final String LESSON_FILE_NAME = "lljavafx/src/main/java/com/data/json/lesson.json";
-    protected static final String INSTRUMENT_FILE_NAME = "lljavafx/src/main/java/com/data/json/instrument.json";
+    protected static final String USER_FILE_NAME = "src/main/java/com/data/json/user.json";
+    protected static final String SONG_FILE_NAME = "src/main/java/com/data/json/song.json";
+    protected static final String LESSON_FILE_NAME = "src/main/java/com/data/json/lesson.json";
+    protected static final String SHEET_MUSIC_FILE_NAME = "src/main/java/com/data/json/sheetmusic.json";
     
     // User attribute constants
     protected static final String USER_ID = "uuid";
@@ -24,15 +24,13 @@ public abstract class DataConstants {
     
     // Song attribute constants
     protected static final String SONG_ID = "uuid";
-    protected static final String SONG_LYRICS = "lyrics";
     protected static final String SONG_TITLE = "title";
     protected static final String SONG_TEMPO = "tempo";
-    protected static final String SONG_PUBLISHER = "publisher";
-    protected static final String SONG_DIFFICULTY = "difficulty";
+    protected static final String SONG_PUBLISHER = "Publisher";
+    protected static final String SONG_LEVEL = "level";
     protected static final String SONG_GENRE = "genre";
-    protected static final String SONG_INSTRUMENT = "instrument";
+    protected static final String SONG_INSTRUMENT = "Instrument";
     protected static final String SONG_SHEET_MUSIC = "sheetMusic";
-    protected static final String SONG_NOTES = "notes";
     
     // Sheet Music attribute constants
     protected static final String SHEET_MUSIC_ID = "sheetid";
@@ -45,11 +43,10 @@ public abstract class DataConstants {
     // Lesson attribute constants
     protected static final String LESSON_ID = "uuid";
     protected static final String LESSON_TITLE = "title";
-    protected static final String LESSON_DESCRIPTION = "description";
     protected static final String LESSON_INSTRUMENT_TYPE = "instrumentType";
-    protected static final String LESSON_DIFFICULTY_LEVEL = "difficultyLevel";
-    protected static final String LESSON_CONTENT = "content";
-    protected static final String LESSON_CREATOR = "creator";
+    protected static final String LESSON_DIFFICULTY = "difficulty";
+    protected static final String LESSON_GENRE = "genre";
+    protected static final String LESSON_SONG = "song";
     
     // Instrument attribute constants
     protected static final String INSTRUMENT_TYPE = "type";
