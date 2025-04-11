@@ -10,4 +10,3 @@ module com.lljvmusicapp {
     opens com.lljvmusicapp.model to javafx.fxml;
     exports com.lljvmusicapp.model;
 }
- 
