@@ -8,14 +8,14 @@ import java.util.ArrayList;
  * @author Victoria
  */
 public class LessonList {
-    private ArrayList<Lesson> lessons;
     private static LessonList instance;
+    private ArrayList<Lesson> lessons;
 
     /**
      * Private constructor to prevent external instantiation.
      */
     private LessonList() {
-        lessons = new ArrayList<>();
+        lessons = DataLoader.getLessons();
     }
 
     /**
@@ -50,6 +50,15 @@ public class LessonList {
     public ArrayList<String> saveinto() {
         // TODO: Implement saving logic
         return new ArrayList<>();
+    }
+
+    /**
+     * Returns the list of all lessons.
+     * 
+     * @return an ArrayList of Lesson objects
+     */
+    public ArrayList<Lesson> getLessons() {
+        return lessons;
     }
 }
 

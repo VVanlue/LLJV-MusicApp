@@ -29,7 +29,7 @@ public class Song {
     /**
      * Constructs a Song and initializes attributes.
      */
-    public Song(String title, String publisher, String genre, UUID uploaderId, String filePath) {
+    public Song(UUID id, String title, int tempo, String publisher, String lyrics, String level, String genre) {
         this.id = UUID.randomUUID();
         this.notes = new ArrayList<>();
         this.sheetMusic = new HashMap<>();
@@ -39,7 +39,6 @@ public class Song {
         this.lyrics = "";
         this.difficulty = "Medium";
         this.publisher = publisher;
-        this.uploaderId = uploaderId;
         this.filePath = filePath;
         this.tempo = new Tempo(120); // Default tempo to 120 BPM
     }
@@ -153,6 +152,15 @@ public class Song {
      */
     public String getInstrument() { 
         return instrument; 
+    }
+
+    /**
+     * Returns the genre of the song.
+     * 
+     * @return a String representing the song's genre
+     */
+    public String getGenre() {
+        return genre;
     }
 
 

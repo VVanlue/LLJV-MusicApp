@@ -1,7 +1,6 @@
 package com.lljvmusicapp.model;
 
-import java.util.ArrayList;
-
+import java.util.UUID;
 /**
  * Represents a lesson with a list of students, assignments, and a lesson plan.
  * Provides methods for managing and tracking the lesson.
@@ -9,9 +8,10 @@ import java.util.ArrayList;
  * @author Victoria
  */
 public class Lesson {
+    private UUID lessonId;
     private String title;
-    private String lessonPlan;
-    private ArrayList<Student> students;
+    private String description;
+    private String level;
 
     /**
      * Constructor to initialize the lesson with a title and lesson plan.
@@ -19,49 +19,11 @@ public class Lesson {
      * @param title The title of the lesson.
      * @param lessonPlan The lesson plan for the lesson.
      */
-    public Lesson(String title, String lessonPlan) {
+    public Lesson(UUID lessonId, String title, String description, String level) {
+        this.lessonId = lessonId;
         this.title = title;
-        this.lessonPlan = lessonPlan;
-        this.students = new ArrayList<>();
-    }
-
-    /**
-     * Adds a student to the lesson.
-     * 
-     * @param student The student to be added to the lesson.
-     */
-    public void addStudent(Student student) {
-        students.add(student);
-    }
-
-    /**
-     * Removes a student from the lesson.
-     * 
-     * @param student The student to be removed.
-     * @return True if the student was removed, false if the student was not found.
-     */
-    public boolean removeStudent(Student student) {
-        return students.remove(student);
-    }
-
-    /**
-     * Assigns a song to all students in the lesson.
-     * 
-     * @param song The song to be assigned to students.
-     */
-    public void assignSongToAllStudents(Song song) {
-        for (Student student : students) {
-            student.publishSong(song);
-        }
-    }
-
-    /**
-     * Gets the list of students in the lesson.
-     * 
-     * @return The list of students in the lesson.
-     */
-    public ArrayList<Student> getStudents() {
-        return students;
+        this.description = description;
+        this.level= level;
     }
 
     /**
@@ -74,11 +36,21 @@ public class Lesson {
     }
 
     /**
-     * Gets the lesson plan of the lesson.
+     * Gets the title of the lesson.
      * 
-     * @return The lesson plan of the lesson.
+     * @return The title of the lesson.
      */
-    public String getLessonPlan() {
-        return lessonPlan;
+    public String getDescription() {
+        return description;
     }
+
+    /**
+     * Gets the title of the lesson.
+     * 
+     * @return The title of the lesson.
+     */
+    public String getLevel() {
+        return level;
+    }
+
 }

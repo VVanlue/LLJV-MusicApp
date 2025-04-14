@@ -150,13 +150,14 @@ public class Facade {
      * @return the newly created song
      */
     public Song createSong(String title, String publisher, String genre) {
-        // Providing dummy uploader and filePath for now
-        String uploader = user != null ? user.getUsername() : "defaultUploader";
-        String filePath = "defaultPath.mid";
+        UUID id = UUID.randomUUID();
+    int tempo = 120; 
+    String lyrics = ""; 
+    String level = "Beginner";
+    Song newSong = new Song(id, title, tempo, publisher, lyrics, level, genre);
 
-        Song newSong = new Song(title, publisher, genre, user != null ? user.getId() : UUID.randomUUID(), filePath);
-        songs.add(newSong);
-        return newSong;
+    songs.add(newSong);
+    return newSong;
     }
 
     /**
@@ -193,6 +194,15 @@ public class Facade {
             return true;
         }
         return false;
+    }
+
+    /**
+     * Returns the currently logged-in user.
+     *
+     * @return the active User object, or null if not logged in
+     */
+    public User getCurrentUser() {
+        return this.user;
     }
 
     /**

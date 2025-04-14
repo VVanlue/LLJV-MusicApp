@@ -1,12 +1,14 @@
 package com.lljvmusicapp.model;
  
- import java.io.FileReader;
- import java.util.ArrayList;
- import java.util.UUID;
- 
- import org.json.simple.JSONArray;
- import org.json.simple.JSONObject;
- import org.json.simple.parser.JSONParser;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
  
  /**
   * Class responsible for reading user data
@@ -67,5 +69,79 @@ package com.lljvmusicapp.model;
          }
  
          return user;
-     }
+    }
+
+    /**
+    * Loads all songs from the SONG_FILE_NAME JSON file.
+    *
+    * @return an ArrayList of Song objects
+    */
+    public static ArrayList<Song> getSongs() {
+        ArrayList<Song> songs = new ArrayList<>();
+
+        try (FileReader reader = new FileReader(SONG_FILE_NAME)) {
+            JSONParser parser = new JSONParser();
+            JSONArray songsJSON = (JSONArray) parser.parse(reader);
+
+            for (Object obj : songsJSON) {
+                JSONObject songJSON = (JSONObject) obj;
+
+                UUID id = UUID.fromString((String) songJSON.get("uuid"));
+                String title = (String) songJSON.get("title");
+                String publisher = (String) songJSON.get("publisher");
+                String lyrics = (String) songJSON.get("lyrics");
+                String genre = (String) songJSON.get("genre");
+                String level = (String) songJSON.get("level");
+
+                int tempo = 0;
+                Object tempoObj = songJSON.get("tempo");
+                if (tempoObj instanceof Long) {
+                    tempo = ((Long) tempoObj).intValue();
+                } else if (tempoObj instanceof String) {
+                    tempo = Integer.parseInt((String) tempoObj);
+                }
+
+                // If you want to load sheet music later, leave it empty for now
+                Map<String, String> sheetMusic = new HashMap<>();
+
+                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre);
+                songs.add(song);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return songs;
+    }
+
+
+    /**
+     * Loads all lessons from the LESSON_FILE_NAME JSON file.
+     *
+     * @return an ArrayList of Lesson objects
+     */
+    public static ArrayList<Lesson> getLessons() {
+        ArrayList<Lesson> lessons = new ArrayList<>();
+
+        try (FileReader reader = new FileReader(LESSON_FILE_NAME)) {
+            JSONParser parser = new JSONParser();
+            JSONArray lessonJSON = (JSONArray) parser.parse(reader);
+
+            for (Object obj : lessonJSON) {
+                JSONObject lessonObj = (JSONObject) obj;
+
+                UUID lessonId = UUID.fromString((String) lessonObj.get("uuid"));
+                String title = (String) lessonObj.get("title");
+                String description = (String) lessonObj.get("description");
+                String level = (String) lessonObj.get("level");
+
+                Lesson lesson = new Lesson(lessonId, title, description, level);
+                lessons.add(lesson);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return lessons;
+    }
  }
