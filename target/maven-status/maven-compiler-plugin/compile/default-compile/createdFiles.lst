@@ -1,9 +1,9 @@
+com\lljvmusicapp\controller\DashboardController.class
 com\lljvmusicapp\model\DataConstants.class
 com\lljvmusicapp\model\Song.class
 com\lljvmusicapp\model\MusicPlaying.class
 com\lljvmusicapp\App.class
 com\lljvmusicapp\model\Facade.class
-com\lljvmusicapp\PrimaryController.class
 com\lljvmusicapp\model\KeyboardInput.class
 com\lljvmusicapp\model\Genre.class
 com\lljvmusicapp\model\SongList.class
@@ -19,14 +19,15 @@ com\lljvmusicapp\model\Keyboard.class
 com\lljvmusicapp\model\UserList.class
 com\lljvmusicapp\music\Music.class
 com\lljvmusicapp\model\Teacher.class
+com\lljvmusicapp\model\DashboardScreen.class
 com\lljvmusicapp\model\MusicAppDriver.class
 com\lljvmusicapp\model\Measure.class
 com\lljvmusicapp\model\SongLoader.class
 com\lljvmusicapp\model\User.class
 com\lljvmusicapp\model\AudioPlayer.class
+com\lljvmusicapp\controller\LoginController.class
 com\lljvmusicapp\model\SheetMusicFormatter.class
 com\lljvmusicapp\model\Lesson.class
-com\lljvmusicapp\SecondaryController.class
 com\lljvmusicapp\model\Instrument.class
 com\lljvmusicapp\music\App.class
 com\lljvmusicapp\model\Note$NoteType.class

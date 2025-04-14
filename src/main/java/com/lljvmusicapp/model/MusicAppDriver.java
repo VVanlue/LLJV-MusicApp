@@ -160,16 +160,6 @@ public class MusicAppDriver extends Application {
             }
         }
 
-        if (songToDelete != null) {
-            boolean deleted = facade.deleteSong(songToDelete);
-            if (deleted) {
-                System.out.println("Song " + title + " deleted.");
-            } else {
-                System.out.println("Failed to delete song.");
-            }
-        } else {
-            System.out.println("Song not found.");
-        }
     }
 
     /**

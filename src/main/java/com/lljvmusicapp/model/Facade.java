@@ -3,7 +3,6 @@ package com.lljvmusicapp.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import org.jfugue.theory.Note;
 
 /**
@@ -14,68 +13,61 @@ import org.jfugue.theory.Note;
  */
 public class Facade {
     private User user;
-    private List<User> users;
-    private List<Song> songs;
-    private LessonList lessonList; // Store the lesson list
+    private final LessonList lessonList;
 
     /**
-     * Constructs a Facade instance with a given LessonList.
-     * 
-     * @param lessonList the lesson list to use
-     */
-    public Facade(LessonList lessonList) {
-        this.users = new ArrayList<>();
-        this.songs = new ArrayList<>();
-        this.lessonList = lessonList;
-    }
-
-    /**
-     * Constructs a Facade instance with a new LessonList instance.
+     * Default constructor initializes lesson list.
      */
     public Facade() {
-        this.users = new ArrayList<>();
-        this.songs = new ArrayList<>();
         this.lessonList = LessonList.getInstance();
     }
 
     /**
-     * Retrieves the list of users.
+     * Returns the currently logged-in user.
      * 
-     * @return a list of users
+     * @return the logged-in user, or null if not logged in
      */
-    public List<User> UserList() {
-        return users;
+    public User getCurrentUser() {
+        return this.user;
     }
 
     /**
-     * Retrieves the list of songs.
+     * Retrieves all users.
      * 
-     * @return a list of songs
+     * @return a list of all registered users
+     */
+    public List<User> UserList() {
+        return UserList.getInstance().getAllUsers(); // ✅ FIXED: use UserList singleton
+    }
+
+    /**
+     * Retrieves all songs.
+     * 
+     * @return a list of all songs
      */
     public List<Song> SongList() {
-        return songs;
+        return SongList.getInstance().getSongs(); // ✅ FIXED: use SongList singleton
     }
 
     /**
      * Retrieves the lesson list.
      * 
-     * @return the lesson list
+     * @return the lesson list instance
      */
     public LessonList getLessonList() {
         return lessonList;
     }
 
     /**
-     * Attempts to log in a user with the provided username and password.
+     * Attempts to log in a user with the given username and password.
      * 
-     * @param username the username of the user
-     * @param password the password of the user
-     * @return true if login is successful, false otherwise
+     * @param username the username
+     * @param password the password
+     * @return true if valid login, false otherwise
      */
     public boolean UserLogin(String username, String password) {
         boolean isValid = UserList.getInstance().validUser(username, password);
         if (isValid) {
-            // Optionally store the matched user
             for (User u : UserList.getInstance().getAllUsers()) {
                 if (u.getUsername().equals(username)) {
                     this.user = u;
@@ -87,142 +79,76 @@ public class Facade {
     }
 
     /**
-     * Registers a new user and adds them to the user list.
+     * Registers and returns a new user.
      * 
-     * @param firstName the first name of the user
-     * @param lastName the last name of the user
-     * @param userName the username of the user
-     * @param email the email of the user
-     * @param password the password of the user
-     * @return the newly created user
+     * @param id UUID of the new user
+     * @param username Username
+     * @param password Password
+     * @param firstName First name
+     * @param lastName Last name
+     * @param email Email address
+     * @return the newly created User object
      */
-    public User signUp(UUID id, String userName, String password, String firstName, String lastName, String email) {
-        ArrayList<String> favSongs = new ArrayList<>();
-        ArrayList<String> pubSongs = new ArrayList<>();
-        
-        User newUser = new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs);
+    public User signUp(UUID id, String username, String password, String firstName, String lastName, String email) {
+        User newUser = new User(id, username, password, firstName, lastName, email,
+                                new ArrayList<>(), new ArrayList<>());
         UserList.getInstance().addUser(newUser);
         return newUser;
     }
 
     /**
-     * Handles instrument selection (not yet implemented).
+     * Creates and adds a new song to the song list.
      * 
-     * @return false (default implementation)
-     */
-    public boolean instrumentSelection() {
-        return false;
-    }
-
-    /**
-     * Handles lesson selection (not yet implemented).
-     * 
-     * @return false (default implementation)
-     */
-    public boolean lessonSelection() {
-        return false;
-    }
-
-    /**
-     * Allows a user to choose a song (not yet implemented).
-     * 
-     * @return null (default implementation)
-     */
-    public Song chooseSong() {
-        return null;
-    }
-
-    /**
-     * Allows a user to choose a difficulty level.
-     * 
-     * @return "Medium" as the default difficulty level
-     */
-    public String chooseDifficulty() {
-        return "Medium";
-    }
-
-    /**
-     * Creates a new song and adds it to the song list.
-     * 
-     * @param title the title of the song
-     * @param publisher the artist of the song
-     * @param genre the genre of the song
-     * @return the newly created song
+     * @param title Title of the song
+     * @param publisher Artist or creator
+     * @param genre Genre of the song
+     * @return the new Song object
      */
     public Song createSong(String title, String publisher, String genre) {
         UUID id = UUID.randomUUID();
-    int tempo = 120; 
-    String lyrics = ""; 
-    String level = "Beginner";
-    Song newSong = new Song(id, title, tempo, publisher, lyrics, level, genre);
+        int tempo = 120;
+        String lyrics = "";
+        String level = "Beginner";
+        Song newSong = new Song(id, title, tempo, publisher, lyrics, level, genre);
 
-    songs.add(newSong);
-    return newSong;
+        SongList.getInstance().addSong(newSong); // ✅ FIXED: delegate to SongList
+        return newSong;
     }
 
     /**
-     * Posts a song.
+     * Updates a song’s privacy status.
      * 
-     * @param song the song to post
-     * @return true if the song is not null, false otherwise
-     */
-    public boolean postSong(Song song) {
-        return song != null;
-    }
-
-    /**
-     * Deletes a song from the song list.
-     * 
-     * @param song the song to delete
-     * @return true if the song was removed, false otherwise
-     */
-    public boolean deleteSong(Song song) {
-        return songs.remove(song);
-    }
-
-    /**
-     * Sets the privacy status of a song.
-     * 
-     * @param song the song to update
-     * @param isPrivate true to make the song private, false to make it public
-     * @return true if the song is found and updated, false otherwise
+     * @param song the song to modify
+     * @param isPrivate true if private, false if public
+     * @return true if updated successfully
      */
     public boolean setSongPrivacy(Song song, boolean isPrivate) {
-        if (songs.contains(song)) {
-            // Make sure your Song class has this method
-            song.setPrivate(isPrivate); // TODO: Ensure this method exists in Song.java
+        if (SongList.getInstance().getSongs().contains(song)) {
+            song.setPrivate(isPrivate); // Ensure this method exists in your Song class
             return true;
         }
         return false;
     }
 
     /**
-     * Returns the currently logged-in user.
-     *
-     * @return the active User object, or null if not logged in
-     */
-    public User getCurrentUser() {
-        return this.user;
-    }
-
-    /**
-     * Creates sheet music for a given song.
+     * Creates sheet music for the given song.
      * 
-     * @param song the song to create sheet music for
-     * @return the created SheetMusic object, or null if the song is null
+     * @param song the song to generate sheet music for
+     * @return the SheetMusic object or null
      */
     public SheetMusic createSheetMusic(Song song) {
         if (song != null) {
             UUID songId = song.getId();
-            UUID userId = user != null ? user.getId() : UUID.randomUUID();
-            int startTime = 0;
-            int duration = 120;
-            Piano piano = new Piano();
-            List<Note> notes = new ArrayList<>();
-            
-
-            return new SheetMusic(songId, userId, startTime, duration, notes);
+            UUID userId = (user != null) ? user.getId() : UUID.randomUUID();
+            return new SheetMusic(songId, userId, 0, 120, new ArrayList<Note>());
         }
         return null;
     }
+
+    // Stub methods for future development
+    public boolean instrumentSelection() { return false; }
+    public boolean lessonSelection() { return false; }
+    public Song chooseSong() { return null; }
+    public String chooseDifficulty() { return "Medium"; }
+    public boolean postSong(Song song) { return song != null; }
 }

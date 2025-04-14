@@ -1,6 +1,8 @@
 package com.lljvmusicapp.model;
  
-import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,18 +30,48 @@ import org.json.simple.parser.JSONParser;
       * @return an ArrayList<User> containing all users parsed from the file;
       *         if an error occurs, an empty list is returned
       */
-     public static ArrayList<User> getUsers() {
-         ArrayList<User> user = new ArrayList<>(); // Corrected variable name
- 
-         try (FileReader reader = new FileReader(USER_FILE_NAME)) { // Proper resource handling
-             JSONParser parser = new JSONParser();
-             JSONArray peopleJSON = (JSONArray) parser.parse(reader);
- 
+      public static void listAvailableResources() {
+        try {
+            var classLoader = DataLoader.class.getClassLoader();
+            var root = classLoader.getResource("com/lljvmusicapp/json");
+    
+            if (root != null) {
+                System.out.println("✔ JSON resource directory found: " + root);
+            } else {
+                System.out.println("✖ JSON resource directory not found.");
+            }
+    
+            // Try loading each specific file
+            String[] files = {"user.json", "lessons.json", "songs.json"};
+            for (String file : files) {
+                InputStream is = classLoader.getResourceAsStream("com/lljvmusicapp/json/" + file);
+                System.out.println(file + ": " + (is != null ? "FOUND ✅" : "NOT FOUND ❌"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+     
+      public static ArrayList<User> getUsers() {
+         
+        ArrayList<User> user = new ArrayList<>(); // Corrected variable name
+        
+        
+
+         try {
+            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("/json/user.json");
+            if (input == null) {
+                throw new FileNotFoundException("Could not find com/lljvmusicapp/json/user.json");
+            }
+
+            JSONParser parser = new JSONParser();
+            JSONArray peopleJSON = (JSONArray) parser.parse(new InputStreamReader(input));
+            
              for (Object obj : peopleJSON) { // Enhanced loop
                  JSONObject personJSON = (JSONObject) obj;
  
-                 UUID id = UUID.fromString((String) personJSON.get(USER_ID));
-                 String userName = (String) personJSON.get(USER_USER_NAME);
+                 UUID uuid = UUID.fromString((String) personJSON.get(USER_ID));
+                 String username = (String) personJSON.get(USER_USER_NAME);
                  String password = (String) personJSON.get(USER_PASSWORD);
                  String firstName = (String) personJSON.get(USER_FIRST_NAME);
                  String lastName = (String) personJSON.get(USER_LAST_NAME);
@@ -61,7 +93,7 @@ import org.json.simple.parser.JSONParser;
                      }
                  }
  
-                 user.add(new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs));
+                 user.add(new User(uuid, username, password, firstName, lastName, email, favSongs, pubSongs));
              }
  
          } catch (Exception e) {
@@ -79,9 +111,14 @@ import org.json.simple.parser.JSONParser;
     public static ArrayList<Song> getSongs() {
         ArrayList<Song> songs = new ArrayList<>();
 
-        try (FileReader reader = new FileReader(SONG_FILE_NAME)) {
-            JSONParser parser = new JSONParser();
-            JSONArray songsJSON = (JSONArray) parser.parse(reader);
+        try {
+            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("/json/songs.json");
+            if (input == null) {
+                throw new FileNotFoundException("Could not find com/lljvmusicapp/json/songs.json");
+            }
+
+        JSONParser parser = new JSONParser();
+        JSONArray songsJSON = (JSONArray) parser.parse(new InputStreamReader(input));
 
             for (Object obj : songsJSON) {
                 JSONObject songJSON = (JSONObject) obj;
@@ -123,10 +160,15 @@ import org.json.simple.parser.JSONParser;
     public static ArrayList<Lesson> getLessons() {
         ArrayList<Lesson> lessons = new ArrayList<>();
 
-        try (FileReader reader = new FileReader(LESSON_FILE_NAME)) {
-            JSONParser parser = new JSONParser();
-            JSONArray lessonJSON = (JSONArray) parser.parse(reader);
+        try {
+            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("/json/lessons.json");
+            if (input == null) {
+                throw new FileNotFoundException("Could not find com/lljvmusicapp/json/lessons.json");
+            }
 
+            JSONParser parser = new JSONParser();
+            JSONArray lessonJSON = (JSONArray) parser.parse(new InputStreamReader(input));
+            
             for (Object obj : lessonJSON) {
                 JSONObject lessonObj = (JSONObject) obj;
 
