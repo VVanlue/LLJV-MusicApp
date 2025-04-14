@@ -108,15 +108,32 @@ public class UserList {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject obj = jsonArray.getJSONObject(i);
+    
                 UUID id = UUID.fromString(obj.getString("id"));
-                User user = new User(
-                    id,
-                    obj.getString("userName"),
-                    obj.getString("lastName"),
-                    obj.getString("email"),
-                    "" // No password stored for now
-                    , null, null
-                );
+                String userName = obj.getString("userName");
+                String firstName = obj.optString("firstName", ""); // fallback empty string
+                String lastName = obj.optString("lastName", "");
+                String email = obj.optString("email", "");
+    
+                // These might be stored as comma-separated strings
+                ArrayList<String> favSongs = new ArrayList<>();
+                ArrayList<String> pubSongs = new ArrayList<>();
+    
+                String favSongStr = obj.optString("favoriteSongs", "");
+                if (!favSongStr.isEmpty()) {
+                    for (String song : favSongStr.split(",")) {
+                        favSongs.add(song.trim());
+                    }
+                }
+    
+                String pubSongStr = obj.optString("publishedSongs", "");
+                if (!pubSongStr.isEmpty()) {
+                    for (String song : pubSongStr.split(",")) {
+                        pubSongs.add(song.trim());
+                    }
+                }
+    
+                User user = new User(id, userName, firstName, lastName, email, favSongs, pubSongs);
                 users.add(user);
             }
         } catch (Exception e) {
