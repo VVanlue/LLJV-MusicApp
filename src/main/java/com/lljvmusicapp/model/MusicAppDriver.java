@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  * The driver class for the Music App. It provides a menu-driven interface for users
  * to sign up, log in, create, delete, and manage songs.
  * 
- * This class interacts with the {@code Facade} class to perform operations related to users and songs.
+ * @author Victoria
  * 
  */
 public class MusicAppDriver extends Application {
@@ -35,7 +35,7 @@ public class MusicAppDriver extends Application {
      public void start(Stage primaryStage) {
         MusicAppDriver.primaryStage = primaryStage;
         scanner = new Scanner(System.in);
-        facade = new Facade();  // Using default constructor which creates a LessonList instance
+        facade = new Facade();  
 
         // Simulating an initial user signup and testing various actions
         System.out.println("Welcome to the Music App!");

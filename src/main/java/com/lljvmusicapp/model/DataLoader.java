@@ -36,16 +36,16 @@ import org.json.simple.parser.JSONParser;
             var root = classLoader.getResource("com/lljvmusicapp/json");
     
             if (root != null) {
-                System.out.println("✔ JSON resource directory found: " + root);
+                System.out.println("JSON resource directory found: " + root);
             } else {
-                System.out.println("✖ JSON resource directory not found.");
+                System.out.println("JSON resource directory not found.");
             }
     
             // Try loading each specific file
             String[] files = {"user.json", "lessons.json", "songs.json"};
             for (String file : files) {
                 InputStream is = classLoader.getResourceAsStream("com/lljvmusicapp/json/" + file);
-                System.out.println(file + ": " + (is != null ? "FOUND ✅" : "NOT FOUND ❌"));
+                System.out.println(file + ": " + (is != null ? "Found" : "Not found"));
             }
         } catch (Exception e) {
             e.printStackTrace();

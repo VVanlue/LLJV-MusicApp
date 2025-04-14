@@ -111,7 +111,7 @@ public class Facade {
         String level = "Beginner";
         Song newSong = new Song(id, title, tempo, publisher, lyrics, level, genre);
 
-        SongList.getInstance().addSong(newSong); // ✅ FIXED: delegate to SongList
+        SongList.getInstance().addSong(newSong); 
         return newSong;
     }
 
