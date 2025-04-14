@@ -87,10 +87,12 @@ public class MusicAppDriver {
         String lastName = scanner.nextLine();
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
-        User newUser = facade.signUp(id, firstName, lastName, username, email);
+        User newUser = facade.signUp(id, username, password, firstName, lastName, email);
         System.out.println("Signup successful! Welcome, " + newUser.getUsername());
     }
 

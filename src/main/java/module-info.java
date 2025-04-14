@@ -4,7 +4,7 @@ module com.lljvmusicapp {
     requires javafx.controls;
     requires javafx.fxml;
     requires junit;
-    requires jfugue;
+    requires transitive jfugue;
 
 
     opens com.lljvmusicapp.model to javafx.fxml;

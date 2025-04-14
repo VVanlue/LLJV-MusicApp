@@ -27,8 +27,7 @@ public class UserList {
      * Private constructor to load users from JSON.
      */
     private UserList() {
-        users = new ArrayList<>();
-        loadUsers();
+        users = DataLoader.getUsers();
     }
 
     /**
@@ -48,7 +47,7 @@ public class UserList {
      */
     public void addUser(User user) {
         users.add(user);
-        saveUsers();
+        DataWriter.saveUsers();
     }
 
     /**
@@ -111,6 +110,7 @@ public class UserList {
     
                 UUID id = UUID.fromString(obj.getString("id"));
                 String userName = obj.getString("userName");
+                String password = obj.getString("password");
                 String firstName = obj.optString("firstName", ""); // fallback empty string
                 String lastName = obj.optString("lastName", "");
                 String email = obj.optString("email", "");
@@ -133,7 +133,7 @@ public class UserList {
                     }
                 }
     
-                User user = new User(id, userName, firstName, lastName, email, favSongs, pubSongs);
+                User user = new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs);
                 users.add(user);
             }
         } catch (Exception e) {
@@ -153,6 +153,7 @@ public class UserList {
                 obj.put("firstName", user.getFirstName());
                 obj.put("lastName", user.getLastName());
                 obj.put("userName", user.getUsername());
+                obj.put("password", user.getPassword());
                 obj.put("email", user.getEmail());
                 jsonArray.put(obj);
             }
@@ -161,5 +162,14 @@ public class UserList {
         } catch (Exception e) {
             System.out.println("Error saving users: " + e.getMessage());
         }
+    }
+
+    /**
+     * Returns the list of all registered users.
+     * 
+     * @return the list of users
+     */
+    public ArrayList<User> getAllUsers() {
+        return users;
     }
 }

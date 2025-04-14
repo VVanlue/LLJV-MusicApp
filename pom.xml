@@ -23,6 +23,12 @@
             <groupId>com.github.JensPiegsa</groupId>
             <artifactId>jfugue</artifactId>
             <version>5.0.9</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -54,17 +60,6 @@
             <version>13</version>
         </dependency>
 
-        <dependency>
-        <groupId>xerces</groupId>
-        <artifactId>xercesImpl</artifactId>
-        <version>2.12.2</version>
-        <exclusions>
-            <exclusion>
-                <groupId>xml-apis</groupId>
-                <artifactId>xml-apis</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
     </dependencies>
     <build>
         <plugins>

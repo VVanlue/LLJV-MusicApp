@@ -38,26 +38,28 @@ package com.lljvmusicapp.model;
  
                  UUID id = UUID.fromString((String) personJSON.get(USER_ID));
                  String userName = (String) personJSON.get(USER_USER_NAME);
+                 String password = (String) personJSON.get(USER_PASSWORD);
                  String firstName = (String) personJSON.get(USER_FIRST_NAME);
                  String lastName = (String) personJSON.get(USER_LAST_NAME);
                  String email = (String) personJSON.get(USER_EMAIL);
+                 
+                 JSONArray favArray = (JSONArray) personJSON.get(USER_FAVORITE_SONGS);
                  ArrayList<String> favSongs = new ArrayList<>();
-                String favSongsStr = (String) personJSON.get(USER_FAVORITE_SONGS);
-                if (favSongsStr != null && !favSongsStr.isEmpty()) {
-                    for (String song : favSongsStr.split(",")) {
-                        favSongs.add(song.trim());
-                    }
-                }
+                 if (favArray != null) {
+                     for (Object song : favArray) {
+                         favSongs.add((String) song);
+                     }
+                 }
 
-                ArrayList<String> pubSongs = new ArrayList<>();
-                String pubSongsStr = (String) personJSON.get(USER_PUBLISHED_SONGS);
-                if (pubSongsStr != null && !pubSongsStr.isEmpty()) {
-                    for (String song : pubSongsStr.split(",")) {
-                        pubSongs.add(song.trim());
-                    }
-                }
+                 JSONArray pubArray = (JSONArray) personJSON.get(USER_PUBLISHED_SONGS);
+                 ArrayList<String> pubSongs = new ArrayList<>();
+                 if (pubArray != null) {
+                     for (Object song : pubArray) {
+                         pubSongs.add((String) song);
+                     }
+                 }
  
-                 user.add(new User(id, userName, firstName, lastName, email, favSongs, pubSongs));
+                 user.add(new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs));
              }
  
          } catch (Exception e) {

@@ -73,13 +73,17 @@ public class Facade {
      * @return true if login is successful, false otherwise
      */
     public boolean UserLogin(String username, String password) {
-        for (User u : users) {
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                this.user = u;
-                return true;
+        boolean isValid = UserList.getInstance().validUser(username, password);
+        if (isValid) {
+            // Optionally store the matched user
+            for (User u : UserList.getInstance().getAllUsers()) {
+                if (u.getUsername().equals(username)) {
+                    this.user = u;
+                    break;
+                }
             }
         }
-        return false;
+        return isValid;
     }
 
     /**
@@ -92,12 +96,12 @@ public class Facade {
      * @param password the password of the user
      * @return the newly created user
      */
-    public User signUp(UUID id, String firstName, String lastName, String userName, String email) {
+    public User signUp(UUID id, String userName, String password, String firstName, String lastName, String email) {
         ArrayList<String> favSongs = new ArrayList<>();
         ArrayList<String> pubSongs = new ArrayList<>();
         
-        User newUser = new User(id, userName, firstName, lastName, email, favSongs, pubSongs);
-        users.add(newUser);
+        User newUser = new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs);
+        UserList.getInstance().addUser(newUser);
         return newUser;
     }
 
