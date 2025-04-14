@@ -93,7 +93,10 @@ public class Facade {
      * @return the newly created user
      */
     public User signUp(UUID id, String firstName, String lastName, String userName, String email) {
-        User newUser = new User(id, firstName, lastName, userName, email);
+        ArrayList<String> favSongs = new ArrayList<>();
+        ArrayList<String> pubSongs = new ArrayList<>();
+        
+        User newUser = new User(id, userName, firstName, lastName, email, favSongs, pubSongs);
         users.add(newUser);
         return newUser;
     }
@@ -204,7 +207,7 @@ public class Facade {
             List<Note> notes = new ArrayList<>();
             
 
-            return new SheetMusic(songId, userId, startTime, duration, piano, notes);
+            return new SheetMusic(songId, userId, startTime, duration, notes);
         }
         return null;
     }
