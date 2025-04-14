@@ -45,10 +45,11 @@ public class User {
      * @param favSongs User's favorite songs
      * @param pubSongs User's published songs
      */
-    public User(UUID id, String userName, String firstName, String lastName, String email, ArrayList<String> favSongs, ArrayList<String> pubSongs)
+    public User(UUID id, String userName, String password, String firstName, String lastName, String email, ArrayList<String> favSongs, ArrayList<String> pubSongs)
     {
         this.id = id;
         this.userName = userName;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

@@ -3,6 +3,9 @@ package com.lljvmusicapp.model;
 import java.util.Scanner;
 import java.util.UUID;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  * The driver class for the Music App. It provides a menu-driven interface for users
  * to sign up, log in, create, delete, and manage songs.
@@ -10,12 +13,14 @@ import java.util.UUID;
  * This class interacts with the {@code Facade} class to perform operations related to users and songs.
  * 
  */
-public class MusicAppDriver {
-
+public class MusicAppDriver extends Application {
+     
     /** The facade instance that handles user and song-related operations. */
     private static Facade facade;
     /** The scanner instance for user input. */
     private static Scanner scanner;
+    private static Stage primaryStage;
+
 
     /**
      * The entry point of the Music App. It initializes the application and presents a menu for user interactions.
@@ -23,6 +28,12 @@ public class MusicAppDriver {
      * @param args Command-line arguments (not used)
      */
     public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+     public void start(Stage primaryStage) {
+        MusicAppDriver.primaryStage = primaryStage;
         scanner = new Scanner(System.in);
         facade = new Facade();  // Using default constructor which creates a LessonList instance
 
@@ -87,10 +98,12 @@ public class MusicAppDriver {
         String lastName = scanner.nextLine();
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
-        User newUser = facade.signUp(id, firstName, lastName, username, email);
+        User newUser = facade.signUp(id, username, password, firstName, lastName, email);
         System.out.println("Signup successful! Welcome, " + newUser.getUsername());
     }
 
@@ -106,6 +119,11 @@ public class MusicAppDriver {
         boolean loginSuccess = facade.UserLogin(username, password);
         if (loginSuccess) {
             System.out.println("Login successful!");
+            
+            User loggedInUser = facade.getCurrentUser();
+
+            DashboardScreen dashboard = new DashboardScreen(loggedInUser); 
+            dashboard.show();
         } else {
             System.out.println("Invalid username or password.");
         }

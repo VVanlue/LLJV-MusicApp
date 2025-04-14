@@ -2,8 +2,6 @@ package com.lljvmusicapp.model;
 
 import java.util.ArrayList;
 
-import com.lljvmusicapp.model.Lesson;
-
 /**
  * Represents a teacher with expertise and the ability to manage lesson assignments, student progress, and feedback.
  * 

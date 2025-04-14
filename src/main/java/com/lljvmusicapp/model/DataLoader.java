@@ -1,12 +1,14 @@
 package com.lljvmusicapp.model;
  
- import java.io.FileReader;
- import java.util.ArrayList;
- import java.util.UUID;
- 
- import org.json.simple.JSONArray;
- import org.json.simple.JSONObject;
- import org.json.simple.parser.JSONParser;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
  
  /**
   * Class responsible for reading user data
@@ -38,26 +40,28 @@ package com.lljvmusicapp.model;
  
                  UUID id = UUID.fromString((String) personJSON.get(USER_ID));
                  String userName = (String) personJSON.get(USER_USER_NAME);
+                 String password = (String) personJSON.get(USER_PASSWORD);
                  String firstName = (String) personJSON.get(USER_FIRST_NAME);
                  String lastName = (String) personJSON.get(USER_LAST_NAME);
                  String email = (String) personJSON.get(USER_EMAIL);
+                 
+                 JSONArray favArray = (JSONArray) personJSON.get(USER_FAVORITE_SONGS);
                  ArrayList<String> favSongs = new ArrayList<>();
-                String favSongsStr = (String) personJSON.get(USER_FAVORITE_SONGS);
-                if (favSongsStr != null && !favSongsStr.isEmpty()) {
-                    for (String song : favSongsStr.split(",")) {
-                        favSongs.add(song.trim());
-                    }
-                }
+                 if (favArray != null) {
+                     for (Object song : favArray) {
+                         favSongs.add((String) song);
+                     }
+                 }
 
-                ArrayList<String> pubSongs = new ArrayList<>();
-                String pubSongsStr = (String) personJSON.get(USER_PUBLISHED_SONGS);
-                if (pubSongsStr != null && !pubSongsStr.isEmpty()) {
-                    for (String song : pubSongsStr.split(",")) {
-                        pubSongs.add(song.trim());
-                    }
-                }
+                 JSONArray pubArray = (JSONArray) personJSON.get(USER_PUBLISHED_SONGS);
+                 ArrayList<String> pubSongs = new ArrayList<>();
+                 if (pubArray != null) {
+                     for (Object song : pubArray) {
+                         pubSongs.add((String) song);
+                     }
+                 }
  
-                 user.add(new User(id, userName, firstName, lastName, email, favSongs, pubSongs));
+                 user.add(new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs));
              }
  
          } catch (Exception e) {
@@ -65,5 +69,79 @@ package com.lljvmusicapp.model;
          }
  
          return user;
-     }
+    }
+
+    /**
+    * Loads all songs from the SONG_FILE_NAME JSON file.
+    *
+    * @return an ArrayList of Song objects
+    */
+    public static ArrayList<Song> getSongs() {
+        ArrayList<Song> songs = new ArrayList<>();
+
+        try (FileReader reader = new FileReader(SONG_FILE_NAME)) {
+            JSONParser parser = new JSONParser();
+            JSONArray songsJSON = (JSONArray) parser.parse(reader);
+
+            for (Object obj : songsJSON) {
+                JSONObject songJSON = (JSONObject) obj;
+
+                UUID id = UUID.fromString((String) songJSON.get("uuid"));
+                String title = (String) songJSON.get("title");
+                String publisher = (String) songJSON.get("publisher");
+                String lyrics = (String) songJSON.get("lyrics");
+                String genre = (String) songJSON.get("genre");
+                String level = (String) songJSON.get("level");
+
+                int tempo = 0;
+                Object tempoObj = songJSON.get("tempo");
+                if (tempoObj instanceof Long) {
+                    tempo = ((Long) tempoObj).intValue();
+                } else if (tempoObj instanceof String) {
+                    tempo = Integer.parseInt((String) tempoObj);
+                }
+
+                // If you want to load sheet music later, leave it empty for now
+                Map<String, String> sheetMusic = new HashMap<>();
+
+                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre);
+                songs.add(song);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return songs;
+    }
+
+
+    /**
+     * Loads all lessons from the LESSON_FILE_NAME JSON file.
+     *
+     * @return an ArrayList of Lesson objects
+     */
+    public static ArrayList<Lesson> getLessons() {
+        ArrayList<Lesson> lessons = new ArrayList<>();
+
+        try (FileReader reader = new FileReader(LESSON_FILE_NAME)) {
+            JSONParser parser = new JSONParser();
+            JSONArray lessonJSON = (JSONArray) parser.parse(reader);
+
+            for (Object obj : lessonJSON) {
+                JSONObject lessonObj = (JSONObject) obj;
+
+                UUID lessonId = UUID.fromString((String) lessonObj.get("uuid"));
+                String title = (String) lessonObj.get("title");
+                String description = (String) lessonObj.get("description");
+                String level = (String) lessonObj.get("level");
+
+                Lesson lesson = new Lesson(lessonId, title, description, level);
+                lessons.add(lesson);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return lessons;
+    }
  }

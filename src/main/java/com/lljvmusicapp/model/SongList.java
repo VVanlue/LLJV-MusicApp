@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * for adding, removing, retrieving, and sorting songs.
  */
 public class SongList {
-    private ArrayList<Song> songs;
     private static SongList instance;
+    private ArrayList<Song> songs;
 
     /**
      * Enum representing different difficulty levels for songs.
@@ -20,16 +20,19 @@ public class SongList {
      * Private constructor to enforce singleton pattern.
      */
     private SongList() {
-        System.out.println("");
+        songs = DataLoader.getSongs();
     }
+
     /**
      * Retrieves the singleton instance of SongList.
      * 
      * @return The singleton instance of SongList.
      */
     public static SongList getInstance() {
-        System.out.println("");
-        return null;
+        if (instance == null) {
+            instance = new SongList();
+        }
+        return instance;
     }
 
     /**
@@ -92,6 +95,15 @@ public class SongList {
      */
     public void sortByLevels() {
         System.out.println("");
+    }
+
+    /**
+     * Returns the list of all songs.
+     * 
+     * @return an ArrayList of Song objects
+     */
+    public ArrayList<Song> getSongs() {
+        return songs;
     }
 
 }

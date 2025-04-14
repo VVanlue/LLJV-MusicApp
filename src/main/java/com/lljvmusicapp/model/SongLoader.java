@@ -38,9 +38,19 @@ public class SongLoader extends DataConstants {
                 String title = (String) songJSON.get(SONG_TITLE);
                 String publisher = (String) songJSON.get(SONG_PUBLISHER);
                 String lyrics = (String) songJSON.get(SONG_LYRICS);
+                String level = (String) songJSON.get(SONG_LEVEL);
+                String genre = (String) songJSON.get(SONG_GENRE);
                 
+                int tempo = 0;
+                Object tempoObj = songJSON.get(SONG_TEMPO);
+                if (tempoObj instanceof Long) {
+                    tempo = ((Long) tempoObj).intValue();
+                } else if (tempoObj instanceof String) {
+                    tempo = Integer.parseInt((String) tempoObj);
+                }
+
                 // Create a new Song object
-                Song song = new Song(title, publisher, lyrics, id, "");
+                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre);
                 
                 
                 // Load sheet music if available
