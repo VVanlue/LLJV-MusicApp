@@ -115,6 +115,7 @@ public class UserList {
                     obj.getString("lastName"),
                     obj.getString("email"),
                     "" // No password stored for now
+                    , null, null
                 );
                 users.add(user);
             }
