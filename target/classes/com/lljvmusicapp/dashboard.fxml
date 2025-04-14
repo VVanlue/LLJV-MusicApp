@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.lljvmusicapp.controller.DashboardController">
+
+    <Label fx:id="welcomeLabel" />
+    <Label text="Favorite Songs:" />
+    <ListView fx:id="favSongsList" />
+
+    <Label text="Current Lessons:" />
+    <ListView fx:id="lessonsList" />
+
+    <Label text="Featured Songs:" />
+    <ListView fx:id="songsList" />
+</VBox>
