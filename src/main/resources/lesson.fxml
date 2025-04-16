@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.lljvmusicapp.controller.LessonController"
+      spacing="10" alignment="CENTER" padding="20">
+
+    <Label text="Choose Difficulty Level:" />
+    <ComboBox fx:id="difficultyBox" promptText="Select Difficulty" />
+
+    <Label text="Choose Lesson:" />
+    <ComboBox fx:id="lessonBox" promptText="Select Lesson" />
+
+    <Label fx:id="questionLabel" wrapText="true" />
+
+    <VBox fx:id="choicesBox" spacing="5" />
+
+    <Button text="Submit Answer" onAction="#handleSubmitAnswer" />
+    <Label fx:id="feedbackLabel" textFill="green" />
+
+</VBox>

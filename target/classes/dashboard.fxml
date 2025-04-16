@@ -9,11 +9,24 @@
 
     <Label fx:id="welcomeLabel" />
     <Label text="Favorite Songs:" />
-    <ListView fx:id="favSongsList" />
+    <AnchorPane fx:id="favSongsPane">
+        <ListView fx:id="favSongsList" layoutX="0" layoutY="0" prefHeight="200" prefWidth="200"/>
+        <Button fx:id="loginRedirectButton"
+                text="Login to view favorites"
+                layoutX="0"
+                layoutY="0"
+                visible="false"
+                onAction="#handleReturnToLogin"/>
+    </AnchorPane>
 
     <Label text="Current Lessons:" />
     <ListView fx:id="lessonsList" />
 
     <Label text="Featured Songs:" />
     <ListView fx:id="songsList" />
+
+    <Button fx:id="startLessonButton"
+        text="Start Lesson Quiz"
+        onAction="#handleStartLessonQuiz"/>
+        
 </VBox>

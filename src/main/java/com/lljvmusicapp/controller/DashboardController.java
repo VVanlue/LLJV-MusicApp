@@ -7,8 +7,13 @@ import com.lljvmusicapp.model.SongList;
 import com.lljvmusicapp.model.User;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 public class DashboardController {
 
@@ -16,12 +21,17 @@ public class DashboardController {
     @FXML private ListView<String> favSongsList;
     @FXML private ListView<String> lessonsList;
     @FXML private ListView<String> songsList;
+    @FXML private Button loginRedirectButton;
 
     public void setUser(User user) {
-        welcomeLabel.setText("Welcome, " + user.getFirstName());
-
-        for (String songId : user.getFavSongs()) {
-            favSongsList.getItems().add("Song ID: " + songId);
+        if (user == null) {
+            welcomeLabel.setText("Welcome, Guest!");
+            favSongsList.getItems().add("Login to view favorite songs.");
+        } else {
+            welcomeLabel.setText("Welcome, " + user.getFirstName());
+            for (String songId : user.getFavSongs()) {
+                favSongsList.getItems().add("Song ID: " + songId);
+            }
         }
 
         for (Lesson lesson : LessonList.getInstance().getLessons()) {
@@ -30,6 +40,30 @@ public class DashboardController {
 
         for (Song song : SongList.getInstance().getSongs()) {
             songsList.getItems().add(song.getTitle() + " - " + song.getGenre());
+        }
+    }
+
+    @FXML
+    private void handleReturnToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) welcomeLabel.getScene().getWindow();
+            stage.setScene(new Scene(root, 640, 480));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleStartLessonQuiz() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lesson_quiz.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) welcomeLabel.getScene().getWindow();
+            stage.setScene(new Scene(root, 640, 480));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

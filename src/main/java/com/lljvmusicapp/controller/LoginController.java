@@ -46,4 +46,21 @@ public class LoginController {
             errorLabel.setText("Invalid username or password.");
         }
     }
+
+    @FXML
+private void handleSkipLogin() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
+        Parent root = loader.load();
+
+        DashboardController controller = loader.getController();
+        controller.setUser(null); // or you can create a guest user here
+
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        stage.setScene(new Scene(root, 640, 480));
+    } catch (Exception e) {
+        e.printStackTrace();
+        errorLabel.setText("Failed to load dashboard.");
+    }
+}
 }
