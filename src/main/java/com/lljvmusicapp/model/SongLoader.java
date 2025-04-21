@@ -73,7 +73,7 @@ public class SongLoader extends DataConstants {
                         int startTime = ((Long) noteJSON.get(NOTE_START_TIME)).intValue();
                         
                         Note.NoteName noteName = Note.NoteName.valueOf(pitch);
-                        Note note = new Note(noteName, duration, startTime);
+                        Note note = new Note(noteName, duration, Note.NoteType.NATURAL);
                         song.addNote(note);
                     }
                 }
