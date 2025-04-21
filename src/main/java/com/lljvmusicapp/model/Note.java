@@ -1,5 +1,8 @@
 package com.lljvmusicapp.model;
+
 import java.util.ArrayList;
+
+import com.lljvmusicapp.music.Music;
 
 /**
  * Represents a musical note with attributes such as length, name, and type.
@@ -11,6 +14,7 @@ public class Note {
     public int noteLength;
     public NoteName noteName;
     public NoteType noteType;
+    private boolean isMuted;
 
     public enum NoteType {
         SHARP, FLAT, NATURAL
@@ -26,16 +30,34 @@ public class Note {
      * @param noteLength The length of the note (e.g., 4 for a quarter note)
      * @param noteType The type of the note (sharp, flat, or natural)
      */
-    public Note(NoteName noteName, int duration, int startTime) {
+    public Note(NoteName noteName, int noteLength, NoteType noteType) {
         this.noteName = noteName;
-
+        this.noteLength = noteLength;
+        this.noteType = noteType;
+        this.isMuted = false;
     }
-
 
     /**
      * Plays the note.
      */
     public void playNote() {
+        if (!isMuted) {
+            String pitch = noteName.toString();
+            switch (noteType) {
+                case SHARP:
+                    pitch += "#";
+                    break;
+                case FLAT:
+                    pitch += "b";
+                    break;
+                default:
+                    break;
+            }
+            pitch += "4"; // Default octave
+            Music.playNote(pitch, 400);
+        } else {
+            System.out.println("Note is muted: " + this);
+        }
     }
 
     /**
@@ -56,6 +78,7 @@ public class Note {
      * Sets the note to be quiet (muted).
      */
     public void setNoteQuiet() {
+        this.isMuted = true;
     }
 
     /**

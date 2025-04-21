@@ -25,6 +25,8 @@ public class Song {
     private UUID uploaderId;
     private String filePath;
     private boolean isPrivate;
+    private boolean isPlaying = false;
+    private Metronome metronome;
 
     /**
      * Constructs a Song and initializes attributes.
@@ -36,11 +38,12 @@ public class Song {
         this.title = title;
         this.genre = genre;
         this.instrument = "";
-        this.lyrics = "";
-        this.difficulty = "Medium";
+        this.lyrics = lyrics;
+        this.difficulty = level;
         this.publisher = publisher;
         this.filePath = filePath;
-        this.tempo = new Tempo(120); // Default tempo to 120 BPM
+        this.tempo = new Tempo(tempo);
+        this.metronome = new Metronome(tempo);
     }
 
     /**
@@ -62,36 +65,66 @@ public class Song {
     }
 
     /**
-     * Jumps forward in the song.
+     * Jumps forward in the song by skipping 1 note (simulated).
      */
-    public void jumpForward() {}
+    public void jumpForward() {
+        if (!notes.isEmpty()) {
+            notes.remove(0);
+            System.out.println("Jumped forward one note.");
+        }
+    }
 
     /**
-     * Starts playing the song.
+     * Starts playing the song note-by-note.
      */
-    public void startSong() {}
+    public void startSong() {
+        isPlaying = true;
+        System.out.println("Starting song: " + title);
+        for (Note note : notes) {
+            if (!isPlaying) break;
+            note.playNote();
+            try {
+                Thread.sleep(60000 / tempo.getBPM());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Song finished.");
+    }
 
     /**
      * Pauses the song.
      */
-    public void pauseSong() {}
+    public void pauseSong() {
+        isPlaying = false;
+        System.out.println("Song paused.");
+    }
 
     /**
      * Ends the song.
      */
-    public void endSong() {}
+    public void endSong() {
+        isPlaying = false;
+        System.out.println("Song ended.");
+    }
 
     /**
      * Plays the metronome.
      */
-    public void playMetronome() {}
+    public void playMetronome() {
+        if (metronome != null) {
+            metronome.startMetronome();
+        }
+    }
 
     /**
      * Pauses the metronome.
      */
-    public void pauseMetronome() {}
-
-    
+    public void pauseMetronome() {
+        if (metronome != null) {
+            metronome.stopMetronome();
+        }
+    }
 
     /**
      * Chooses a chord to play.
@@ -122,7 +155,10 @@ public class Song {
      * Removes the last note from the song.
      */
     public void removeNote() {
-        Note removedNote = notes.remove(notes.size() - 1);
+        if (!notes.isEmpty()) {
+            Note removedNote = notes.remove(notes.size() - 1);
+            System.out.println("Removed note: " + removedNote);
+        }
     }
 
     /**
@@ -163,7 +199,6 @@ public class Song {
         return genre;
     }
 
-
     /**
      * Gets the publisher of the song.
      * @return the publisher
@@ -198,7 +233,6 @@ public class Song {
         return notes;
     }
 
-    // Optionally, you could add a setNotes method
     public void setNotes(List<Note> notes) {
         this.notes = new ArrayList<>(notes);
     }
