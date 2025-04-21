@@ -11,12 +11,18 @@ import com.lljvmusicapp.music.Music;
 public class MusicPlaying {
 
     private static MusicPlaying instance;
+    private Metronome metronome;
+    private Instrument currentInstrument;
 
     public static MusicPlaying getInstance() {
         if (instance == null) {
             instance = new MusicPlaying();
         }
         return instance;
+    }
+
+    public MusicPlaying() {
+        this.metronome = new Metronome(120); // Default tempo
     }
 
     /**
@@ -28,39 +34,74 @@ public class MusicPlaying {
         Music.playNote(note, 400); // Play note with fixed duration
     }
 
+    /**
+     * Starts the metronome.
+     */
     public void playMetronome() {
-        // Method stub
+        if (metronome != null) {
+            metronome.startMetronome();
+        }
     }
 
+    /**
+     * Stops and simulates exporting sheet music.
+     */
     public void exportSheet() {
-        // Method stub
+        System.out.println("Sheet music exported as PDF (placeholder).");
     }
 
+    /**
+     * Placeholder method for tracking user's music performance progress.
+     */
     public void trackProgress() {
-        // Method stub
+        System.out.println("Tracking progress... (placeholder)");
     }
 
+    /**
+     * Placeholder method for saving progress.
+     */
     public void saveProgress() {
-        // Method stub
+        System.out.println("Progress saved. (placeholder)");
     }
 
+    /**
+     * Placeholder method for creating sheet music.
+     */
     public void createSheetMusic() {
-        // Method stub
+        System.out.println("Sheet music created. (placeholder)");
     }
 
+    /**
+     * Placeholder method for editing sheet music.
+     */
     public void editSheetMusic() {
-        // Method stub
+        System.out.println("Editing sheet music. (placeholder)");
     }
 
+    /**
+     * Placeholder method for playing back music.
+     */
     public void playBackMusic() {
-        // Method stub
+        System.out.println("Playing back recorded music. (placeholder)");
     }
 
+    /**
+     * Sets the current instrument (placeholder).
+     * 
+     * @param instrument The instrument to be used.
+     */
     public void chooseInstrument(Instrument instrument) {
-        // Method stub
+        this.currentInstrument = instrument;
+        System.out.println("Instrument set to: " + instrument.getName());
     }
 
+    /**
+     * Stops all playback.
+     */
     public void stop() {
+        if (metronome != null) {
+            metronome.stopMetronome();
+        }
         System.out.println("Music stopped.");
     }
 }

@@ -1,8 +1,8 @@
 module com.lljvmusicapp {
     requires json.simple;
     requires org.json;
-    requires transitive javafx.controls;
-    requires transitive javafx.fxml;
+    requires javafx.controls;
+    requires javafx.fxml;
     requires junit;
     requires jfugue;
 

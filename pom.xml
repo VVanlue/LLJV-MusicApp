@@ -6,8 +6,6 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
     </properties>
 
     <repositories>
@@ -66,12 +64,6 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>**/*.json</include>
-                    <include>**/*.fxml</include>
-                    <include>**/*.css</include>
-                </includes>
             </resource>
         </resources>
 
