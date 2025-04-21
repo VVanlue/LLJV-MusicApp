@@ -1,6 +1,7 @@
 package com.lljvmusicapp.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * The SongList class manages a collection of songs and provides various methods
@@ -16,6 +17,7 @@ public class SongList {
     public enum Difficulties {
         EASY, MEDIUM, HARD
     }
+
     /**
      * Private constructor to enforce singleton pattern.
      */
@@ -41,7 +43,8 @@ public class SongList {
      * @param song The song to add.
      */
     public void addSong(Song song) {
-        System.out.println("");
+        songs.add(song);
+        System.out.println("Song added: " + song.getTitle());
     }
 
     /**
@@ -50,7 +53,11 @@ public class SongList {
      * @param song The song to remove.
      */
     public void removeSong(Song song) {
-        System.out.println();
+        if (songs.remove(song)) {
+            System.out.println("Song removed: " + song.getTitle());
+        } else {
+            System.out.println("Song not found.");
+        }
     }
 
     /**
@@ -59,8 +66,7 @@ public class SongList {
      * @return An ArrayList containing all songs.
      */
     public ArrayList<Song> getAllSongs() {
-        System.out.println("");
-        return null;
+        return new ArrayList<>(songs);
     }
 
     /**
@@ -70,8 +76,14 @@ public class SongList {
      * @return An ArrayList of songs matching the keyword.
      */
     public ArrayList<Song> getSongsByKeyword(String word) {
-        System.out.println("");
-        return null;
+        ArrayList<Song> result = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getTitle().toLowerCase().contains(word.toLowerCase()) ||
+                song.getPublisher().toLowerCase().contains(word.toLowerCase())) {
+                result.add(song);
+            }
+        }
+        return result;
     }
 
     /**
@@ -80,21 +92,27 @@ public class SongList {
      * @param song The song to view.
      */
     public void viewSong(Song song) {
-        System.out.println("");
+        if (songs.contains(song)) {
+            song.viewSong();
+        } else {
+            System.out.println("Song not found in the list.");
+        }
     }
 
     /**
      * Sorts the songs by instrument.
      */
     public void sortByInstrument() {
-        System.out.println("");
+        songs.sort(Comparator.comparing(Song::getInstrument));
+        System.out.println("Songs sorted by instrument.");
     }
 
     /**
      * Sorts the songs by difficulty levels.
      */
     public void sortByLevels() {
-        System.out.println("");
+        songs.sort(Comparator.comparing(Song::getTempo, Comparator.comparingInt(Tempo::getBPM)));
+        System.out.println("Songs sorted by difficulty (using tempo as proxy).");
     }
 
     /**
@@ -105,5 +123,4 @@ public class SongList {
     public ArrayList<Song> getSongs() {
         return songs;
     }
-
 }
