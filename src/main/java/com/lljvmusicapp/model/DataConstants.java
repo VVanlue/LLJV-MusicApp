@@ -7,10 +7,10 @@ package com.lljvmusicapp.model;
  */
 public abstract class DataConstants {
     // Paths to JSON files
-    protected static final String USER_FILE_NAME = "json/user.json";
-    protected static final String SONG_FILE_NAME = "json/songs.json";
-    protected static final String LESSON_FILE_NAME = "json/lessons.json";
-    protected static final String SHEET_MUSIC_FILE_NAME = "json/sheetmusic.json";
+    protected static final String USER_FILE_NAME = "../json/user.json";
+    protected static final String SONG_FILE_NAME = "../json/songs.json";
+    protected static final String LESSON_FILE_NAME = "../json/lessons.json";
+    protected static final String SHEET_MUSIC_FILE_NAME = "../json/sheetmusic.json";
     
     // User attribute constants
     protected static final String USER_ID = "uuid";
