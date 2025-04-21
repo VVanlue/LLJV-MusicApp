@@ -28,5 +28,9 @@
     <Button fx:id="startLessonButton"
         text="Start Lesson Quiz"
         onAction="#handleStartLessonQuiz"/>
+
+    <Button fx:id="goToSongScreenButton"
+            text="Play Notes"
+            onAction="#handleGoToSongScreen"/>
         
 </VBox>
