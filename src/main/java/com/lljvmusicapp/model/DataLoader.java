@@ -33,7 +33,7 @@ import org.json.simple.parser.JSONParser;
       public static void listAvailableResources() {
         try {
             var classLoader = DataLoader.class.getClassLoader();
-            var root = classLoader.getResource("com/lljvmusicapp/json");
+            var root = classLoader.getResource("src/main/resources/json");
     
             if (root != null) {
                 System.out.println("JSON resource directory found: " + root);
@@ -44,7 +44,7 @@ import org.json.simple.parser.JSONParser;
             // Try loading each specific file
             String[] files = {"user.json", "lessons.json", "songs.json"};
             for (String file : files) {
-                InputStream is = classLoader.getResourceAsStream("com/lljvmusicapp/json/" + file);
+                InputStream is = classLoader.getResourceAsStream("/json/" + file);
                 System.out.println(file + ": " + (is != null ? "Found" : "Not found"));
             }
         } catch (Exception e) {
@@ -59,7 +59,7 @@ import org.json.simple.parser.JSONParser;
         
 
          try {
-            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("/json/user.json");
+            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("json/user.json");
             if (input == null) {
                 throw new FileNotFoundException("Could not find com/lljvmusicapp/json/user.json");
             }
@@ -112,7 +112,7 @@ import org.json.simple.parser.JSONParser;
         ArrayList<Song> songs = new ArrayList<>();
 
         try {
-            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("/json/songs.json");
+            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("json/songs.json");
             if (input == null) {
                 throw new FileNotFoundException("Could not find com/lljvmusicapp/json/songs.json");
             }
@@ -161,7 +161,7 @@ import org.json.simple.parser.JSONParser;
         ArrayList<Lesson> lessons = new ArrayList<>();
 
         try {
-            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("/json/lessons.json");
+            InputStream input = DataLoader.class.getClassLoader().getResourceAsStream("json/lessons.json");
             if (input == null) {
                 throw new FileNotFoundException("Could not find com/lljvmusicapp/json/lessons.json");
             }

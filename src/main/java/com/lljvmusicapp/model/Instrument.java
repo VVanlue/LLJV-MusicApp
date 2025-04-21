@@ -83,23 +83,6 @@ public class Instrument {
         isPlaying = playing;
     }
 
-    /**
-     * Plays a song with the specified tempo.
-     * @param songName The name of the song to play
-     * @param tempo The tempo in beats per minute
-     * @return A string describing what's being played
-     */
-    public String play(String songName, int tempo) {
-        isPlaying = true;
-        if (musicPlaying != null) {
-            try {
-                musicPlaying.play();
-            } catch (Exception e) {
-                System.err.println("Error playing song: " + e.getMessage());
-            }
-        }
-        return name + " is playing " + songName + " at " + tempo + " BPM.";
-    }
 
     /**
      * Stops the instrument from playing.
