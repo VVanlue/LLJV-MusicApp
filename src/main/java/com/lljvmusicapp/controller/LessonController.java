@@ -5,8 +5,12 @@ import java.util.stream.Collectors;
 
 import com.lljvmusicapp.model.Lesson;
 import com.lljvmusicapp.model.LessonList;
+import com.lljvmusicapp.model.Question;
+import com.lljvmusicapp.util.SceneManager;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -14,81 +18,109 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
 /**
- * Allows users to select a difficulty, choose a lesson, and answer MCQ questions
+ * Allows users to select a level, choose a lesson, and answer MCQ questions
  * @author Victoria
  */
 public class LessonController {
 
-    @FXML private ComboBox<String> difficultyBox;
+    @FXML private ComboBox<String> levelBox;
     @FXML private ComboBox<String> lessonBox;
     @FXML private Label questionLabel;
     @FXML private VBox choicesBox;
     @FXML private Label feedbackLabel;
+    @FXML private Button continueButton;
 
     private Lesson currentLesson;
-    private String correctAnswer;
+    private int currentQuestionIndex;
 
     @FXML
     public void initialize() {
-        // Populate difficulty levels
-        difficultyBox.getItems().addAll("Beginner", "Intermediate", "Advanced");
+        levelBox.getItems().addAll("EASY", "MEDIUM", "HARD");
 
-        difficultyBox.setOnAction(e -> {
-            String selected = difficultyBox.getValue();
-            loadLessonsByDifficulty(selected);
+        levelBox.setOnAction(e -> {
+            String selectedLevel = levelBox.getValue();
+            loadLessonsByLevel(selectedLevel);
         });
 
+        continueButton.setDisable(true);
+        lessonBox.setDisable(true);
     }
 
-    private void loadLessonsByDifficulty(String difficulty) {
+    private void loadLessonsByLevel(String level) {
         lessonBox.getItems().clear();
         List<Lesson> filtered = LessonList.getInstance().getLessons().stream()
-                .filter(l -> l.getLevel().equalsIgnoreCase(difficulty))
+                .filter(l -> l.getLevel() != null && l.getLevel().equalsIgnoreCase(level))
                 .collect(Collectors.toList());
 
-        for (Lesson l : filtered) {
-            lessonBox.getItems().add(l.getTitle());
+        if (filtered.isEmpty()) {
+            lessonBox.setDisable(true);
+            continueButton.setDisable(true);
+            lessonBox.getItems().add("No lessons found");
+        } else {
+            lessonBox.setDisable(false);
+            continueButton.setDisable(false);
+            for (Lesson l : filtered) {
+                lessonBox.getItems().add(l.getTitle());
+            }
         }
     }
 
-    private void loadFirstQuestion(Lesson lesson) {
-        if (lesson.getQuestions() == null || lesson.getQuestions().isEmpty()) {
-            questionLabel.setText("No questions available for this lesson.");
+    @FXML
+    private void handleContinue(ActionEvent event) {
+        String lessonTitle = lessonBox.getValue();
+        currentLesson = LessonList.getInstance().getLessons().stream()
+                .filter(l -> l.getTitle().equals(lessonTitle))
+                .findFirst().orElse(null);
+
+        if (currentLesson != null) {
+            currentQuestionIndex = 0;
+            loadQuestion();
+        }
+    }
+
+    private void loadQuestion() {
+        if (currentQuestionIndex >= currentLesson.getQuestions().size()) {
+            questionLabel.setText("You've completed the lesson!");
             choicesBox.getChildren().clear();
+            feedbackLabel.setText("Lesson added to your completed lessons.");
+            continueButton.setText("Return to Dashboard");
+            continueButton.setOnAction(e -> SceneManager.loadDashboardScene(e));
             return;
         }
 
-        // For now, load only the first question
-        Lesson.Question q = lesson.getQuestions().get(0);
-        questionLabel.setText(q.getPrompt());
-        correctAnswer = q.getCorrectAnswer();
-
+        Question question = currentLesson.getQuestions().get(currentQuestionIndex);
+        questionLabel.setText(question.getPrompt());
         choicesBox.getChildren().clear();
-        ToggleGroup group = new ToggleGroup();
+        feedbackLabel.setText("");
 
-        for (String option : q.getOptions()) {
+        ToggleGroup group = new ToggleGroup();
+        for (String option : question.getOptions()) {
             RadioButton rb = new RadioButton(option);
             rb.setToggleGroup(group);
             choicesBox.getChildren().add(rb);
         }
+
+        continueButton.setText("Submit Answer");
+        continueButton.setDisable(false);
+        continueButton.setOnAction(e -> handleSubmitAnswer(group));
     }
 
-    @FXML
-    private void handleSubmitAnswer() {
-        for (javafx.scene.Node node : choicesBox.getChildren()) {
-            if (node instanceof RadioButton) {
-                RadioButton rb = (RadioButton) node;
-                if (rb.isSelected()) {
-                    String selected = rb.getText();
-                    if (selected.equals(correctAnswer)) {
-                        feedbackLabel.setText("Correct!");
-                    } else {
-                        feedbackLabel.setText("Incorrect. Try again.");
-                    }
-                    return;
-                }
-            }
+    private void handleSubmitAnswer(ToggleGroup group) {
+        RadioButton selected = (RadioButton) group.getSelectedToggle();
+        if (selected == null) {
+            feedbackLabel.setText("Please select an answer.");
+            return;
         }
-        feedbackLabel.setText("Please select an answer.");
+
+        Question question = currentLesson.getQuestions().get(currentQuestionIndex);
+
+        if (selected.getText().equals(question.getCorrectAnswer())) {
+            feedbackLabel.setText("Correct!");
+            currentQuestionIndex++;
+            continueButton.setText("Next");
+            continueButton.setOnAction(e -> loadQuestion());
+        } else {
+            feedbackLabel.setText("Incorrect. Try again.");
+        }
     }
 }

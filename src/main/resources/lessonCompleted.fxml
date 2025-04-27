@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.lljvmusicapp.controller.LessonCompletedController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 30;">
+
+    <Label text="Congratulations! You've completed the lesson."
+           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #4CAF50;"/>
+
+    <Label text="The lesson has been added to your completed lessons list."
+           style="-fx-font-size: 14; -fx-text-fill: #333;" />
+
+    <Button text="Return to Dashboard" onAction="#returnToDashboard" style="-fx-pref-width: 160;"/>
+
+</VBox>

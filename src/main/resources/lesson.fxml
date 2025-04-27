@@ -2,14 +2,19 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.lljvmusicapp.controller.LessonController"
-      spacing="10" alignment="CENTER" padding="20.0">
+      spacing="10" alignment="CENTER">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
 
     <Label text="Choose Difficulty Level:" />
-    <ComboBox fx:id="difficultyBox" promptText="Select Difficulty" />
+    <ComboBox fx:id="levelBox" promptText="Select Difficulty" />
 
     <Label text="Choose Lesson:" />
     <ComboBox fx:id="lessonBox" promptText="Select Lesson" />
@@ -18,7 +23,7 @@
 
     <VBox fx:id="choicesBox" spacing="5" />
 
-    <Button text="Submit Answer" onAction="#handleSubmitAnswer" />
+    <Button fx:id="continueButton" text="Continue" onAction="#handleContinue" />
     <Label fx:id="feedbackLabel" textFill="green" />
 
 </VBox>

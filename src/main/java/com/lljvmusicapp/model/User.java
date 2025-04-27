@@ -16,6 +16,7 @@ public class User {
     private String password;
     private ArrayList<String> pubSongs;
     private ArrayList<String> favSongs;
+    private ArrayList<String> completedLessons;
 
     private static User instance;
 
@@ -45,7 +46,7 @@ public class User {
      * @param favSongs User's favorite songs
      * @param pubSongs User's published songs
      */
-    public User(UUID id, String userName, String password, String firstName, String lastName, String email, ArrayList<String> favSongs, ArrayList<String> pubSongs)
+    public User(UUID id, String userName, String password, String firstName, String lastName, String email, ArrayList<String> favSongs, ArrayList<String> pubSongs, ArrayList<String> completedLessons)
     {
         this.id = id;
         this.userName = userName;
@@ -55,6 +56,7 @@ public class User {
         this.email = email;
         this.favSongs = favSongs != null ? favSongs : new ArrayList<>();
         this.pubSongs = pubSongs != null ? pubSongs : new ArrayList<>();
+        this.completedLessons = completedLessons != null ? completedLessons : new ArrayList<>();
     }
 
     /**
@@ -90,6 +92,19 @@ public class User {
         System.out.println(userName + " started lesson: " + lesson.getTitle());
     }
 
+    /**
+     * Adds a completed lesson to the user's list.
+     * @param lesson the completed Lesson
+     */
+    public void addCompletedLesson(String lessonId) {
+        if (completedLessons == null) {
+            completedLessons = new ArrayList<>();
+        }
+        if (!completedLessons.contains(lessonId)) {
+            completedLessons.add(lessonId);
+        }
+    }
+
     // Getters and Setters
     public String getUsername() { return userName; }
     public String getPassword() { return password; }
@@ -98,6 +113,8 @@ public class User {
     public String getEmail() { return email; }
     public ArrayList<String> getFavSongs() { return favSongs; }
     public ArrayList<String> getPubSongs() { return pubSongs; }
-
+    public ArrayList<String> getCompletedLessons() {
+        return completedLessons;
+    }
 
 }

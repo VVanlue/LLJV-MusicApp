@@ -7,7 +7,8 @@
         "lastName": "Clemons",
         "email": "goclemons@hotmail.com",
         "favSongs": ["8bd6ce57-10e6-484c-a3f2-329356a60309"],
-        "publishedSongs": []
+        "publishedSongs": [],
+        "completedLessons": []
     },
     {
         "uuid": "69caaa8e-a179-4a08-9a80-8c82f19d8bba",
@@ -17,7 +18,8 @@
         "lastName": "Van",
         "email": "yesbro@gmail.com",
         "favSongs": ["c0318c62-f807-47cf-98c8-8ab26335b714"],
-        "publishedSongs": ["0923293a-a119-4823-8c24-ef9d26ccbcdc"]
+        "publishedSongs": ["0923293a-a119-4823-8c24-ef9d26ccbcdc"],
+        "completedLessons": []
     },
     {
         "uuid": "4731ba77-8d68-4a85-a24f-fa355b6252a6",
@@ -27,7 +29,8 @@
         "lastName": "Bard",
         "email": "jamesb@hotmail.com",
         "favSongs": ["f9f25818-efc1-4597-9fd1-c160237b0b25"],
-        "publishedSongs": []
+        "publishedSongs": [],
+        "completedLessons": []
     },
     {
         "uuid": "617f490d-1da7-401e-b7cd-b57b4584ca65",
@@ -37,6 +40,7 @@
         "lastName": "Smith",
         "email": "Jay@email.com",
         "favSongs": [],
-        "publishedSongs": []
+        "publishedSongs": [],
+        "completedLessons": []
     }
 ]

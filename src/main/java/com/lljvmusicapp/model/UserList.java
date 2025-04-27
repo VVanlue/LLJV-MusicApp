@@ -21,6 +21,7 @@ import org.json.JSONTokener;
 public class UserList {
     private ArrayList<User> users;
     private static UserList instance;
+    private static User currentUser;
     private static final String FILE_PATH = "users.json";
 
     /**
@@ -118,6 +119,7 @@ public class UserList {
                 // These might be stored as comma-separated strings
                 ArrayList<String> favSongs = new ArrayList<>();
                 ArrayList<String> pubSongs = new ArrayList<>();
+                ArrayList<String> completedLessons = new ArrayList<>();
     
                 String favSongStr = obj.optString("favoriteSongs", "");
                 if (!favSongStr.isEmpty()) {
@@ -132,8 +134,15 @@ public class UserList {
                         pubSongs.add(song.trim());
                     }
                 }
+
+                String lesnStr = obj.optString("completedLessons", "");
+                if (!lesnStr.isEmpty()) {
+                    for (String lesson : lesnStr.split(",")) {
+                        completedLessons.add(lesson.trim());
+                    }
+                }
     
-                User user = new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs);
+                User user = new User(id, userName, password, firstName, lastName, email, favSongs, pubSongs, completedLessons);
                 users.add(user);
             }
         } catch (Exception e) {
@@ -171,5 +180,13 @@ public class UserList {
      */
     public ArrayList<User> getAllUsers() {
         return users;
+    }
+
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+    
+    public static User getCurrentUser() {
+        return currentUser;
     }
 }

@@ -1,5 +1,6 @@
 com\lljvmusicapp\model\DataConstants.class
 com\lljvmusicapp\model\Song.class
+com\lljvmusicapp\controller\QuizController.class
 com\lljvmusicapp\model\Genre.class
 com\lljvmusicapp\model\Note$NoteName.class
 com\lljvmusicapp\model\Student.class
@@ -13,9 +14,13 @@ com\lljvmusicapp\model\SongLoader.class
 com\lljvmusicapp\model\User.class
 com\lljvmusicapp\controller\LessonController.class
 com\lljvmusicapp\controller\LoginController.class
+com\lljvmusicapp\model\Metronome$1.class
 com\lljvmusicapp\model\SheetMusicFormatter.class
 com\lljvmusicapp\model\Lesson.class
+com\lljvmusicapp\model\LessonSession.class
+com\lljvmusicapp\model\Question.class
 com\lljvmusicapp\model\Tempo.class
+com\lljvmusicapp\util\SceneManager.class
 com\lljvmusicapp\model\DataWriter.class
 com\lljvmusicapp\controller\DashboardController.class
 com\lljvmusicapp\model\MusicPlaying.class
@@ -27,14 +32,12 @@ com\lljvmusicapp\model\SongList.class
 com\lljvmusicapp\model\DifficultyLevel.class
 com\lljvmusicapp\model\SongList$Difficulties.class
 module-info.class
-com\lljvmusicapp\model\Lesson$Question.class
 com\lljvmusicapp\music\Music.class
 com\lljvmusicapp\model\Teacher.class
 com\lljvmusicapp\model\DashboardScreen.class
 com\lljvmusicapp\model\Measure.class
 com\lljvmusicapp\model\AudioPlayer.class
 com\lljvmusicapp\model\Instrument.class
-com\lljvmusicapp\music\App.class
 com\lljvmusicapp\model\Note$NoteType.class
 com\lljvmusicapp\model\LessonList.class
 com\lljvmusicapp\model\Note.class

@@ -69,6 +69,7 @@ public class DataWriter extends DataConstants {
 
         userMap.put("favSongs", user.getFavSongs());
         userMap.put("publishedSongs", user.getPubSongs());
+        userMap.put("completedLessons", user.getCompletedLessons());
 
         return new JSONObject(userMap);
     }

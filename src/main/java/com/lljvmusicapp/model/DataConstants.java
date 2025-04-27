@@ -7,10 +7,10 @@ package com.lljvmusicapp.model;
  */
 public abstract class DataConstants {
     // Paths to JSON files
-    protected static final String USER_FILE_NAME = "../json/user.json";
-    protected static final String SONG_FILE_NAME = "../json/songs.json";
-    protected static final String LESSON_FILE_NAME = "../json/lessons.json";
-    protected static final String SHEET_MUSIC_FILE_NAME = "../json/sheetmusic.json";
+    protected static final String USER_FILE_NAME = "src/main/java/com/lljvmusicapp/json/user.json";
+    protected static final String SONG_FILE_NAME = "src/main/java/com/lljvmusicapp/json/songs.json";
+    protected static final String LESSON_FILE_NAME = "src/main/java/com/lljvmusicapp/json/lessons.json";
+    protected static final String SHEET_MUSIC_FILE_NAME = "src/main/java/com/lljvmusicapp/json/sheetmusic.json";
     
     // User attribute constants
     protected static final String USER_ID = "uuid";
@@ -21,6 +21,7 @@ public abstract class DataConstants {
     protected static final String USER_EMAIL = "email";
     protected static final String USER_FAVORITE_SONGS = "favSongs";
     protected static final String USER_PUBLISHED_SONGS = "publishedSongs";
+    protected static final String USER_COMPLETED_LESSONS = "completedLessons";
 
     
     // Song attribute constants
@@ -47,7 +48,7 @@ public abstract class DataConstants {
     protected static final String LESSON_ID = "uuid";
     protected static final String LESSON_TITLE = "title";
     protected static final String LESSON_INSTRUMENT_TYPE = "instrumentType";
-    protected static final String LESSON_DIFFICULTY = "difficulty";
+    protected static final String LESSON_LEVEL = "level";
     protected static final String LESSON_GENRE = "genre";
     protected static final String LESSON_SONG = "song";
     
