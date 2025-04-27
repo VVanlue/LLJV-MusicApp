@@ -47,7 +47,19 @@ public class DashboardController {
             welcomeLabel.setText("Welcome, " + user.getFirstName() + "!");
 
             favSongsList.getItems().clear();
-            favSongsList.getItems().addAll(user.getFavSongs());
+            if (user.getFavSongs() != null) {
+                for (String songId : user.getFavSongs()) {
+                    Song song = SongList.getInstance().getSongs().stream()
+                        .filter(s -> s.getId().toString().equals(songId))
+                        .findFirst()
+                        .orElse(null);
+                    if (song != null) {
+                        favSongsList.getItems().add(song.getTitle() + " - " + song.getGenre());
+                    } else {
+                        favSongsList.getItems().add("(Unknown Song)");
+                    }
+                }
+            }
 
             lessonsList.getItems().clear();
             for (Lesson lesson : LessonList.getInstance().getLessons()) {
@@ -56,7 +68,17 @@ public class DashboardController {
 
             completedLessonsList.getItems().clear();
             if (user.getCompletedLessons() != null) {
-                completedLessonsList.getItems().addAll(user.getCompletedLessons());
+                for (String lessonId : user.getCompletedLessons()) {
+                    Lesson lesson = LessonList.getInstance().getLessons().stream()
+                        .filter(l -> l.getLessonId().toString().equals(lessonId))
+                        .findFirst()
+                        .orElse(null);
+                    if (lesson != null) {
+                        completedLessonsList.getItems().add(lesson.getTitle());
+                    } else {
+                        completedLessonsList.getItems().add("(Unknown Lesson)");
+                    }
+                }
             }
     
             songsList.getItems().clear();

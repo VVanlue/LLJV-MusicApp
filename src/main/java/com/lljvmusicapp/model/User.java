@@ -97,9 +97,6 @@ public class User {
      * @param lesson the completed Lesson
      */
     public void addCompletedLesson(String lessonId) {
-        if (completedLessons == null) {
-            completedLessons = new ArrayList<>();
-        }
         if (!completedLessons.contains(lessonId)) {
             completedLessons.add(lessonId);
         }
