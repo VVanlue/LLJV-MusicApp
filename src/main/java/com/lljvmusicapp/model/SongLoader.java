@@ -8,6 +8,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import org.jfugue.theory.Note;
+
 /**
  * Class responsible for reading song data
  * from a JSON file and converting it into Song objects.
@@ -64,19 +66,21 @@ public class SongLoader extends DataConstants {
                 }
                 
                 // Load notes if available
-                if (songJSON.containsKey(SONG_NOTES)) {
+                if (songJSON.containsKey(SONG_NOTES))
+                {
                     JSONArray notesJSON = (JSONArray) songJSON.get(SONG_NOTES);
-                    for (int j = 0; j < notesJSON.size(); j++) {
+                    for (int j = 0; j < notesJSON.size(); j++)
+                    {
                         JSONObject noteJSON = (JSONObject) notesJSON.get(j);
                         String pitch = (String) noteJSON.get(NOTE_PITCH);
                         int duration = ((Long) noteJSON.get(NOTE_DURATION)).intValue();
                         int startTime = ((Long) noteJSON.get(NOTE_START_TIME)).intValue();
-                        
-                        Note.NoteName noteName = Note.NoteName.valueOf(pitch);
-                        Note note = new Note(noteName, duration, Note.NoteType.NATURAL);
+
+                        Note note = new Note(pitch);
                         song.addNote(note);
                     }
                 }
+
                 
                 songs.add(song);
             }
