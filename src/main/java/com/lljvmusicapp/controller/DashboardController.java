@@ -7,6 +7,7 @@ import com.lljvmusicapp.model.LessonList;
 import com.lljvmusicapp.model.Song;
 import com.lljvmusicapp.model.SongList;
 import com.lljvmusicapp.model.User;
+import com.lljvmusicapp.model.UserList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +28,12 @@ public class DashboardController {
     @FXML private ListView<String> songsList;
     @FXML private Button loginRedirectButton;
 
+    @FXML
+    public void initialize() {
+        User currentUser = UserList.getCurrentUser();
+        setUser(currentUser);
+    }
+    
     public void setUser(User user) {
         if (user == null) {
             welcomeLabel.setText("Welcome, Guest!");

@@ -3,6 +3,7 @@ package com.lljvmusicapp.model;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -51,7 +52,15 @@ public class DataLoader extends DataConstants {
                     }
                 }
 
-                users.add(new User(uuid, username, password, firstName, lastName, email, favSongs, pubSongs));
+                JSONArray lesnArray = (JSONArray) personJSON.get(USER_COMPLETED_LESSONS);
+                ArrayList<String> completedLessons = new ArrayList<>();
+                if (lesnArray != null) {
+                    for (Object lesson : lesnArray) {
+                        completedLessons.add((String) lesson);
+                    }
+                }
+
+                users.add(new User(uuid, username, password, firstName, lastName, email, favSongs, pubSongs, completedLessons));
             }
 
         } catch (Exception e) {
@@ -110,10 +119,31 @@ public class DataLoader extends DataConstants {
 
                 UUID lessonId = UUID.fromString((String) lessonObj.get("uuid"));
                 String title = (String) lessonObj.get("title");
-                String description = (String) lessonObj.get("description");
+                String genre = (String) lessonObj.get("genre");
                 String level = (String) lessonObj.get("level");
 
-                Lesson lesson = new Lesson(lessonId, title, description, level);
+                Lesson lesson = new Lesson(lessonId, title, genre, level);
+
+                // Parse questions
+                JSONArray questionsJSON = (JSONArray) lessonObj.get("questions");
+                List<Question> questionList = new ArrayList<>();
+
+                for (Object qObj : questionsJSON) {
+                    JSONObject qJson = (JSONObject) qObj;
+
+                    String prompt = (String) qJson.get("prompt");
+                    JSONArray optionsJSON = (JSONArray) qJson.get("options");
+                    List<String> options = new ArrayList<>();
+                    for (Object option : optionsJSON) {
+                        options.add((String) option);
+                    }
+                    String correctAnswer = (String) qJson.get("correctAnswer");
+
+                    Question question = new Question(prompt, options, correctAnswer);
+                    questionList.add(question);
+                }
+
+                lesson.setQuestions(questionList);
                 lessons.add(lesson);
             }
         } catch (Exception e) {

@@ -1,4 +1,0 @@
---patch-module
-com.lljvmusicapp=_
---add-reads
-com.lljvmusicapp=ALL-UNNAMED

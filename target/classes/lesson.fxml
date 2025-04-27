@@ -14,7 +14,7 @@
     </padding>
 
     <Label text="Choose Difficulty Level:" />
-    <ComboBox fx:id="difficultyBox" promptText="Select Difficulty" />
+    <ComboBox fx:id="levelBox" promptText="Select Difficulty" />
 
     <Label text="Choose Lesson:" />
     <ComboBox fx:id="lessonBox" promptText="Select Lesson" />
@@ -23,7 +23,7 @@
 
     <VBox fx:id="choicesBox" spacing="5" />
 
-    <Button text="Submit Answer" onAction="#handleSubmitAnswer" />
+    <Button fx:id="continueButton" text="Continue" onAction="#handleContinue" />
     <Label fx:id="feedbackLabel" textFill="green" />
 
 </VBox>

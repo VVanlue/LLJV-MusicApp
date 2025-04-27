@@ -91,7 +91,7 @@ public class Facade {
      */
     public User signUp(UUID id, String username, String password, String firstName, String lastName, String email) {
         User newUser = new User(id, username, password, firstName, lastName, email,
-                                new ArrayList<>(), new ArrayList<>());
+                                new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         UserList.getInstance().addUser(newUser);
         return newUser;
     }

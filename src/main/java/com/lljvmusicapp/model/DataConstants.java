@@ -21,6 +21,7 @@ public abstract class DataConstants {
     protected static final String USER_EMAIL = "email";
     protected static final String USER_FAVORITE_SONGS = "favSongs";
     protected static final String USER_PUBLISHED_SONGS = "publishedSongs";
+    protected static final String USER_COMPLETED_LESSONS = "completedLessons";
 
     
     // Song attribute constants
@@ -47,7 +48,7 @@ public abstract class DataConstants {
     protected static final String LESSON_ID = "uuid";
     protected static final String LESSON_TITLE = "title";
     protected static final String LESSON_INSTRUMENT_TYPE = "instrumentType";
-    protected static final String LESSON_DIFFICULTY = "difficulty";
+    protected static final String LESSON_LEVEL = "level";
     protected static final String LESSON_GENRE = "genre";
     protected static final String LESSON_SONG = "song";
     
