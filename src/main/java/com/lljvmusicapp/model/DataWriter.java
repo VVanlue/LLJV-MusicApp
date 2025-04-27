@@ -26,7 +26,7 @@ public class DataWriter extends DataConstants {
         ArrayList<User> existingUsers = DataLoader.getUsers();
         UserList userList = UserList.getInstance();
 
-        for (User newUser : userList.getAllUsers()) {
+        for (User newUser : userList.getUsers()) {
             boolean exists = false;
             for (User oldUser : existingUsers) {
                 if (oldUser.getId().equals(newUser.getId())) {

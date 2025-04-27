@@ -24,6 +24,11 @@
         </VBox>
 
         <VBox spacing="10" alignment="CENTER">
+            <Label text="Completed Lessons" style="-fx-font-size: 18;"/>
+            <ListView fx:id="completedLessonsList" prefWidth="200" prefHeight="150"/>
+        </VBox>
+
+        <VBox spacing="10" alignment="CENTER">
             <Label text="Featured Songs" style="-fx-font-size: 18;"/>
             <ListView fx:id="songsList" prefWidth="200" prefHeight="150"/>
         </VBox>

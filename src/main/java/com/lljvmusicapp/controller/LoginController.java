@@ -2,6 +2,7 @@ package com.lljvmusicapp.controller;
 
 import com.lljvmusicapp.model.Facade;
 import com.lljvmusicapp.model.User;
+import com.lljvmusicapp.model.UserList;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,12 +23,13 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
-        System.out.println("Trying...");
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         if (facade.UserLogin(username, password)) {
             User user = facade.getCurrentUser();
+
+            UserList.setCurrentUser(user);
 
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
