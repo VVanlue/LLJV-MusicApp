@@ -14,9 +14,7 @@ import javafx.stage.Stage;
  * 
  */
 public class MusicAppDriver extends Application {
-     
-    /** The facade instance that handles user and song-related operations. */
-    private static Facade facade;
+
     /** The scanner instance for user input. */
     private static Scanner scanner;
     private static Stage primaryStage;
@@ -35,7 +33,6 @@ public class MusicAppDriver extends Application {
      public void start(Stage primaryStage) {
         MusicAppDriver.primaryStage = primaryStage;
         scanner = new Scanner(System.in);
-        facade = new Facade();  
 
         // Simulating an initial user signup and testing various actions
         System.out.println("Welcome to the Music App!");
@@ -103,7 +100,7 @@ public class MusicAppDriver extends Application {
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
 
-        User newUser = facade.signUp(id, username, password, firstName, lastName, email);
+        User newUser = Facade.signUp(id, username, password, firstName, lastName, email);
         System.out.println("Signup successful! Welcome, " + newUser.getUsername());
     }
 
@@ -116,11 +113,11 @@ public class MusicAppDriver extends Application {
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        boolean loginSuccess = facade.UserLogin(username, password);
+        boolean loginSuccess = Facade.UserLogin(username, password);
         if (loginSuccess) {
             System.out.println("Login successful!");
             
-            User loggedInUser = facade.getCurrentUser();
+            User loggedInUser = Facade.getCurrentUser();
 
             DashboardScreen dashboard = new DashboardScreen(loggedInUser); 
             dashboard.show();
@@ -140,7 +137,7 @@ public class MusicAppDriver extends Application {
         System.out.print("Enter song genre: ");
         String genre = scanner.nextLine();
 
-        Song newSong = facade.createSong(title, artist, genre);
+        Song newSong = Facade.createSong(title, artist, genre);
         System.out.println("Song created: " + newSong.getTitle() + " by " + newSong.getPublisher());
     }
 
@@ -153,7 +150,7 @@ public class MusicAppDriver extends Application {
         
         // Find the song by title (for simplicity, just use title to search)
         Song songToDelete = null;
-        for (Song song : facade.SongList()) {
+        for (Song song : Facade.SongList()) {
             if (song.getTitle().equalsIgnoreCase(title)) {
                 songToDelete = song;
                 break;
@@ -166,7 +163,7 @@ public class MusicAppDriver extends Application {
      * Allows the user to choose a song.
      */
     private static void chooseSong() {
-        Song song = facade.chooseSong();
+        Song song = Facade.chooseSong();
         if (song != null) {
             System.out.println("Chosen song: " + song.getTitle());
         } else {
@@ -183,7 +180,7 @@ public class MusicAppDriver extends Application {
         
         // Find the song by title (for simplicity, just use title to search)
         Song songToPrivacy = null;
-        for (Song song : facade.SongList()) {
+        for (Song song : Facade.SongList()) {
             if (song.getTitle().equalsIgnoreCase(title)) {
                 songToPrivacy = song;
                 break;
@@ -193,7 +190,7 @@ public class MusicAppDriver extends Application {
         if (songToPrivacy != null) {
             System.out.print("Set privacy to (true/false): ");
             boolean isPrivate = scanner.nextBoolean();
-            boolean success = facade.setSongPrivacy(songToPrivacy, isPrivate);
+            boolean success = Facade.setSongPrivacy(songToPrivacy, isPrivate);
             if (success) {
                 System.out.println("Privacy set successfully for " + title);
             } else {

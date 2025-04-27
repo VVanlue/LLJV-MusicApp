@@ -19,15 +19,13 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;
 
-    private final Facade facade = new Facade();
-
     @FXML
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (facade.UserLogin(username, password)) {
-            User user = facade.getCurrentUser();
+        if (Facade.UserLogin(username, password)) {
+            User user = Facade.getCurrentUser();
 
             UserList.setCurrentUser(user);
 
