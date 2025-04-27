@@ -33,13 +33,13 @@ public class DashboardController {
         User currentUser = UserList.getCurrentUser();
         setUser(currentUser);
     }
-    
+
     public void setUser(User user) {
         if (user == null) {
             welcomeLabel.setText("Welcome, Guest!");
             favSongsList.getItems().add("Login to view favorite songs.");
         } else {
-            welcomeLabel.setText("Welcome, " + user.getFirstName());
+            welcomeLabel.setText("Welcome, " + user.getFirstName() + "!");
             for (String songId : user.getFavSongs()) {
                 favSongsList.getItems().add("Song ID: " + songId);
             }

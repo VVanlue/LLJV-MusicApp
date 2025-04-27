@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.gluonhq.charm.glisten.control.Avatar?>
+<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
+<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.lljvmusicapp.controller.DashboardController">
 
-    <Label fx:id="welcomeLabel" />
-    <Label text="Favorite Songs:" />
-    <AnchorPane fx:id="favSongsPane">
-        <ListView fx:id="favSongsList" layoutX="0" layoutY="0" prefHeight="200" prefWidth="200"/>
-        <Button fx:id="loginRedirectButton"
-                text="Login to view favorites"
-                layoutX="0"
-                layoutY="0"
-                visible="false"
-                onAction="#handleReturnToLogin"/>
-    </AnchorPane>
-
-    <Label text="Current Lessons:" />
-    <ListView fx:id="lessonsList" />
-
-    <Label text="Featured Songs:" />
-    <ListView fx:id="songsList" />
-
-    <Button fx:id="startLessonButton"
-        text="Start Lesson Quiz"
-        onAction="#handleStartLessonQuiz"/>
-
-    <Button fx:id="goToSongScreenButton"
-            text="Play Notes"
-            onAction="#handleGoToSongScreen"/>
-        
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BottomNavigation layoutX="8.0" layoutY="573.0" prefHeight="25.0" prefWidth="320.0">
+          <actionItems>
+            <BottomNavigationButton text="Settings" />
+              <BottomNavigationButton selected="true" text="Songs" />
+              <BottomNavigationButton text="Home" />
+              <BottomNavigationButton text="Lessons" />
+          </actionItems>
+      </BottomNavigation>
+      <Avatar layoutX="285.0" layoutY="14.0" />
+      <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="23.0" prefHeight="17.0" prefWidth="63.0">
+         <font>
+            <Font name="Cooper Black" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
