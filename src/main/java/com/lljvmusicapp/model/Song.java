@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.jfugue.theory.Note;
+
 /**
  * Represents a song with notes, tempo, genre, and other attributes.
  * Allows users to modify and play the song.
@@ -75,20 +77,30 @@ public class Song {
     }
 
     /**
-     * Starts playing the song note-by-note.
+     * Starts song using Jfugue's built in Note class
      */
-    public void startSong() {
+    public void startSong()
+    {
         isPlaying = true;
         System.out.println("Starting song: " + title);
-        for (Note note : notes) {
+
+        for (Note note : notes)
+        {
             if (!isPlaying) break;
-            note.playNote();
-            try {
+
+            System.out.println("Playing note: " + note.getToneString());
+
+            try
+            {
                 Thread.sleep(60000 / tempo.getBPM());
-            } catch (InterruptedException e) {
+            }
+            
+            catch (InterruptedException e)
+            {
                 e.printStackTrace();
             }
         }
+
         System.out.println("Song finished.");
     }
 
