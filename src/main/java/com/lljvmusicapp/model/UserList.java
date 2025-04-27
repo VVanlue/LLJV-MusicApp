@@ -19,8 +19,8 @@ import org.json.JSONTokener;
  * @author Victoria
  */
 public class UserList {
-    private ArrayList<User> users;
     private static UserList instance;
+    private ArrayList<User> users;
     private static User currentUser;
     private static final String FILE_PATH = "users.json";
 
@@ -178,7 +178,7 @@ public class UserList {
      * 
      * @return the list of users
      */
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getUsers() {
         return users;
     }
 

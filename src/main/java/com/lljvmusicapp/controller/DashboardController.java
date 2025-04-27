@@ -25,6 +25,7 @@ public class DashboardController {
     @FXML private Label welcomeLabel;
     @FXML private ListView<String> favSongsList;
     @FXML private ListView<String> lessonsList;
+    @FXML private ListView<String> completedLessonsList;
     @FXML private ListView<String> songsList;
     @FXML private Button loginRedirectButton;
 
@@ -37,20 +38,53 @@ public class DashboardController {
     public void setUser(User user) {
         if (user == null) {
             welcomeLabel.setText("Welcome, Guest!");
+            favSongsList.getItems().clear();
+            lessonsList.getItems().clear();
+            completedLessonsList.getItems().clear();
+            songsList.getItems().clear();
             favSongsList.getItems().add("Login to view favorite songs.");
         } else {
             welcomeLabel.setText("Welcome, " + user.getFirstName() + "!");
-            for (String songId : user.getFavSongs()) {
-                favSongsList.getItems().add("Song ID: " + songId);
+
+            favSongsList.getItems().clear();
+            if (user.getFavSongs() != null) {
+                for (String songId : user.getFavSongs()) {
+                    Song song = SongList.getInstance().getSongs().stream()
+                        .filter(s -> s.getId().toString().equals(songId))
+                        .findFirst()
+                        .orElse(null);
+                    if (song != null) {
+                        favSongsList.getItems().add(song.getTitle() + " - " + song.getGenre());
+                    } else {
+                        favSongsList.getItems().add("(Unknown Song)");
+                    }
+                }
             }
-        }
 
-        for (Lesson lesson : LessonList.getInstance().getLessons()) {
-            lessonsList.getItems().add(lesson.getTitle());
-        }
+            lessonsList.getItems().clear();
+            for (Lesson lesson : LessonList.getInstance().getLessons()) {
+                lessonsList.getItems().add(lesson.getTitle());
+            }
 
-        for (Song song : SongList.getInstance().getSongs()) {
-            songsList.getItems().add(song.getTitle() + " - " + song.getGenre());
+            completedLessonsList.getItems().clear();
+            if (user.getCompletedLessons() != null) {
+                for (String lessonId : user.getCompletedLessons()) {
+                    Lesson lesson = LessonList.getInstance().getLessons().stream()
+                        .filter(l -> l.getLessonId().toString().equals(lessonId))
+                        .findFirst()
+                        .orElse(null);
+                    if (lesson != null) {
+                        completedLessonsList.getItems().add(lesson.getTitle());
+                    } else {
+                        completedLessonsList.getItems().add("(Unknown Lesson)");
+                    }
+                }
+            }
+    
+            songsList.getItems().clear();
+            for (Song song : SongList.getInstance().getSongs()) {
+                songsList.getItems().add(song.getTitle() + " - " + song.getGenre());
+            }
         }
     }
 

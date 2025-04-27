@@ -14,7 +14,11 @@ public class LessonSession {
     public static void completeCurrentLesson() {
         Lesson lesson = getCurrentLesson();
         if (lesson != null) {
-            UserList.getCurrentUser().addCompletedLesson(lesson.getLessonId().toString());
+            User user = UserList.getCurrentUser();
+            if (user != null) {
+                user.addCompletedLesson(lesson.getLessonId().toString());
+                DataWriter.saveUsers();
+            }
         }
     }
 }

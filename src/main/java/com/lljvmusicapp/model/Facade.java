@@ -44,8 +44,8 @@ public class Facade {
      * 
      * @return a list of all registered users
      */
-    public static List<User> UserList() {
-        return UserList.getInstance().getAllUsers(); // ✅ FIXED: use UserList singleton
+    public List<User> UserList() {
+        return UserList.getInstance().getUsers(); // ✅ FIXED: use UserList singleton
     }
 
     /**
@@ -76,7 +76,7 @@ public class Facade {
     public static boolean UserLogin(String username, String password) {
         boolean isValid = UserList.getInstance().validUser(username, password);
         if (isValid) {
-            for (User u : UserList.getInstance().getAllUsers()) {
+            for (User u : UserList.getInstance().getUsers()) {
                 if (u.getUsername().equals(username)) {
                     user = u;
                     break;

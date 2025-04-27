@@ -2,7 +2,6 @@ package com.lljvmusicapp.model;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -23,27 +22,13 @@ public class DataWriter extends DataConstants {
      * Converts the list of users into a JSON array and writes it to the file.
      */
     public static void saveUsers() {
-        ArrayList<User> existingUsers = DataLoader.getUsers();
         UserList userList = UserList.getInstance();
-
-        for (User newUser : userList.getAllUsers()) {
-            boolean exists = false;
-            for (User oldUser : existingUsers) {
-                if (oldUser.getId().equals(newUser.getId())) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                existingUsers.add(newUser);
-            }
-        }
-        
         JSONArray jsonUsers = new JSONArray();
-        for (User user : existingUsers) {
+    
+        for (User user : userList.getUsers()) {
             jsonUsers.put(getUserJSON(user));
         }
-
+    
         try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toString(4));
             file.flush();
