@@ -124,4 +124,17 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleGoToPlayNotes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/playnotes.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 640, 480));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

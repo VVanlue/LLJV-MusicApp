@@ -1,9 +1,9 @@
 package com.lljvmusicapp.controller;
 
 import java.io.IOException;
+import java.net.URL;
 
 import org.jfugue.player.Player;
-import org.jfugue.theory.Note;
 
 import com.lljvmusicapp.App;
 import com.lljvmusicapp.model.Facade;
@@ -19,16 +19,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
-/**
- * Controller so users can play a song chosen from a list
- * 
- * @author Laurin Johnson
- * @author Victoria
- */
 public class SongController {
 
     @FXML private ListView<String> songListView;
@@ -36,26 +30,26 @@ public class SongController {
     @FXML private Button playSongButton;
     @FXML private Button stopSongButton;
     @FXML private Button returnButton;
+    @FXML private Label loadingLabel;
 
     private Song currentlyPlayingSong = null;
     private boolean isPlaying = false;
     private Player player = new Player();
+    private MediaPlayer mediaPlayer;
 
     @FXML
     public void initialize() {
         ObservableList<String> songTitles = FXCollections.observableArrayList();
 
-        for (Song song : Facade.SongList())
-        {
+        for (Song song : Facade.SongList()) {
             songTitles.add(song.getTitle());
         }
 
         songListView.setItems(songTitles);
 
         songListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newSongName) -> {
-            if (newSongName != null)
-            {
-            nowPlayingLabel.setText("Song: " + newSongName);
+            if (newSongName != null) {
+                nowPlayingLabel.setText("Song: " + newSongName);
             }
         });
     }
@@ -63,69 +57,65 @@ public class SongController {
     @FXML
     private void handlePlaySong() {
         String selectedTitle = songListView.getSelectionModel().getSelectedItem();
-        if (selectedTitle != null && !isPlaying)
-        {
+        if (selectedTitle != null) {
             currentlyPlayingSong = Facade.SongList().stream()
                 .filter(song -> song.getTitle().equalsIgnoreCase(selectedTitle))
                 .findFirst()
                 .orElse(null);
 
-            if (currentlyPlayingSong != null)
-            {
-                isPlaying = true;
-                new Thread(() -> {
-                    for (Note note : currentlyPlayingSong.getNotes())
-                    {
-                        if (!isPlaying)
-                        {
-                            break;
-                        }
-
-                        System.out.println("Playing note: " + note.getToneString());
-                        player.play(note);
-
-                        try
-                        {
-                            Thread.sleep(60000 / currentlyPlayingSong.getTempo().getBPM()); // Timing based on BPM
-                        }
-                        
-                        catch (InterruptedException e)
-                        {
-                            e.printStackTrace();
-                        }
+            if (currentlyPlayingSong != null) {
+                try {
+                    // Assuming you have a field like private MediaPlayer mediaPlayer;
+                    if (mediaPlayer != null) {
+                        mediaPlayer.stop(); // Stop previous
+                    }
+    
+                    // Songs stored under /resources/songs/ (example)
+                    String songFileName = currentlyPlayingSong.getSongFileName();
+                    URL resource = getClass().getResource("/songs/" + songFileName);
+    
+                    if (resource == null) {
+                        System.out.println("Could not find song file: " + songFileName);
+                        return;
                     }
 
-                    isPlaying = false;
-                }).start();
+                    loadingLabel.setText("Loading...");
+    
+                    Media media = new Media(resource.toString());
+                    mediaPlayer = new MediaPlayer(media);
+                    
+                    mediaPlayer.setOnReady(() -> {
+                        loadingLabel.setText(""); // Clear when ready
+                        mediaPlayer.play();
+                        nowPlayingLabel.setText("Now Playing: " + currentlyPlayingSong.getTitle());
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
-
     @FXML
-    private void handleStopSong()
-    {
-        isPlaying = false;
+    private void handleStopSong() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            nowPlayingLabel.setText("Stopped");
+        }
     }
 
     @FXML
-    private void handleReturnToDashboard(ActionEvent event)
-    {
-        isPlaying = false; // stop any playing song
-
-        try
-        {
+    private void handleReturnToDashboard(ActionEvent event) {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+        try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/dashboard.fxml"));
             Parent root = loader.load();
-
             Stage stage = (Stage) returnButton.getScene().getWindow();
-
             stage.setScene(new Scene(root));
             stage.show();
-        }
-
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

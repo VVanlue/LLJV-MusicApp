@@ -35,6 +35,7 @@ public abstract class DataConstants {
     protected static final String SONG_SHEET_MUSIC = "sheetMusic";
     protected static final String SONG_LYRICS = "lyrics";
     protected static final String SONG_NOTES = "notes";
+    protected static final String SONG_FILE = "songFileName";
     
     // Sheet Music attribute constants
     protected static final String SHEET_MUSIC_ID = "sheetid";

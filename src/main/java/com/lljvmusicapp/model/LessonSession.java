@@ -17,6 +17,7 @@ public class LessonSession {
             User user = UserList.getCurrentUser();
             if (user != null) {
                 user.addCompletedLesson(lesson.getLessonId().toString());
+                UserList.getCurrentUser().addCompletedLesson(currentLesson.getLessonId().toString());
                 DataWriter.saveUsers();
             }
         }

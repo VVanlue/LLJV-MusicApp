@@ -29,11 +29,12 @@ public class Song {
     private boolean isPrivate;
     private boolean isPlaying = false;
     private Metronome metronome;
+    private String songFileName;
 
     /**
      * Constructs a Song and initializes attributes.
      */
-    public Song(UUID id, String title, int tempo, String publisher, String lyrics, String level, String genre) {
+    public Song(UUID id, String title, int tempo, String publisher, String lyrics, String level, String genre, String songFileName) {
         this.id = UUID.randomUUID();
         this.notes = new ArrayList<>();
         this.sheetMusic = new HashMap<>();
@@ -43,9 +44,9 @@ public class Song {
         this.lyrics = lyrics;
         this.difficulty = level;
         this.publisher = publisher;
-        this.filePath = filePath;
         this.tempo = new Tempo(tempo);
         this.metronome = new Metronome(tempo);
+        this.songFileName = songFileName;
     }
 
     /**
@@ -64,6 +65,10 @@ public class Song {
      */
     public Tempo getTempo() {
         return tempo;
+    }
+
+    public String getSongFileName() {
+        return songFileName;
     }
 
     /**
@@ -217,6 +222,14 @@ public class Song {
      */
     public String getPublisher() { 
         return publisher; 
+    }
+
+    /**
+     * Gets the level of the song.
+     * @return the level
+     */
+    public String getDifficulty() { 
+        return difficulty; 
     }
 
     /**

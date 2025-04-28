@@ -36,7 +36,8 @@
 
     <HBox spacing="20" alignment="CENTER">
         <Button text="Start Lesson Quiz" onAction="#handleStartLessonQuiz" style="-fx-pref-width: 200;"/>
-        <Button text="Play Notes" onAction="#handleGoToSongScreen" style="-fx-pref-width: 200;"/>
+        <Button text="Play Notes" onAction="#handleGoToPlayNotes"/>
+        <Button text="Listen to Songs" onAction="#handleGoToSongScreen" style="-fx-pref-width: 200;"/>
         <Button text="Return to Login" onAction="#handleReturnToLogin" style="-fx-pref-width: 200;"/>
     </HBox>
 

@@ -6,7 +6,6 @@ C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\m
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\DifficultyLevel.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\App.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\MusicPlaying.java
-C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\Note.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\LessonSession.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\MusicAppDriver.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\SheetMusic.java
@@ -34,8 +33,10 @@ C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\m
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\controller\LessonController.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\Tempo.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\SheetMusicFormatter.java
+C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\controller\PlayNotesController.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\Measure.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\util\SceneManager.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\controller\SongController.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\controller\DashboardController.java
 C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\model\AudioPlayer.java
+C:\Users\victo\Downloads\musicapp\LLJV-MusicApp\src\main\java\com\lljvmusicapp\controller\LessonCompletedController.java

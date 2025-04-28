@@ -112,12 +112,12 @@ public class Facade {
      * @param genre Genre of the song
      * @return the new Song object
      */
-    public static Song createSong(String title, String publisher, String genre) {
+    public static Song createSong(String title, String publisher, String genre, String songFileName) {
         UUID id = UUID.randomUUID();
         int tempo = 120;
         String lyrics = "";
         String level = "Beginner";
-        Song newSong = new Song(id, title, tempo, publisher, lyrics, level, genre);
+        Song newSong = new Song(id, title, tempo, publisher, lyrics, level, genre, songFileName);
 
         SongList.getInstance().addSong(newSong); 
         return newSong;

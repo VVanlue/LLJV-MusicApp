@@ -3,6 +3,7 @@ module com.lljvmusicapp {
     requires org.json;
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
     requires junit;
     requires jfugue;
 

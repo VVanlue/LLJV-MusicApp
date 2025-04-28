@@ -86,6 +86,7 @@ public class DataLoader extends DataConstants {
                 String lyrics = (String) songJSON.get("lyrics");
                 String genre = (String) songJSON.get("genre");
                 String level = (String) songJSON.get("level");
+                String songFileName = (String) songJSON.get("songFileName");
 
                 int tempo = 0;
                 Object tempoObj = songJSON.get("tempo");
@@ -97,7 +98,7 @@ public class DataLoader extends DataConstants {
 
                 Map<String, String> sheetMusic = new HashMap<>();
 
-                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre);
+                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre, songFileName);
                 songs.add(song);
             }
         } catch (Exception e) {

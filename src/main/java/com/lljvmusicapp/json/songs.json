@@ -6,7 +6,8 @@
         "publisher": "LLJV original",
         "lyrics": "",
         "level": "EASY",
-        "genre": "KIDS"
+        "genre": "KIDS",
+        "songFileName": "twinkle.mp3"
     },
     {
         "uuid": "8bd6ce57-10e6-484c-a3f2-329356a60309",
@@ -15,7 +16,8 @@
         "publisher": "LLJV original",
         "lyrics": "",
         "level": "MEDIUM",
-        "genre": "SOUL"
+        "genre": "SOUL",
+        "songFileName": "twinkle.mp3"
     },
     {
         "uuid": "ac0af3a0-b83d-4a52-9df4-86542eeac560",
@@ -24,7 +26,8 @@
         "publisher": "LLJV original",
         "lyrics": "",
         "level": "MEDIUM",
-        "genre": "ROCK"
+        "genre": "ROCK",
+        "songFileName": "twinkle.mp3"
     },
     {
         "uuid": "0923293a-a119-4823-8c24-ef9d26ccbcdc",
@@ -33,7 +36,8 @@
         "publisher": "LLJV original",
         "lyrics": "",
         "level": "EASY",
-        "genre": "POP"
+        "genre": "POP",
+        "songFileName": "twinkle.mp3"
     },
     {
         "uuid": "f9f25818-efc1-4597-9fd1-c160237b0b25",
@@ -42,7 +46,8 @@
         "publisher": "LLJV original",
         "lyrics": "",
         "level": "MEDIUM",
-        "genre": "JAZZ"
+        "genre": "JAZZ",
+        "songFileName": "twinkle.mp3"
     },
     {
         "uuid": "c0318c62-f807-47cf-98c8-8ab26335b714",
@@ -51,6 +56,7 @@
         "publisher": "LLJV original",
         "lyrics": "",
         "level": "HARD",
-        "genre": "CLASSICAL"
+        "genre": "CLASSICAL",
+        "songFileName": "twinkle.mp3"
     }
 ]

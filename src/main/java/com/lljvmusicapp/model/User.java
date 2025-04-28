@@ -84,6 +84,13 @@ public class User {
         return users;
     }
 
+    public void addPublishedSong(String songId) {
+        if (this.pubSongs == null) {
+            this.pubSongs = new ArrayList<>();
+        }
+        this.pubSongs.add(songId);
+    }
+
     /**
      * Starts a lesson.
      * @param lesson The MiniLesson object
