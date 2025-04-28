@@ -8,6 +8,7 @@ import org.jfugue.theory.Note;
 import com.lljvmusicapp.App;
 import com.lljvmusicapp.model.Facade;
 import com.lljvmusicapp.model.Song;
+import com.lljvmusicapp.util.SceneManager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -111,22 +112,8 @@ public class SongController {
     @FXML
     private void handleReturnToDashboard(ActionEvent event)
     {
-        isPlaying = false; // stop any playing song
-
-        try
-        {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("/dashboard.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) returnButton.getScene().getWindow();
-
-            stage.setScene(new Scene(root));
-            stage.show();
-        }
-
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+        isPlaying = false;
+        SceneManager.loadDashboardScene(event);
     }
+
 }

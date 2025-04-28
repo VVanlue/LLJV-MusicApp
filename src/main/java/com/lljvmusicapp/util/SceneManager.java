@@ -3,6 +3,7 @@ package com.lljvmusicapp.util;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -50,4 +51,28 @@ public class SceneManager {
     public static void loadLessonCompletedScene(ActionEvent event) {
         loadScene(event, "/lessonCompleted.fxml");
     }
+
+    @FXML
+    private void handleStartLessonQuiz(ActionEvent event)
+    {
+        SceneManager.loadQuizScene(event);
+    }
+
+    @FXML
+    private void handleGoToSongScreen(ActionEvent event)
+    {
+        SceneManager.loadScene(event, "/song.fxml");
+    }
+
+    @FXML
+    private void handleReturnToLogin(ActionEvent event)
+    {
+        SceneManager.loadScene(event, "/login.fxml");
+    }
+
+    public static void loadLessonScene(ActionEvent event)
+    {
+        loadScene(event, "/lesson.fxml");
+    }
+    
 }

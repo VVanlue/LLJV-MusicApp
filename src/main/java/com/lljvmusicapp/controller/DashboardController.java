@@ -2,13 +2,16 @@ package com.lljvmusicapp.controller;
 
 import java.io.IOException;
 
+import com.lljvmusicapp.model.Facade;
 import com.lljvmusicapp.model.Lesson;
 import com.lljvmusicapp.model.LessonList;
 import com.lljvmusicapp.model.Song;
 import com.lljvmusicapp.model.SongList;
 import com.lljvmusicapp.model.User;
 import com.lljvmusicapp.model.UserList;
+import com.lljvmusicapp.util.SceneManager;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,10 +33,15 @@ public class DashboardController {
     @FXML private Button loginRedirectButton;
 
     @FXML
-    public void initialize() {
-        User currentUser = UserList.getCurrentUser();
-        setUser(currentUser);
+    public void initialize()
+    {
+        welcomeLabel.setText("Welcome, " + Facade.getCurrentUser().getUsername());
+        favSongsList.setItems(FXCollections.observableArrayList(Facade.getCurrentUser().getFavSongs()));
+        completedLessonsList.setItems(FXCollections.observableArrayList(Facade.getCurrentUser().getCompletedLessons()));
+        lessonsList.setItems(FXCollections.observableArrayList(Facade.getLessonList().getLessons().stream().map(lesson -> lesson.getTitle()).toList()));
+        songsList.setItems(FXCollections.observableArrayList(Facade.SongList().stream().map(song -> song.getTitle()).toList()));
     }
+
 
     public void setUser(User user) {
         if (user == null) {
@@ -101,16 +109,11 @@ public class DashboardController {
     }
 
     @FXML
-    private void handleStartLessonQuiz() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lesson.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-            stage.setScene(new Scene(root, 640, 480));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void handleStartLessonQuiz(ActionEvent event)
+    {
+        SceneManager.loadLessonScene(event);
     }
+
 
     @FXML
     private void handleGoToSongScreen(ActionEvent event) {
