@@ -4,56 +4,56 @@
         "tempo": 120,
         "instrument": "",
         "title": "Twinkle Twinkle Little Star",
-        "uuid": "85dd0bee-9052-49e2-9f74-9ff45a303925",
-        "songFileName": "twinkle.mp3"
+        "uuid": "51e9f700-3ec9-4c3c-9857-30ef1de14361"
     },
     {
         "genre": "SOUL",
         "tempo": 120,
         "instrument": "",
         "title": "Love Ballad",
-        "uuid": "92ca3f49-ead3-470f-aa9c-89bd55f6e6c6",
-        "songFileName": "twinkle.mp3"
+        "uuid": "73a274ee-d4e4-4d4b-be47-4b23c0aa86e5"
     },
     {
         "genre": "ROCK",
         "tempo": 120,
         "instrument": "",
         "title": "We Will Rock You",
-        "uuid": "576b0a55-f8b2-4142-9fa7-a04e0e17c1b0",
-        "songFileName": "twinkle.mp3"
+        "uuid": "01e2efed-8877-4e4f-be46-90c011c23274"
     },
     {
         "genre": "POP",
         "tempo": 120,
         "instrument": "",
         "title": "Lovefool",
-        "uuid": "0770730a-0d61-4cb6-86e9-1d83d6dd6d3a",
-        "songFileName": "twinkle.mp3"
+        "uuid": "9f6da761-11e7-4ab2-ad8e-3e9bb9e3f451"
     },
     {
         "genre": "JAZZ",
         "tempo": 120,
         "instrument": "",
         "title": "What a Wonderful World",
-        "uuid": "e7a0efe7-541c-47ea-bcbc-fd25c86652e6",
-        "songFileName": "twinkle.mp3"
+        "uuid": "76239c28-6cea-48dc-99c9-785a45c47d5f"
     },
     {
         "genre": "CLASSICAL",
         "tempo": 120,
         "instrument": "",
         "title": "Clara de Lune",
-        "uuid": "34140720-82d5-4f63-b796-7dfcf90bd303",
-        "songFileName": "twinkle.mp3"
+        "uuid": "f92cf562-b02b-4f0c-aea0-5df8d778c4ec"
     },
     {
-        "difficulty": "A C D",
         "genre": "EASY",
         "tempo": 120,
         "instrument": "",
         "title": "My New Song",
-        "uuid": "854a114b-9b96-4781-8335-cf29c6e57cfd",
-        "songFileName": "twinkle.mp3"
+        "uuid": "274c269d-97ea-487e-b43b-c541add8df98"
+    },
+    {
+        "difficulty": "A B D E F A B D",
+        "genre": "EASY",
+        "tempo": 120,
+        "instrument": "",
+        "title": "ABD",
+        "uuid": "cdb68d99-5fef-4abe-9ee1-e636881fc358"
     }
 ]

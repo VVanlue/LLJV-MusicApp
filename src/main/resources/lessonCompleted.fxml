@@ -6,6 +6,7 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.lljvmusicapp.controller.LessonCompletedController"
+      stylesheets="@/styles.css"
       spacing="20" alignment="CENTER" style="-fx-padding: 30;">
 
     <Label text="Congratulations! You've completed the lesson."

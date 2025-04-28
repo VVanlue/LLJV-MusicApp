@@ -8,6 +8,7 @@
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="com.lljvmusicapp.controller.SongController"
+            stylesheets="@/styles.css"
             prefHeight="600.0" prefWidth="335.0">
    <children>
       <Button fx:id="playSongButton" layoutX="33.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Play" onAction="#handlePlaySong" />
