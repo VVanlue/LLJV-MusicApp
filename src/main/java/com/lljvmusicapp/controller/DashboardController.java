@@ -21,6 +21,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * Controls the dashboard screen, showing user information, favorite songs, lessons,
+ * and options to navigate to other parts of the application.
+ * 
+ * @author Victoria
+ */
 public class DashboardController {
 
     @FXML private Label welcomeLabel;
@@ -30,6 +36,10 @@ public class DashboardController {
     @FXML private ListView<String> songsList;
     @FXML private Button loginRedirectButton;
 
+    /**
+     * Initializes the dashboard by reloading user, song, and lesson data
+     * and setting the current user's information.
+     */
     @FXML
     public void initialize() {
         UserList.getInstance().reload();
@@ -40,7 +50,11 @@ public class DashboardController {
         setUser(currentUser);
     }
 
-
+    /**
+     * Sets the user-related data on the dashboard.
+     * 
+     * @param user The current user or null if no user is logged in.
+     */
     public void setUser(User user) {
         if (user == null) {
             welcomeLabel.setText("Welcome, Guest!");
@@ -70,17 +84,17 @@ public class DashboardController {
             }
 
             completedLessonsList.getItems().clear();
-        if (user.getCompletedLessons() != null) {
-            for (String lessonId : user.getCompletedLessons()) {
-                Lesson lesson = getLessonById(lessonId);
-                if (lesson != null) {
-                    completedLessonsList.getItems().add(lesson.getTitle());
-                } else {
-                    completedLessonsList.getItems().add("(Unknown Lesson)");
+            if (user.getCompletedLessons() != null) {
+                for (String lessonId : user.getCompletedLessons()) {
+                    Lesson lesson = getLessonById(lessonId);
+                    if (lesson != null) {
+                        completedLessonsList.getItems().add(lesson.getTitle());
+                    } else {
+                        completedLessonsList.getItems().add("(Unknown Lesson)");
+                    }
                 }
             }
-        }
-    
+
             songsList.getItems().clear();
             for (Song song : SongList.getInstance().getSongs()) {
                 songsList.getItems().add(song.getTitle() + " - " + song.getGenre());
@@ -88,6 +102,12 @@ public class DashboardController {
         }
     }
 
+    /**
+     * Finds a Lesson object by its ID.
+     * 
+     * @param lessonId The ID of the lesson to find.
+     * @return The Lesson object if found; otherwise, null.
+     */
     private Lesson getLessonById(String lessonId) {
         return LessonList.getInstance().getLessons()
             .stream()
@@ -95,7 +115,10 @@ public class DashboardController {
             .findFirst()
             .orElse(null);
     }
-    
+
+    /**
+     * Handles returning the user to the login screen.
+     */
     @FXML
     private void handleReturnToLogin() {
         try {
@@ -108,13 +131,21 @@ public class DashboardController {
         }
     }
 
+    /**
+     * Handles starting a lesson quiz when the user selects to begin.
+     * 
+     * @param event The action event triggered by the user.
+     */
     @FXML
-    private void handleStartLessonQuiz(ActionEvent event)
-    {
+    private void handleStartLessonQuiz(ActionEvent event) {
         SceneManager.loadLessonScene(event);
     }
 
-
+    /**
+     * Handles navigating to the song screen where users can play songs.
+     * 
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void handleGoToSongScreen(ActionEvent event) {
         try {
@@ -128,6 +159,11 @@ public class DashboardController {
         }
     }
 
+    /**
+     * Handles navigating to the play notes screen where users can practice notes.
+     * 
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void handleGoToPlayNotes(ActionEvent event) {
         try {

@@ -18,7 +18,9 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
 /**
- * Allows users to select a level, choose a lesson, and answer MCQ questions
+ * Allows users to select a level, choose a lesson, and answer MCQ questions.
+ * Handles lesson loading, question navigation, and user feedback.
+ * 
  * @author Victoria
  */
 public class LessonController {
@@ -33,6 +35,10 @@ public class LessonController {
     private Lesson currentLesson;
     private int currentQuestionIndex;
 
+    /**
+     * Initializes the lesson controller by setting up the difficulty selection
+     * and disabling buttons until a lesson is selected.
+     */
     @FXML
     public void initialize() {
         levelBox.getItems().addAll("EASY", "MEDIUM", "HARD");
@@ -46,6 +52,11 @@ public class LessonController {
         lessonBox.setDisable(true);
     }
 
+    /**
+     * Loads lessons based on the selected difficulty level into the lesson selection box.
+     * 
+     * @param level The selected difficulty level.
+     */
     private void loadLessonsByLevel(String level) {
         lessonBox.getItems().clear();
         List<Lesson> filtered = LessonList.getInstance().getLessons().stream()
@@ -65,6 +76,12 @@ public class LessonController {
         }
     }
 
+    /**
+     * Handles user clicking the "Continue" button after selecting a lesson.
+     * Loads the selected lesson's first question.
+     * 
+     * @param event The action event triggered by the button press.
+     */
     @FXML
     private void handleContinue(ActionEvent event) {
         String lessonTitle = lessonBox.getValue();
@@ -78,6 +95,10 @@ public class LessonController {
         }
     }
 
+    /**
+     * Loads the current question onto the screen with its answer choices.
+     * If all questions are completed, shows a completion message.
+     */
     private void loadQuestion() {
         if (currentQuestionIndex >= currentLesson.getQuestions().size()) {
             questionLabel.setText("You've completed the lesson!");
@@ -105,6 +126,12 @@ public class LessonController {
         continueButton.setOnAction(e -> handleSubmitAnswer(group));
     }
 
+    /**
+     * Handles the user submitting an answer to the current question.
+     * Provides feedback and loads the next question if correct.
+     * 
+     * @param group The ToggleGroup containing the answer choices.
+     */
     private void handleSubmitAnswer(ToggleGroup group) {
         RadioButton selected = (RadioButton) group.getSelectedToggle();
         if (selected == null) {
