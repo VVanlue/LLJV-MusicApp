@@ -12,6 +12,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controller for the quiz screen where users answer multiple choice questions
+ * from a selected lesson. Manages question loading, answer checking, and navigation.
+ * 
+ * @author Victoria
+ */
 public class QuizController {
 
     @FXML private Label questionLabel;
@@ -22,11 +28,18 @@ public class QuizController {
     private Lesson lesson;
     private int currentQuestionIndex = 0;
 
+    /**
+     * Initializes the quiz by loading the current lesson and displaying the first question.
+     */
     public void initialize() {
         lesson = LessonSession.getCurrentLesson();
         loadQuestion();
     }
 
+    /**
+     * Loads the current question and its answer choices into the view.
+     * Handles user selection and provides immediate feedback.
+     */
     private void loadQuestion() {
         Question currentQuestion = lesson.getQuestions().get(currentQuestionIndex);
         questionLabel.setText(currentQuestion.getPrompt());
@@ -51,6 +64,12 @@ public class QuizController {
         });
     }
 
+    /**
+     * Handles progressing to the next question or completing the lesson
+     * when all questions are answered.
+     * 
+     * @param e The action event triggered by pressing the next button.
+     */
     @FXML
     private void handleNextQuestion(javafx.event.ActionEvent e) {
         currentQuestionIndex++;

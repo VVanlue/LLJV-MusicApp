@@ -154,9 +154,19 @@ public class Facade {
     }
 
     // Stub methods for future development
-    public static boolean instrumentSelection() { return false; }
-    public static boolean lessonSelection() { return false; }
-    public static Song chooseSong() { return null; }
-    public static String chooseDifficulty() { return "Medium"; }
-    public static boolean postSong(Song song) { return song != null; }
+    public static boolean instrumentSelection() { 
+        return false; 
+    }
+    public static boolean lessonSelection() { 
+        return false; 
+    }
+    public static Song chooseSong() { 
+        return null; 
+    }
+    public static String chooseDifficulty() { 
+        return "Medium"; 
+    }
+    public static boolean postSong(Song song) { 
+        return song != null; 
+    }
 }

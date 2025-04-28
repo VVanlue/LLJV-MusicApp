@@ -69,7 +69,11 @@ public class DataLoader extends DataConstants {
 
         return users;
     }
-
+    /**
+     * get songs from JSON list
+     * 
+     * @return Songs
+    */
     public static ArrayList<Song> getSongs() {
         ArrayList<Song> songs = new ArrayList<>();
 
@@ -117,6 +121,11 @@ public class DataLoader extends DataConstants {
         return songs;
     }
 
+    /**
+     * Gets lessons from JSON list
+     * 
+     * @return lessons
+    */
     public static ArrayList<Lesson> getLessons() {
         ArrayList<Lesson> lessons = new ArrayList<>();
 

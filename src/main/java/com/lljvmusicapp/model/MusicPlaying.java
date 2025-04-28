@@ -10,10 +10,10 @@ import javafx.scene.input.KeyEvent;
 
 /**
  * Singleton class that plays music using JFugue.
- * Handles note playback and placeholders for additional musical features.
- * Also handles user keyboard input for real-time note playing.
+ * Handles note playback, chord playback, metronome control, and 
+ * basic sheet music features. Also handles real-time keyboard input for live note playing.
  * 
- * @author Victoria
+ * Author: Victoria
  */
 public class MusicPlaying {
 
@@ -22,6 +22,11 @@ public class MusicPlaying {
     private Instrument currentInstrument;
     private Set<String> pressedNotes = new HashSet<>();
 
+    /**
+     * Returns the singleton instance of MusicPlaying.
+     * 
+     * @return the MusicPlaying instance
+     */
     public static MusicPlaying getInstance() {
         if (instance == null) {
             instance = new MusicPlaying();
@@ -29,19 +34,25 @@ public class MusicPlaying {
         return instance;
     }
 
+    /**
+     * Constructs a new MusicPlaying object with default tempo.
+     */
     public MusicPlaying() {
         this.metronome = new Metronome(120); // Default tempo
     }
 
     /**
-     * Plays a note string directly.
+     * Plays a single musical note.
      * 
-     * @param note The note to be played.
+     * @param note The note to be played
      */
     public void playNote(String note) {
         Music.playNote(note, 400); // Play note with fixed duration
     }
 
+    /**
+     * Plays all currently pressed notes together as a chord.
+     */
     private void playChord() {
         StringBuilder chord = new StringBuilder();
         for (String note : pressedNotes) {
@@ -57,10 +68,10 @@ public class MusicPlaying {
     }
 
     /**
-     * Handles user keyboard input and plays the corresponding note.
-     * Supports basic A-G keys.
+     * Handles keyboard input events and plays corresponding notes.
+     * Supports A-G key mapping, with Shift for sharps.
      * 
-     * @param keyCode The KeyCode from a KeyEvent
+     * @param event The KeyEvent from user input
      */
     public void handleKeyInput(KeyEvent event) {
         KeyCode code = event.getCode();
@@ -74,13 +85,13 @@ public class MusicPlaying {
         if (code == KeyCode.A) {
             note = shiftDown ? "A#" : "A";
         } else if (code == KeyCode.B) {
-            note = "B"; // No B# normally
+            note = "B";
         } else if (code == KeyCode.C) {
             note = shiftDown ? "C#" : "C";
         } else if (code == KeyCode.D) {
             note = shiftDown ? "D#" : "D";
         } else if (code == KeyCode.E) {
-            note = "E"; // No E# normally
+            note = "E";
         } else if (code == KeyCode.F) {
             note = shiftDown ? "F#" : "F";
         } else if (code == KeyCode.G) {
@@ -90,12 +101,10 @@ public class MusicPlaying {
         if (note != null) {
             if (keyPressed) {
                 pressedNotes.add(note);
-    
+
                 if (pressedNotes.size() > 1) {
-                    // Play as chord
                     playChord();
                 } else {
-                    // Play single note
                     playNote(note);
                 }
             } else if (keyReleased) {
@@ -104,43 +113,70 @@ public class MusicPlaying {
         }
     }
 
-    // Existing Metronome and Music Management methods
-
+    /**
+     * Starts the metronome.
+     */
     public void playMetronome() {
         if (metronome != null) {
             metronome.startMetronome();
         }
     }
 
+    /**
+     * Placeholder method for exporting sheet music.
+     */
     public void exportSheet() {
         System.out.println("Sheet music exported as PDF (placeholder).");
     }
 
+    /**
+     * Placeholder method for tracking music practice progress.
+     */
     public void trackProgress() {
         System.out.println("Tracking progress... (placeholder)");
     }
 
+    /**
+     * Placeholder method for saving music progress.
+     */
     public void saveProgress() {
         System.out.println("Progress saved. (placeholder)");
     }
 
+    /**
+     * Placeholder method for creating new sheet music.
+     */
     public void createSheetMusic() {
         System.out.println("Sheet music created. (placeholder)");
     }
 
+    /**
+     * Placeholder method for editing existing sheet music.
+     */
     public void editSheetMusic() {
         System.out.println("Editing sheet music. (placeholder)");
     }
 
+    /**
+     * Placeholder method for playing back recorded music.
+     */
     public void playBackMusic() {
         System.out.println("Playing back recorded music. (placeholder)");
     }
 
+    /**
+     * Chooses an instrument to use for playing notes.
+     * 
+     * @param instrument The Instrument object to select
+     */
     public void chooseInstrument(Instrument instrument) {
         this.currentInstrument = instrument;
         System.out.println("Instrument set to: " + instrument.getName());
     }
 
+    /**
+     * Stops music playback and stops the metronome.
+     */
     public void stop() {
         if (metronome != null) {
             metronome.stopMetronome();

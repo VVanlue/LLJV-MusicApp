@@ -23,6 +23,13 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+/**
+ * Controller for the Play Notes screen.
+ * Allows users to play notes with their keyboard, record them, and save as new songs.
+ * Also handles returning to the dashboard screen.
+ * 
+ * @author Victoria
+ */
 public class PlayNotesController {
 
     private List<String> recordedNotes = new ArrayList<>();
@@ -31,12 +38,16 @@ public class PlayNotesController {
     @FXML private Button returnButton;
     @FXML private Label currentNoteLabel;
 
+    /**
+     * Handles keyboard input for playing and recording notes.
+     * Updates the current note label when a key is pressed.
+     * 
+     * @param event The key event triggered by user input.
+     */
     @FXML
     private void handleKeyPress(KeyEvent event) {
-        // Just let MusicPlaying do the playing and pressing
         MusicPlaying.getInstance().handleKeyInput(event);
 
-        // But for displaying current note, we figure it out separately
         String note = detectNotePressed(event);
 
         if (note != null && event.getEventType() == KeyEvent.KEY_PRESSED) {
@@ -45,6 +56,12 @@ public class PlayNotesController {
         }
     }
 
+    /**
+     * Handles saving the recorded notes as a new song.
+     * Prompts the user for a song title and saves the song data.
+     * 
+     * @param event The action event triggered by pressing the save button.
+     */
     @FXML
     private void handleSaveSong(ActionEvent event) {
         if (recordedNotes.isEmpty()) {
@@ -64,7 +81,6 @@ public class PlayNotesController {
 
             String joinedNotes = String.join(" ", recordedNotes);
 
-            // Create a Song manually filling all 7 required fields
             Song newSong = new Song(
                 UUID.randomUUID(),
                 title,
@@ -72,7 +88,7 @@ public class PlayNotesController {
                 "Unknown",       // genre
                 "Piano",         // instrument
                 joinedNotes,     // song string
-                "EASY",           // difficulty
+                "EASY",          // difficulty
                 "MyNewSong.mp3"
             );
 
@@ -84,6 +100,11 @@ public class PlayNotesController {
         });
     }
 
+    /**
+     * Handles returning the user to the dashboard screen.
+     * 
+     * @param event The action event triggered by pressing the return button.
+     */
     @FXML
     private void handleReturnToDashboard(ActionEvent event) {
         try {
@@ -98,7 +119,11 @@ public class PlayNotesController {
     }
 
     /**
-     * Helper method to detect note pressed, matching MusicPlaying logic.
+     * Detects which musical note was pressed based on keyboard input.
+     * Supports shift for sharp notes.
+     * 
+     * @param event The key event triggered by user input.
+     * @return The corresponding note name, or null if no note key was pressed.
      */
     private String detectNotePressed(KeyEvent event) {
         boolean shiftDown = event.isShiftDown();

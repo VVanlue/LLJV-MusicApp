@@ -38,6 +38,10 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * Saves all songs to a JSON file
+     * 
+    */
     public static void saveSongs() {
         // Assuming you have a SongList class that manages all the songs
         ArrayList<Song> songs = SongList.getInstance().getSongs();
@@ -77,6 +81,11 @@ public class DataWriter extends DataConstants {
         return new JSONObject(userMap);
     }
 
+    /**
+     * converts a song object into a JSONObject
+     * @param song
+     * @return songDetails
+    */
     private static JSONObject getSongJSON(Song song) {
         JSONObject songDetails = new JSONObject();
         songDetails.put("uuid", song.getId().toString());

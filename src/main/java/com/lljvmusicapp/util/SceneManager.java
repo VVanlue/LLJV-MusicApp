@@ -11,14 +11,17 @@ import javafx.stage.Stage;
 
 /**
  * Utility class to manage scene transitions in the application.
+ * Provides methods to load various FXML scenes easily from controllers.
+ * 
+ * Author: Victoria
  */
 public class SceneManager {
 
     /**
      * Loads a new FXML scene.
      * 
-     * @param event the action event triggering the scene change
-     * @param fxmlPath the path to the FXML file (e.g., \"/com/lljvmusicapp/view/quiz.fxml\")
+     * @param event the ActionEvent triggering the scene change
+     * @param fxmlPath the path to the FXML file (e.g., "/com/lljvmusicapp/view/quiz.fxml")
      */
     public static void loadScene(ActionEvent event, String fxmlPath) {
         try {
@@ -32,47 +35,68 @@ public class SceneManager {
     }
 
     /**
-     * Shortcut method to load the dashboard screen.
+     * Loads the dashboard scene.
+     * 
+     * @param event the ActionEvent triggering the scene change
      */
     public static void loadDashboardScene(ActionEvent event) {
         loadScene(event, "/dashboard.fxml");
     }
 
     /**
-     * Shortcut method to load the quiz screen.
+     * Loads the quiz scene.
+     * 
+     * @param event the ActionEvent triggering the scene change
      */
     public static void loadQuizScene(ActionEvent event) {
         loadScene(event, "/quiz.fxml");
     }
 
     /**
-     * Shortcut method to load the lesson completion screen.
+     * Loads the lesson completion screen.
+     * 
+     * @param event the ActionEvent triggering the scene change
      */
     public static void loadLessonCompletedScene(ActionEvent event) {
         loadScene(event, "/lessonCompleted.fxml");
     }
 
+    /**
+     * Handles starting a lesson quiz manually.
+     * 
+     * @param event the ActionEvent triggered by a user action
+     */
     @FXML
-    private void handleStartLessonQuiz(ActionEvent event)
-    {
+    private void handleStartLessonQuiz(ActionEvent event) {
         SceneManager.loadQuizScene(event);
     }
 
+    /**
+     * Handles navigation to the song screen manually.
+     * 
+     * @param event the ActionEvent triggered by a user action
+     */
     @FXML
-    private void handleGoToSongScreen(ActionEvent event)
-    {
+    private void handleGoToSongScreen(ActionEvent event) {
         SceneManager.loadScene(event, "/song.fxml");
     }
 
+    /**
+     * Handles returning to the login screen manually.
+     * 
+     * @param event the ActionEvent triggered by a user action
+     */
     @FXML
-    private void handleReturnToLogin(ActionEvent event)
-    {
+    private void handleReturnToLogin(ActionEvent event) {
         SceneManager.loadScene(event, "/login.fxml");
     }
 
-    public static void loadLessonScene(ActionEvent event)
-    {
+    /**
+     * Loads the lesson selection scene.
+     * 
+     * @param event the ActionEvent triggering the scene change
+     */
+    public static void loadLessonScene(ActionEvent event) {
         loadScene(event, "/lesson.fxml");
     }
-    
 }

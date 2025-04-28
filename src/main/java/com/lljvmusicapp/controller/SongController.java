@@ -23,6 +23,12 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+/**
+ * Controller for the song screen where users can select and play songs.
+ * Handles song selection, playback, stopping music, and returning to the dashboard.
+ * 
+ * @author Victoria
+ */
 public class SongController {
 
     @FXML private ListView<String> songListView;
@@ -37,6 +43,10 @@ public class SongController {
     private Player player = new Player();
     private MediaPlayer mediaPlayer;
 
+    /**
+     * Initializes the song list view by loading available song titles.
+     * Sets up a listener to update the current selection label.
+     */
     @FXML
     public void initialize() {
         ObservableList<String> songTitles = FXCollections.observableArrayList();
@@ -54,6 +64,10 @@ public class SongController {
         });
     }
 
+    /**
+     * Handles playing the selected song from the list.
+     * Loads the song file and plays it through the MediaPlayer.
+     */
     @FXML
     private void handlePlaySong() {
         String selectedTitle = songListView.getSelectionModel().getSelectedItem();
@@ -65,12 +79,10 @@ public class SongController {
 
             if (currentlyPlayingSong != null) {
                 try {
-                    // Assuming you have a field like private MediaPlayer mediaPlayer;
                     if (mediaPlayer != null) {
-                        mediaPlayer.stop(); // Stop previous
+                        mediaPlayer.stop(); // Stop previous song if playing
                     }
     
-                    // Songs stored under /resources/songs/ (example)
                     String songFileName = currentlyPlayingSong.getSongFileName();
                     URL resource = getClass().getResource("/songs/" + songFileName);
     
@@ -85,7 +97,7 @@ public class SongController {
                     mediaPlayer = new MediaPlayer(media);
                     
                     mediaPlayer.setOnReady(() -> {
-                        loadingLabel.setText(""); // Clear when ready
+                        loadingLabel.setText(""); // Clear loading message
                         mediaPlayer.play();
                         nowPlayingLabel.setText("Now Playing: " + currentlyPlayingSong.getTitle());
                     });
@@ -96,6 +108,10 @@ public class SongController {
         }
     }
 
+    /**
+     * Stops the currently playing song.
+     * Updates the label to show that playback has stopped.
+     */
     @FXML
     private void handleStopSong() {
         if (mediaPlayer != null) {
@@ -104,6 +120,12 @@ public class SongController {
         }
     }
 
+    /**
+     * Handles returning the user to the dashboard screen.
+     * Stops any music that is playing before navigating.
+     * 
+     * @param event The action event triggered by clicking the return button.
+     */
     @FXML
     private void handleReturnToDashboard(ActionEvent event) {
         if (mediaPlayer != null) {
@@ -119,5 +141,4 @@ public class SongController {
             e.printStackTrace();
         }
     }
-
 }

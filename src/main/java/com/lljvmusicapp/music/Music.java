@@ -8,6 +8,12 @@ import org.jfugue.player.Player;
 public class Music {
     private static final Player player = new Player();
 
+    /**
+     * plays a note using JFugue's logic
+     * note is determined by letter
+     * @param note
+     * @param durationMs
+    */
     public static void playNote(String note, int durationMs) {
         new Thread(() -> {
             try {

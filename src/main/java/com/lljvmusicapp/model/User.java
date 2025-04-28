@@ -3,10 +3,12 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Represents a user in the system.
+ * Represents a user in the system with personal details, favorite songs,
+ * published songs, and completed lessons.
+ * Provides methods for managing user activities.
+ * 
  * @author Victoria
  */
-
 public class User {
     private UUID id;
     private String firstName;
@@ -22,6 +24,7 @@ public class User {
 
     /**
      * Default constructor for User.
+     * Initializes ID and empty lists for published and favorite songs.
      */
     private User() {
         this.id = UUID.randomUUID();
@@ -29,6 +32,11 @@ public class User {
         this.favSongs = new ArrayList<>();
     }
 
+    /**
+     * Returns the singleton instance of User.
+     * 
+     * @return the singleton User instance
+     */
     public static User getInstance() {
         if (instance == null) {
             instance = new User();
@@ -37,17 +45,20 @@ public class User {
     }
 
     /**
-     * Constructor to initialize user with details.
+     * Constructor to initialize a user with full details.
+     * 
+     * @param id User's unique identifier
+     * @param userName User's chosen username
+     * @param password User's password
      * @param firstName User's first name
      * @param lastName User's last name
-     * @param username User's chosen username
-     * @param email User's email
-     * @param password User's password
-     * @param favSongs User's favorite songs
-     * @param pubSongs User's published songs
+     * @param email User's email address
+     * @param favSongs List of user's favorite songs
+     * @param pubSongs List of user's published songs
+     * @param completedLessons List of completed lesson IDs
      */
-    public User(UUID id, String userName, String password, String firstName, String lastName, String email, ArrayList<String> favSongs, ArrayList<String> pubSongs, ArrayList<String> completedLessons)
-    {
+    public User(UUID id, String userName, String password, String firstName, String lastName, String email,
+                ArrayList<String> favSongs, ArrayList<String> pubSongs, ArrayList<String> completedLessons) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -60,30 +71,47 @@ public class User {
     }
 
     /**
-     * Publishes a song to the user's list.
-     * @param song The song to publish
+     * Publishes a song by adding it to the user's list of published songs.
+     * 
+     * @param song The ID of the song to publish
      */
     public void publishSong(String song) {
         pubSongs.add(song);
     }
 
     /**
-     * Tracks user progress (Stub function for expansion).
+     * Placeholder for tracking user progress.
+     * Currently outputs a message to the console.
      */
     public void trackProgress() {
         System.out.println(userName + " is tracking progress.");
     }
 
+    /**
+     * Gets the user's unique identifier.
+     * 
+     * @return the user's UUID
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     * Returns a list containing only this user.
+     * 
+     * @return a list of users with only this user included
+     */
     public ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
         users.add(this); 
         return users;
     }
 
+    /**
+     * Adds a song to the user's list of published songs.
+     * 
+     * @param songId the ID of the song to add
+     */
     public void addPublishedSong(String songId) {
         if (this.pubSongs == null) {
             this.pubSongs = new ArrayList<>();
@@ -92,16 +120,18 @@ public class User {
     }
 
     /**
-     * Starts a lesson.
-     * @param lesson The MiniLesson object
+     * Simulates starting a lesson by printing a message.
+     * 
+     * @param lesson The lesson being started
      */
     public void startLesson(Lesson lesson) {
         System.out.println(userName + " started lesson: " + lesson.getTitle());
     }
 
     /**
-     * Adds a completed lesson to the user's list.
-     * @param lesson the completed Lesson
+     * Adds a completed lesson ID to the user's list of completed lessons.
+     * 
+     * @param lessonId the ID of the completed lesson
      */
     public void addCompletedLesson(String lessonId) {
         if (completedLessons == null) {
@@ -110,30 +140,75 @@ public class User {
         completedLessons.add(lessonId);
     }
 
-    // Getters and Setters
+    /**
+     * Gets the user's username.
+     * 
+     * @return the username
+     */
     public String getUsername() { 
         return userName; 
     }
+
+    /**
+     * Gets the user's password.
+     * 
+     * @return the password
+     */
     public String getPassword() { 
         return password; 
     }
+
+    /**
+     * Gets the user's first name.
+     * 
+     * @return the first name
+     */
     public String getFirstName() { 
         return firstName; 
     }
+
+    /**
+     * Gets the user's last name.
+     * 
+     * @return the last name
+     */
     public String getLastName() { 
         return lastName; 
     }
+
+    /**
+     * Gets the user's email address.
+     * 
+     * @return the email
+     */
     public String getEmail() { 
-        return email;
-     }
+        return email; 
+    }
+
+    /**
+     * Gets the list of the user's favorite song IDs.
+     * 
+     * @return the list of favorite songs
+     */
     public ArrayList<String> getFavSongs() { 
         return favSongs; 
     }
+
+    /**
+     * Gets the list of the user's published song IDs.
+     * 
+     * @return the list of published songs
+     */
     public ArrayList<String> getPubSongs() { 
         return pubSongs; 
     }
+
+    /**
+     * Gets the list of completed lesson IDs.
+     * 
+     * @return the list of completed lessons
+     */
     public ArrayList<String> getCompletedLessons() {
         return completedLessons;
     }
-
 }
