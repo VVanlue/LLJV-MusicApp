@@ -136,8 +136,9 @@ public class MusicAppDriver extends Application {
         String artist = scanner.nextLine();
         System.out.print("Enter song genre: ");
         String genre = scanner.nextLine();
+        String songFileName = "MyNewSong.mp3";
 
-        Song newSong = Facade.createSong(title, artist, genre);
+        Song newSong = Facade.createSong(title, artist, genre, songFileName);
         System.out.println("Song created: " + newSong.getTitle() + " by " + newSong.getPublisher());
     }
 

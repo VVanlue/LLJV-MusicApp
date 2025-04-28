@@ -115,6 +115,19 @@ public class SongList {
         System.out.println("Songs sorted by difficulty (using tempo as proxy).");
     }
 
+    public Song findSongById(String songId) { 
+        for (Song song : songs) {
+            if (song.getId().toString().equals(songId)) { 
+                return song;
+            }
+        }
+        return null;
+    }
+
+    public void reload() {
+        songs = DataLoader.getSongs();
+    }
+
     /**
      * Returns the list of all songs.
      * 

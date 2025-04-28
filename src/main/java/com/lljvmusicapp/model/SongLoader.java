@@ -4,11 +4,10 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import org.jfugue.theory.Note;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-import org.jfugue.theory.Note;
 
 /**
  * Class responsible for reading song data
@@ -42,6 +41,7 @@ public class SongLoader extends DataConstants {
                 String lyrics = (String) songJSON.get(SONG_LYRICS);
                 String level = (String) songJSON.get(SONG_LEVEL);
                 String genre = (String) songJSON.get(SONG_GENRE);
+                String songFileName = (String) songJSON.get(SONG_FILE);
                 
                 int tempo = 0;
                 Object tempoObj = songJSON.get(SONG_TEMPO);
@@ -52,7 +52,7 @@ public class SongLoader extends DataConstants {
                 }
 
                 // Create a new Song object
-                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre);
+                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre, songFileName);
                 
                 
                 // Load sheet music if available

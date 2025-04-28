@@ -18,6 +18,10 @@ public class LessonList {
         lessons = DataLoader.getLessons();
     }
 
+    public void reload() {
+        lessons = DataLoader.getLessons();
+    }
+
     /**
      * Returns the singleton instance of LessonList.
      * @return The singleton instance of LessonList.

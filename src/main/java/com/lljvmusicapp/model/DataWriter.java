@@ -2,6 +2,7 @@ package com.lljvmusicapp.model;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -37,6 +38,23 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    public static void saveSongs() {
+        // Assuming you have a SongList class that manages all the songs
+        ArrayList<Song> songs = SongList.getInstance().getSongs();
+
+        JSONArray jsonSongs = new JSONArray();
+        for (Song song : songs) {
+            jsonSongs.put(getSongJSON(song));
+        }
+
+        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
+            file.write(jsonSongs.toString(4));
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Converts a User object into a JSONObject.
      * 
@@ -57,6 +75,17 @@ public class DataWriter extends DataConstants {
         userMap.put("completedLessons", user.getCompletedLessons());
 
         return new JSONObject(userMap);
+    }
+
+    private static JSONObject getSongJSON(Song song) {
+        JSONObject songDetails = new JSONObject();
+        songDetails.put("uuid", song.getId().toString());
+        songDetails.put("title", song.getTitle());
+        songDetails.put("tempo", song.getTempo().getBPM());
+        songDetails.put("genre", song.getGenre());
+        songDetails.put("instrument", song.getInstrument());
+        songDetails.put("difficulty", song.getDifficulty());
+        return songDetails;
     }
 
 }

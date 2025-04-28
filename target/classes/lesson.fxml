@@ -6,7 +6,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="10" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lljvmusicapp.controller.LessonController">
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.lljvmusicapp.controller.LessonController"
+      stylesheets="@/styles.css"
+      spacing="10" alignment="CENTER">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />

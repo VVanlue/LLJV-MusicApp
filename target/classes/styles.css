@@ -1,3 +1,39 @@
-/*Since this isn't going to be set up exactly like in the video from the
-professor, I'm leaving this blank for now
-Watch the "Adding a StyleSheet to a JavaFX project" video for more info*/
+/* GENERAL BACKGROUND */
+.root {
+    -fx-background-color: #e6f5e6; /* very light pastel green */
+}
+
+/* ALL LABELS (like Welcome, Song Title, etc.) */
+.label {
+    -fx-text-fill: #2d2d2d; /* dark gray for good readability */
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial";
+}
+
+/* ALL BUTTONS */
+.button {
+    -fx-background-color: #a8d5a8; /* medium light green */
+    -fx-text-fill: #1d1d1d;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* LISTVIEWS (Songs list, Lessons list, etc.) */
+.list-view {
+    -fx-background-color: #cce5cc;
+    -fx-border-color: #99cc99;
+    -fx-border-radius: 8px;
+}
+
+/* CENTER EVERYTHING */
+.anchor-pane {
+    -fx-alignment: center;
+}
+
+/* OPTIONAL - make highlighted selected items in lists green */
+.list-cell:filled:selected, .list-cell:filled:selected:focused {
+    -fx-background-color: #99cc99;
+    -fx-text-fill: black;
+}

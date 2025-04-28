@@ -6,21 +6,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" prefHeight="382.0" prefWidth="335.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lljvmusicapp.controller.SongController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="com.lljvmusicapp.controller.SongController"
+            stylesheets="@/styles.css"
+            prefHeight="600.0" prefWidth="335.0">
    <children>
-      <Button fx:id="playButton" layoutX="26.0" layoutY="320.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Play" />
-      <Button fx:id="stopPlayingButton" layoutX="133.0" layoutY="320.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Stop" />
-      <Button fx:id="dashboardReturn" layoutX="239.0" layoutY="320.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Dashboard">
+      <Button fx:id="playSongButton" layoutX="33.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Play" onAction="#handlePlaySong" />
+      <Button fx:id="stopSongButton" layoutX="133.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Stop" onAction="#handleStopSong" />
+      <Button fx:id="returnButton" layoutX="233.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Dashboard" onAction="#handleReturnToDashboard" >
          <font>
             <Font size="11.0" />
          </font>
       </Button>
+<<<<<<< HEAD
+      <ListView fx:id="songListView" layoutX="68.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="loadingLabel" text="" layoutX="100" layoutY="470" />
+      <Label fx:id="nowPlayingLabel" layoutX="61.0" layoutY="214.0" prefHeight="76.0" prefWidth="213.0"
+             textAlignment="CENTER" underline="true" wrapText="true">
+=======
       <ListView fx:id="songListView" layoutX="68.0" layoutY="14.0" prefHeight="168.0" prefWidth="200.0" />
       <Label fx:id="chosenSongLabel" layoutX="61.0" layoutY="214.0" prefHeight="76.0" prefWidth="213.0" textAlignment="CENTER" underline="true" wrapText="true">
+>>>>>>> a3c098e75729b4d14bc9366502427a1a638429b0
          <font>
             <Font name="Arial Black" size="25.0" />
          </font>
       </Label>
    </children>
-
 </AnchorPane>

@@ -1,46 +1,46 @@
 [
     {
-        "uuid": "6d4be344-67f3-4dbf-98c7-6addb0ec9d0a",
-        "username": "2Litty",
-        "password": "heyo",
         "firstName": "Chris",
         "lastName": "Clemons",
+        "password": "heyo",
+        "completedLessons": ["a2957de3-5a38-4c64-928f-91dffdc8daa6"],
+        "favSongs": ["Twinkle Twinkle Little Star"],
+        "uuid": "6d4be344-67f3-4dbf-98c7-6addb0ec9d0a",
         "email": "goclemons@hotmail.com",
-        "favSongs": ["8bd6ce57-10e6-484c-a3f2-329356a60309"],
         "publishedSongs": [],
-        "completedLessons": []
+        "username": "2Litty"
     },
     {
-        "uuid": "69caaa8e-a179-4a08-9a80-8c82f19d8bba",
-        "username": "CodeSong",
-        "password": "heyodd",
         "firstName": "Vicki",
         "lastName": "Van",
-        "email": "yesbro@gmail.com",
+        "password": "heyodd",
+        "completedLessons": [],
         "favSongs": ["c0318c62-f807-47cf-98c8-8ab26335b714"],
+        "uuid": "69caaa8e-a179-4a08-9a80-8c82f19d8bba",
+        "email": "yesbro@gmail.com",
         "publishedSongs": ["0923293a-a119-4823-8c24-ef9d26ccbcdc"],
-        "completedLessons": []
+        "username": "CodeSong"
     },
     {
-        "uuid": "4731ba77-8d68-4a85-a24f-fa355b6252a6",
-        "username": "gourdtee",
-        "password": "heyoman",
         "firstName": "James",
         "lastName": "Bard",
-        "email": "jamesb@hotmail.com",
+        "password": "heyoman",
+        "completedLessons": [],
         "favSongs": ["f9f25818-efc1-4597-9fd1-c160237b0b25"],
+        "uuid": "4731ba77-8d68-4a85-a24f-fa355b6252a6",
+        "email": "jamesb@hotmail.com",
         "publishedSongs": [],
-        "completedLessons": []
+        "username": "gourdtee"
     },
     {
-        "uuid": "617f490d-1da7-401e-b7cd-b57b4584ca65",
-        "username": "JayBoi",
-        "password": "Pass123",
         "firstName": "Jay",
         "lastName": "Smith",
-        "email": "Jay@email.com",
+        "password": "Pass123",
+        "completedLessons": [],
         "favSongs": [],
+        "uuid": "617f490d-1da7-401e-b7cd-b57b4584ca65",
+        "email": "Jay@email.com",
         "publishedSongs": [],
-        "completedLessons": []
+        "username": "JayBoi"
     }
 ]

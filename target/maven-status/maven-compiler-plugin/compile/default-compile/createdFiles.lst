@@ -2,7 +2,6 @@ com\lljvmusicapp\model\DataConstants.class
 com\lljvmusicapp\model\Song.class
 com\lljvmusicapp\controller\QuizController.class
 com\lljvmusicapp\model\Genre.class
-com\lljvmusicapp\model\Note$NoteName.class
 com\lljvmusicapp\model\Student.class
 com\lljvmusicapp\model\SheetMusic.class
 com\lljvmusicapp\model\Metronome.class
@@ -12,7 +11,9 @@ com\lljvmusicapp\model\UserList.class
 com\lljvmusicapp\model\MusicAppDriver.class
 com\lljvmusicapp\model\SongLoader.class
 com\lljvmusicapp\model\User.class
+com\lljvmusicapp\controller\LessonCompletedController.class
 com\lljvmusicapp\controller\LessonController.class
+com\lljvmusicapp\controller\PlayNotesController.class
 com\lljvmusicapp\controller\LoginController.class
 com\lljvmusicapp\model\Metronome$1.class
 com\lljvmusicapp\model\SheetMusicFormatter.class
@@ -38,8 +39,7 @@ com\lljvmusicapp\model\DashboardScreen.class
 com\lljvmusicapp\model\Measure.class
 com\lljvmusicapp\model\AudioPlayer.class
 com\lljvmusicapp\model\Instrument.class
-com\lljvmusicapp\model\Note$NoteType.class
 com\lljvmusicapp\model\LessonList.class
-com\lljvmusicapp\model\Note.class
 com\lljvmusicapp\model\Piano.class
+com\lljvmusicapp\controller\PlayNotesController$1.class
 com\lljvmusicapp\model\DataLoader.class

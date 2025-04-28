@@ -91,6 +91,12 @@
 <id>default-cli</id>
 <configuration>
 <mainClass>com.lljvmusicapp.App</mainClass>
+<modules>
+      <module>javafx.controls</module>
+      <module>javafx.fxml</module>
+      <module>javafx.graphics</module>
+      <module>javafx.media</module>
+</modules>
 </configuration>
 </execution>
 </executions>

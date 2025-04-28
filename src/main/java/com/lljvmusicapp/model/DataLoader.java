@@ -86,18 +86,28 @@ public class DataLoader extends DataConstants {
                 String lyrics = (String) songJSON.get("lyrics");
                 String genre = (String) songJSON.get("genre");
                 String level = (String) songJSON.get("level");
+                String songFileName = (String) songJSON.get("songFileName");
 
-                int tempo = 0;
-                Object tempoObj = songJSON.get("tempo");
-                if (tempoObj instanceof Long) {
-                    tempo = ((Long) tempoObj).intValue();
-                } else if (tempoObj instanceof String) {
-                    tempo = Integer.parseInt((String) tempoObj);
+                int tempo;
+                try {
+                    Object tempoObj = songJSON.get("tempo");
+
+                    if (tempoObj instanceof Long) {
+                        tempo = ((Long) tempoObj).intValue();
+                    } else if (tempoObj instanceof String) {
+                        tempo = Integer.parseInt((String) tempoObj);
+                    } else {
+                        System.out.println("⚠️ Unknown tempo format detected. Defaulting to 120 BPM.");
+                        tempo = 120;
+                    }
+                } catch (Exception e) {
+                    System.out.println("⚠️ Failed to parse tempo. Defaulting to 120 BPM.");
+                    tempo = 120;
                 }
 
                 Map<String, String> sheetMusic = new HashMap<>();
 
-                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre);
+                Song song = new Song(id, title, tempo, publisher, lyrics, level, genre, songFileName);
                 songs.add(song);
             }
         } catch (Exception e) {
