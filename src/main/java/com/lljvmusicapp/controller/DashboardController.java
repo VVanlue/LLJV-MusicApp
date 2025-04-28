@@ -8,6 +8,7 @@ import com.lljvmusicapp.model.Song;
 import com.lljvmusicapp.model.SongList;
 import com.lljvmusicapp.model.User;
 import com.lljvmusicapp.model.UserList;
+import com.lljvmusicapp.util.SceneManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,6 +39,7 @@ public class DashboardController {
         User currentUser = UserList.getCurrentUser();
         setUser(currentUser);
     }
+
 
     public void setUser(User user) {
         if (user == null) {
@@ -107,16 +109,11 @@ public class DashboardController {
     }
 
     @FXML
-    private void handleStartLessonQuiz() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lesson.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-            stage.setScene(new Scene(root, 640, 480));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void handleStartLessonQuiz(ActionEvent event)
+    {
+        SceneManager.loadLessonScene(event);
     }
+
 
     @FXML
     private void handleGoToSongScreen(ActionEvent event) {
