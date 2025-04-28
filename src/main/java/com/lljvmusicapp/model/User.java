@@ -7,7 +7,7 @@ import java.util.UUID;
  * published songs, and completed lessons.
  * Provides methods for managing user activities.
  * 
- * Author: Victoria
+ * @author Victoria
  */
 public class User {
     private UUID id;

@@ -10,8 +10,9 @@ import org.jfugue.theory.Note;
 
 /**
  * Represents a song with notes, tempo, genre, and other attributes.
- * Allows users to modify and play the song.
- * @author Victoria
+ * Allows users to modify, play, and view the song details.
+ * 
+ * Author: Victoria
  */
 public class Song {
     private ArrayList<Note> notes;
@@ -33,6 +34,15 @@ public class Song {
 
     /**
      * Constructs a Song and initializes attributes.
+     * 
+     * @param id the unique identifier for the song
+     * @param title the title of the song
+     * @param tempo the tempo in beats per minute
+     * @param publisher the publisher of the song
+     * @param lyrics the lyrics of the song
+     * @param level the difficulty level
+     * @param genre the genre of the song
+     * @param songFileName the filename of the song file
      */
     public Song(UUID id, String title, int tempo, String publisher, String lyrics, String level, String genre, String songFileName) {
         this.id = UUID.randomUUID();
@@ -67,12 +77,17 @@ public class Song {
         return tempo;
     }
 
+    /**
+     * Gets the filename associated with the song.
+     * 
+     * @return the song file name
+     */
     public String getSongFileName() {
         return songFileName;
     }
 
     /**
-     * Jumps forward in the song by skipping 1 note (simulated).
+     * Jumps forward in the song by removing the first note.
      */
     public void jumpForward() {
         if (!notes.isEmpty()) {
@@ -82,26 +97,20 @@ public class Song {
     }
 
     /**
-     * Starts song using Jfugue's built in Note class
+     * Starts playing the song by iterating through notes.
      */
-    public void startSong()
-    {
+    public void startSong() {
         isPlaying = true;
         System.out.println("Starting song: " + title);
 
-        for (Note note : notes)
-        {
+        for (Note note : notes) {
             if (!isPlaying) break;
 
             System.out.println("Playing note: " + note.getToneString());
 
-            try
-            {
+            try {
                 Thread.sleep(60000 / tempo.getBPM());
-            }
-            
-            catch (InterruptedException e)
-            {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -110,7 +119,7 @@ public class Song {
     }
 
     /**
-     * Pauses the song.
+     * Pauses the currently playing song.
      */
     public void pauseSong() {
         isPlaying = false;
@@ -118,7 +127,7 @@ public class Song {
     }
 
     /**
-     * Ends the song.
+     * Ends the song playback.
      */
     public void endSong() {
         isPlaying = false;
@@ -126,7 +135,7 @@ public class Song {
     }
 
     /**
-     * Plays the metronome.
+     * Starts playing the metronome.
      */
     public void playMetronome() {
         if (metronome != null) {
@@ -135,7 +144,7 @@ public class Song {
     }
 
     /**
-     * Pauses the metronome.
+     * Stops the metronome.
      */
     public void pauseMetronome() {
         if (metronome != null) {
@@ -144,32 +153,44 @@ public class Song {
     }
 
     /**
-     * Chooses a chord to play.
-     * @param chord the chord to play
+     * Chooses a chord to play (for future features).
+     * 
+     * @param chord the name of the chord to select
      */
     public void chooseChord(String chord) {
         System.out.println("Selected chord: " + chord);
     }
 
+    /**
+     * Gets the song's unique identifier.
+     * 
+     * @return the UUID of the song
+     */
     public UUID getId() {
         return id;
     }
 
     /**
-     * Adds a note to the song.
+     * Adds a note to the song's list of notes.
      * 
-     * @param note the note to add
+     * @param note the Note object to add
      */
     public void addNote(Note note) {
         this.notes.add(note);
     }
 
+    /**
+     * Adds a sheet music part with its corresponding notation.
+     * 
+     * @param part the part name (e.g., "Chorus", "Verse")
+     * @param notation the musical notation
+     */
     public void addSheetMusic(String part, String notation) {
-        sheetMusic.put(part, notation); 
+        sheetMusic.put(part, notation);
     }
 
     /**
-     * Removes the last note from the song.
+     * Removes the last note from the song's note list.
      */
     public void removeNote() {
         if (!notes.isEmpty()) {
@@ -179,7 +200,7 @@ public class Song {
     }
 
     /**
-     * Displays song details.
+     * Displays the song's basic details in the console.
      */
     public void viewSong() {
         System.out.println("Song Title: " + title);
@@ -193,24 +214,26 @@ public class Song {
 
     /**
      * Gets the title of the song.
-     * @return the title
+     * 
+     * @return the song title
      */
-    public String getTitle() { 
-        return title; 
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * Gets the instrument used in the song.
+     * Gets the instrument assigned to the song.
+     * 
      * @return the instrument
      */
-    public String getInstrument() { 
-        return instrument; 
+    public String getInstrument() {
+        return instrument;
     }
 
     /**
-     * Returns the genre of the song.
+     * Gets the genre of the song.
      * 
-     * @return a String representing the song's genre
+     * @return the genre
      */
     public String getGenre() {
         return genre;
@@ -218,46 +241,63 @@ public class Song {
 
     /**
      * Gets the publisher of the song.
+     * 
      * @return the publisher
      */
-    public String getPublisher() { 
-        return publisher; 
+    public String getPublisher() {
+        return publisher;
     }
 
     /**
-     * Gets the level of the song.
-     * @return the level
+     * Gets the difficulty level of the song.
+     * 
+     * @return the difficulty
      */
-    public String getDifficulty() { 
-        return difficulty; 
+    public String getDifficulty() {
+        return difficulty;
     }
 
     /**
-    * Gets the lyrics of the song.
-    * 
-    * @return The lyrics of the song.
-    */
+     * Gets the lyrics of the song.
+     * 
+     * @return the lyrics
+     */
     public String getLyrics() {
         return lyrics;
     }
 
     /**
-     * Gets the sheet music parts of the song.
+     * Gets the sheet music associated with the song.
      * 
-     * @return A map of sheet music sections.
+     * @return a map of sheet music parts and their notations
      */
     public Map<String, String> getSheetMusic() {
         return sheetMusic;
     }
 
+    /**
+     * Sets the song's privacy status.
+     * 
+     * @param isPrivate true if the song should be private
+     */
     public void setPrivate(boolean isPrivate) {
         this.isPrivate = isPrivate;
     }
 
+    /**
+     * Gets the list of notes in the song.
+     * 
+     * @return a list of notes
+     */
     public List<Note> getNotes() {
         return notes;
     }
 
+    /**
+     * Sets the song's list of notes.
+     * 
+     * @param notes the new list of notes
+     */
     public void setNotes(List<Note> notes) {
         this.notes = new ArrayList<>(notes);
     }

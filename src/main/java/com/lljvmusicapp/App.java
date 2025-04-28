@@ -15,7 +15,10 @@ import javafx.stage.Stage;
 public class App extends Application {
 
     private static Scene scene;
-
+    
+    /**
+     * Starts the application with styles.css that is light green and round
+    */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 900, 600);
@@ -28,6 +31,11 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Sets the resources folder for finding files
+     * @param fxml
+     * @throws IOException
+    */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
 
@@ -41,6 +49,9 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    /**
+     * For running the program
+    */
     public static void main(String[] args) {
         launch(args);
     }

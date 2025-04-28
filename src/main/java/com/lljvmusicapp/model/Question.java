@@ -96,6 +96,10 @@ public class Question {
         return correctAnswer != null && correctAnswer.equals(answer);
     }
 
+    /**
+     * Converts questions to a string for printing
+     * @return the question, propmt, options, and right answer
+     **/
     @Override
     public String toString() {
         return "Question{" +

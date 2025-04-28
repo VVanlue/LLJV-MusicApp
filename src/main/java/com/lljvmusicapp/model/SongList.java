@@ -115,6 +115,12 @@ public class SongList {
         System.out.println("Songs sorted by difficulty (using tempo as proxy).");
     }
 
+    /**
+     * searches through song list to find a song based on it's ID
+     * helps with matching song names to their IDs
+     * @param songId
+     * @return
+     */
     public Song findSongById(String songId) { 
         for (Song song : songs) {
             if (song.getId().toString().equals(songId)) { 
@@ -124,6 +130,15 @@ public class SongList {
         return null;
     }
 
+    /*
+     *
+     * Reloads songs for dataloader to refresh lists
+     * so that new changes such as:
+     * published song
+     * completed lesson
+     * etc.
+     * show up in the dashboard
+     */
     public void reload() {
         songs = DataLoader.getSongs();
     }

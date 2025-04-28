@@ -133,10 +133,20 @@ public class UserList {
         return users;
     }
 
+    /**
+     * Sets current user so that
+     * dashboard can recognize who is on the app based
+     * on the login
+    */
     public static void setCurrentUser(User user) {
         currentUser = user;
     }
     
+    /**
+     * Gets current user
+     * finds out who is the person currently using the app based on the login
+     * @return
+    */
     public static User getCurrentUser() {
         return currentUser;
     }
