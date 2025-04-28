@@ -104,19 +104,34 @@ public class User {
      * @param lesson the completed Lesson
      */
     public void addCompletedLesson(String lessonId) {
-        if (!completedLessons.contains(lessonId)) {
-            completedLessons.add(lessonId);
+        if (completedLessons == null) {
+            completedLessons = new ArrayList<>();
         }
+        completedLessons.add(lessonId);
     }
 
     // Getters and Setters
-    public String getUsername() { return userName; }
-    public String getPassword() { return password; }
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
-    public String getEmail() { return email; }
-    public ArrayList<String> getFavSongs() { return favSongs; }
-    public ArrayList<String> getPubSongs() { return pubSongs; }
+    public String getUsername() { 
+        return userName; 
+    }
+    public String getPassword() { 
+        return password; 
+    }
+    public String getFirstName() { 
+        return firstName; 
+    }
+    public String getLastName() { 
+        return lastName; 
+    }
+    public String getEmail() { 
+        return email;
+     }
+    public ArrayList<String> getFavSongs() { 
+        return favSongs; 
+    }
+    public ArrayList<String> getPubSongs() { 
+        return pubSongs; 
+    }
     public ArrayList<String> getCompletedLessons() {
         return completedLessons;
     }

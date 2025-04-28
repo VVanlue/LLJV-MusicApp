@@ -31,6 +31,10 @@ public class DashboardController {
 
     @FXML
     public void initialize() {
+        UserList.getInstance().reload();
+        SongList.getInstance().reload();
+        LessonList.getInstance().reload();
+
         User currentUser = UserList.getCurrentUser();
         setUser(currentUser);
     }
@@ -49,10 +53,7 @@ public class DashboardController {
             favSongsList.getItems().clear();
             if (user.getFavSongs() != null) {
                 for (String songId : user.getFavSongs()) {
-                    Song song = SongList.getInstance().getSongs().stream()
-                        .filter(s -> s.getId().toString().equals(songId))
-                        .findFirst()
-                        .orElse(null);
+                    Song song = SongList.getInstance().findSongById(songId);
                     if (song != null) {
                         favSongsList.getItems().add(song.getTitle() + " - " + song.getGenre());
                     } else {
@@ -67,19 +68,16 @@ public class DashboardController {
             }
 
             completedLessonsList.getItems().clear();
-            if (user.getCompletedLessons() != null) {
-                for (String lessonId : user.getCompletedLessons()) {
-                    Lesson lesson = LessonList.getInstance().getLessons().stream()
-                        .filter(l -> l.getLessonId().toString().equals(lessonId))
-                        .findFirst()
-                        .orElse(null);
-                    if (lesson != null) {
-                        completedLessonsList.getItems().add(lesson.getTitle());
-                    } else {
-                        completedLessonsList.getItems().add("(Unknown Lesson)");
-                    }
+        if (user.getCompletedLessons() != null) {
+            for (String lessonId : user.getCompletedLessons()) {
+                Lesson lesson = getLessonById(lessonId);
+                if (lesson != null) {
+                    completedLessonsList.getItems().add(lesson.getTitle());
+                } else {
+                    completedLessonsList.getItems().add("(Unknown Lesson)");
                 }
             }
+        }
     
             songsList.getItems().clear();
             for (Song song : SongList.getInstance().getSongs()) {
@@ -88,6 +86,14 @@ public class DashboardController {
         }
     }
 
+    private Lesson getLessonById(String lessonId) {
+        return LessonList.getInstance().getLessons()
+            .stream()
+            .filter(lesson -> lesson.getLessonId().toString().equals(lessonId))
+            .findFirst()
+            .orElse(null);
+    }
+    
     @FXML
     private void handleReturnToLogin() {
         try {

@@ -12,13 +12,13 @@
             prefHeight="600.0" prefWidth="335.0">
 
    <children>
-      <Button fx:id="saveButton" layoutX="90.0" layoutY="450.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" text="Save Recording" onAction="#handleSaveSong"/>
+      <Button fx:id="saveButton" layoutX="90.0" layoutY="450.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" text="Save Recording" onAction="#handleSaveSong">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
 
-      <Button fx:id="returnButton" layoutX="90.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" text="Dashboard" onAction="#handleReturnToDashboard"/>
+      <Button fx:id="returnButton" layoutX="90.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" text="Dashboard" onAction="#handleReturnToDashboard">
          <font>
             <Font size="14.0" />
          </font>

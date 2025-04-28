@@ -81,7 +81,7 @@ public class DataWriter extends DataConstants {
         JSONObject songDetails = new JSONObject();
         songDetails.put("uuid", song.getId().toString());
         songDetails.put("title", song.getTitle());
-        songDetails.put("tempo", song.getTempo());
+        songDetails.put("tempo", song.getTempo().getBPM());
         songDetails.put("genre", song.getGenre());
         songDetails.put("instrument", song.getInstrument());
         songDetails.put("difficulty", song.getDifficulty());

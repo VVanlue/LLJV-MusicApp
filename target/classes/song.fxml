@@ -12,7 +12,7 @@
    <children>
       <Button fx:id="playSongButton" layoutX="33.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Play" onAction="#handlePlaySong" />
       <Button fx:id="stopSongButton" layoutX="133.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Stop" onAction="#handleStopSong" />
-      <Button fx:id="returnButton" layoutX="233.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Dashboard" onAction="#handleReturnToDashboard" />
+      <Button fx:id="returnButton" layoutX="233.0" layoutY="510.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="70.0" text="Dashboard" onAction="#handleReturnToDashboard" >
          <font>
             <Font size="11.0" />
          </font>
